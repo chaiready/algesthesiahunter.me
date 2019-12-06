@@ -4,7 +4,7 @@
       <div class="header-main">
         <div class="logo-main">
           <svg-icon icon-class="logo"></svg-icon>
-          <div>lgesthesiafield</div>
+          <div>lgesthesiahunter</div>
         </div>
         <div class="header-slogan">{{ $t('text.slogan') }}</div>
       </div>

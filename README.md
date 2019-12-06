@@ -1,4 +1,4 @@
-# algesthesiafield
+# algesthesiahunter
 
 ## Project setup
 
