@@ -1,13 +1,13 @@
 <template>
   <header class="header-container">
     <div class="header">
-      <div class="header-main">
+      <router-link to="/" class="header-main">
         <div class="logo-main">
           <svg-icon icon-class="logo"></svg-icon>
           <div>lgesthesiahunter</div>
         </div>
         <div class="header-slogan">{{ $t('text.slogan') }}</div>
-      </div>
+      </router-link>
       <div class="header-search">
         <svg-icon icon-class="search" class="search"></svg-icon>
         <input type="text" @change="seach" :placeholder="$t('text.search')" />

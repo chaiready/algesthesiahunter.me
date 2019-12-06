@@ -15,7 +15,4 @@ new Vue({
   store,
   i18n,
   render: h => h(App),
-  created() {
-    console.log(123)
-  },
 }).$mount('#app')
