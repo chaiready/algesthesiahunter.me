@@ -1,0 +1,58 @@
+@import '@/assets/theme.scss';
+// PC Theme Color
+$body-bg: var(--body-bg);
+$theme-black: var(--theme-black);
+$theme-logo-rotate: var(--theme-logo-rotate);
+
+$module-bg: var(--module-bg);
+$module-bg-opacity-5: var(--module-bg-opacity-5);
+$module-bg-opacity-8: var(--module-bg-opacity-8);
+$module-bg-opacity-9: var(--module-bg-opacity-9);
+
+$module-hover-bg: var(--module-hover-bg);
+$module-hover-bg-opaqueness: var(--module-hover-bg-opaqueness);
+$module-hover-bg-opacity-3: var(--module-hover-bg-opacity-3);
+$module-hover-bg-opacity-9: var(--module-hover-bg-opacity-9);
+$module-hover-bg-darken-10: var(--module-hover-bg-darken-10);
+$module-hover-bg-darken-20: var(--module-hover-bg-darken-20);
+$module-hover-bg-darken-40: var(--module-hover-bg-darken-40);
+
+$primary: var(--primary-color);
+$primary-opacity-9: var(--primary-opacity-9-color);
+$primary-opacity-5: var(--primary-opacity-5-color);
+
+// Text colors
+$text: var(--text-color);
+$text-dark: var(--text-dark);
+$text-darken: var(--text-darken);
+$text-light: var(--text-light);
+$text-secondary: var(--text-secondary);
+$text-disabled: var(--text-disabled);
+$text-dividers: var(--text-dividers);
+$text-reversal: var(--text-reversal);
+
+// Links
+$link-color: var(--link-color);
+$link-hover-color: var(--link-hover-color);
+
+// Other
+$border-solid: 1px solid $text;
+$border-dashed: 1px dashed $body-bg;
+
+// Colors
+$accent: #4caf50;
+$red: #ff5722;
+$yellow: #ffeb3b;
+$grey: #efefef;
+$white: #ffffff;
+$black: #000000;
+$black-light: #555555;
+
+// Size
+
+$font-size-h1: 24px;
+$font-size-h2: 20px;
+$font-size-h3: 18px;
+$font-size-h4: 16px;
+$font-size-h5: 14px;
+$font-size-h6: 13px;

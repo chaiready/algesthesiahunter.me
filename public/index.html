@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title></title>
+  </head>
+  <style>
+    .loading-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #f1f3f6;
+      top: 0;
+      left: 0;
+    }
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      text-align: center;
+      background: url("<%= BASE_URL %>loading.svg") no-repeat center;
+    }
+  </style>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but test doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app">
+      <div class="loading-container">
+        <div class="loading"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    setInterval(() => {
+      let title = document.title;
+      let word = title.slice(0, 1);
+      let end = title.slice(1, title.length);
+      document.title = end + word;
+    }, 300);
+  </script>
+</html>
