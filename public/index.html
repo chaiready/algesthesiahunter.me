@@ -24,7 +24,7 @@
       width: 120px;
       height: 120px;
       text-align: center;
-      background: url("<%= BASE_URL %>loading.svg") no-repeat center;
+      background: url('<%= BASE_URL %>loading.svg') no-repeat center;
     }
   </style>
   <body>
@@ -42,10 +42,10 @@
   </body>
   <script>
     setInterval(() => {
-      let title = document.title;
-      let word = title.slice(0, 1);
-      let end = title.slice(1, title.length);
-      document.title = end + word;
-    }, 300);
+      let title = document.title
+      let word = title.slice(0, 1)
+      let end = title.slice(1, title.length)
+      document.title = end + word
+    }, 300)
   </script>
 </html>

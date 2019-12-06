@@ -53,7 +53,7 @@ export default {
 .nav-container {
   margin-right: 15px;
   width: 160px;
-  min-height: calc(100vh - 164px);
+  min-height: 900px;
   user-select: none;
   .nav-list {
     width: 160px;
