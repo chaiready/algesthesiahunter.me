@@ -1,4 +1,4 @@
-# algesthesiahunter
+# algesthesiahunter.me
 
 ## Project setup
 
