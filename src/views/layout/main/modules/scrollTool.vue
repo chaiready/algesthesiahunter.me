@@ -44,7 +44,7 @@ export default {
     flex-wrap: wrap;
     font-size: 22px;
     .svg-box {
-      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
       background-color: $module-bg;
       cursor: pointer;
       margin-bottom: 15px;

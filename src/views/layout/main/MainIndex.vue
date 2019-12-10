@@ -30,10 +30,9 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 1250px;
+  width: 1100px;
   margin: 0 auto;
   .main {
-    width: 680px;
     min-height: 1px;
     position: relative;
     overflow: hidden;

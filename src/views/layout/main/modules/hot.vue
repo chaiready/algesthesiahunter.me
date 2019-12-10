@@ -7,43 +7,43 @@
     <ul class="main">
       <li class="it one-cut">
         <span class="index fir">1</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
         <span class="index sec">2</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
         <span class="index thr">3</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
         <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
-        <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span class="index">5</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
-        <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span class="index">6</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
-        <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span class="index">7</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
-        <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span class="index">8</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
-        <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span class="index">9</span>
+        <span>虚位以待</span>
       </li>
       <li class="it ">
-        <span class="index">4</span>
-        <span>欢迎━(*｀∀´*)ノ亻!</span>
+        <span class="index">10</span>
+        <span>虚位以待</span>
       </li>
     </ul>
   </div>

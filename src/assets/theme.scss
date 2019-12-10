@@ -1,5 +1,13 @@
-@mixin css-var($text, $text-reversal, $black, $primary, $body-bg, $module-hover-bg, $logo-rotate) {
-
+@mixin css-var(
+  $text,
+  $text-reversal,
+  $black,
+  $primary,
+  $body-bg,
+  $module-hover-bg,
+  $logo-rotate,
+  $keyword
+) {
   #{--body-bg}: $body-bg;
   #{--theme-black}: $black;
   #{--theme-logo-rotate}: $logo-rotate;
@@ -25,15 +33,15 @@
   #{--text-light}: lighter($text, 20%);
   #{--text-dark}: darken($text, 20%);
   #{--text-darken}: darken($text, 40%);
-  #{--text-secondary}: rgba($black, .54);
-  #{--text-disabled}: rgba($black, .38);
-  #{--text-dividers}: rgba($black, .26);
+  #{--text-secondary}: rgba($black, 0.54);
+  #{--text-disabled}: rgba($black, 0.38);
+  #{--text-dividers}: rgba($black, 0.26);
   #{--text-reversal}: $text-reversal;
 
   #{--link-color}: $text;
   #{--link-hover-color}: darken($text, 20%);
 
-
+  #{--keyword-color}: rgba($keyword, 0.9);
 }
 
 body {
@@ -45,7 +53,9 @@ body {
       $primary: #0088f5,
       $body-bg: #eee,
       $module-hover-bg: rgba(197, 197, 197, 0.5),
-      $logo-rotate: none);
+      $logo-rotate: none,
+      $keyword: #f56a00
+    );
   }
   &.dark {
     @include css-var(
@@ -55,9 +65,8 @@ body {
       $primary: #fff,
       $body-bg: #000,
       $module-hover-bg: rgba(0, 0, 0, 0.5),
-      $logo-rotate: hue-rotate(30deg) brightness(180%) grayscale(100%)
+      $logo-rotate: hue-rotate(30deg) brightness(180%) grayscale(100%),
+      $keyword: #f04134
     );
   }
 }
-
-

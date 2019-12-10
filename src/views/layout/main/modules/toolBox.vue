@@ -101,7 +101,7 @@ export default {
       animation: none;
       &:before {
         content: 'LANG';
-        background: linear-gradient(to bottom left, rgb(2, 6, 255), #f3000c);
+        background: linear-gradient(to bottom left, #0206ff, #f3000c);
       }
     }
     &:before {
@@ -111,13 +111,13 @@ export default {
       line-height: 25px;
       text-align: center;
       content: 'EN';
-      background: linear-gradient(rgb(59, 62, 248), rgb(2, 6, 255));
+      background: #0206ff;
     }
   }
   .lang-bg {
     &:before {
       content: 'ZH';
-      background: linear-gradient(#f3000c, #ff3741);
+      background: #f3000c;
     }
     &:hover {
       &:before {
