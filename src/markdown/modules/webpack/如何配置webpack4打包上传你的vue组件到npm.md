@@ -364,6 +364,10 @@ module.exports = {
 
 #### 项目引用
 
+```bash
+npm i vue2-tree-view -D
+```
+
 ```js
 import VueTreeView from 'vue2-tree-view'
 Vue.use(VueTreeView)
