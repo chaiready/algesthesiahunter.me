@@ -2,25 +2,25 @@
   <div class="aside-container">
     <div ref="hotRef"><hot></hot></div>
     <calendar class="calendar" />
-    <category :categoryFixed="categoryFixed"></category>
+    <tags :class="{ 'if-fixed': !tagsFixed }"></tags>
   </div>
 </template>
 
 <script>
 import hot from './hot.vue'
-import category from './category.vue'
+import tags from './tags.vue'
 import calendar from '@/components/common/calendar.vue'
 
 export default {
   name: 'Aside',
   data() {
     return {
-      categoryFixed: true,
+      tagsFixed: true,
     }
   },
   components: {
     hot,
-    category,
+    tags,
     calendar,
   },
   mounted() {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     callback(v) {
-      this.categoryFixed = v[0].isIntersecting
+      this.tagsFixed = v[0].isIntersecting
     },
   },
 }
@@ -41,6 +41,9 @@ export default {
 
 <style scoped lang="scss">
 .aside-container {
+  .if-fixed {
+    position: fixed;
+  }
   margin-left: 15px;
   width: 268px;
   height: auto;

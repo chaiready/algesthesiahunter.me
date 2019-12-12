@@ -1,9 +1,9 @@
 <template>
   <div class="article-list">
-    <div class="it" v-for="(it, i) in sourceDate" :key="i">
+    <div class="it" v-for="(it, i) in viewList" :key="i">
       <div class="img-body">
         <router-link to="/">
-          <img src="@/assets/imgs/img0.jpeg" />
+          <img :src="formatUrl(it.tag)" />
         </router-link>
       </div>
       <div class="it-body">
@@ -11,33 +11,67 @@
           <router-link
             class="title one-cut"
             :to="{
-              path: '/articles/' + it.attributes.date,
+              path: '/articles/' + it.date,
             }"
           >
-            {{ it.attributes.title }}
+            {{ it.title }}
           </router-link>
         </h5>
-        <p class="it-des more-cut">{{ it.attributes.des }}</p>
+        <p class="it-des more-cut">{{ it.des }}</p>
         <div class="it-meta">
-          <div class="time">{{ it.attributes.date }}</div>
-          <div class="category">{{ $t(`nav.${it.attributes.category}`) }}</div>
+          <div class="time">
+            <svg-icon icon-class="calendar"></svg-icon>
+            {{ it.date }}
+          </div>
+          <div class="category">
+            <router-link :to="'/' + it.category">
+              <svg-icon icon-class="category"></svg-icon>
+              {{ $t(`nav.${it.category}`) }}</router-link
+            >
+          </div>
         </div>
       </div>
     </div>
+    <div class="empty" v-if="viewList.length === 0">空空如也</div>
   </div>
 </template>
 
 <script>
-import { sourceDate } from '@/service/articies'
+import { mapState, mapActions } from 'vuex'
 export default {
+  props: {
+    category: {
+      type: String,
+    },
+    tag: {
+      type: String,
+    },
+  },
   data() {
     return {
-      sourceDate,
+      viewList: [],
     }
   },
-  computed: {},
-  methods: {},
-  mounted() {},
+  computed: {
+    ...mapState('common', ['sourceAttr']),
+  },
+  methods: {
+    ...mapActions('common', ['getArticleByCategory', 'getArticleByTag']),
+    formatUrl(type) {
+      return require(`@/assets/imgs/${type}.png`)
+    },
+  },
+  created() {
+    if (this.tag) {
+      this.getArticleByTag(this.tag).then(res => (this.viewList = res))
+    } else if (this.category) {
+      this.getArticleByCategory(this.category).then(
+        res => (this.viewList = res)
+      )
+    } else {
+      this.viewList = this.sourceAttr
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -56,6 +90,10 @@ export default {
       height: 120px;
       display: flex;
       flex-shrink: 0;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
     }
     .it-body {
       flex-shrink: 0;
@@ -82,6 +120,18 @@ export default {
         display: flex;
         justify-content: space-between;
         font-size: 12px;
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            font-size: 14px;
+            margin-right: 5px;
+          }
+        }
+        .category {
+          text-transform: capitalize;
+        }
       }
     }
   }

@@ -34,25 +34,51 @@ export let source = {
     },
   },
   footer: {
-    me: {
-      zh: '进贤进能',
-      en: 'designed by me',
+    design: {
+      zh: ' ',
+      en: 'Design by',
     },
-    day: {
-      zh: '铢积丝累',
-      en: 'baht wire product',
+    me: {
+      zh: '寻踪觅迹',
+      en: 'Algesthesiahunter',
     },
     powered: {
       zh: '由',
-      en: 'powered by',
+      en: 'Powered by',
+    },
+    and: {
+      zh: '和 春风雨露',
+      en: 'and Sweat',
     },
     drive: {
       zh: '强力驱动',
       en: ' ',
     },
     library: {
+      zh: 'Vue',
+      en: 'Vue',
+    },
+  },
+  tag: {
+    shell: {
+      zh: 'shell',
+      en: 'shell',
+    },
+    webpack: {
+      zh: 'webpack',
+      en: 'webpack',
+    },
+    fealing: {
+      zh: '思索',
+      en: 'fealing',
+    },
+    vue: {
       zh: 'vue',
-      en: 'VUE',
+      en: 'vue',
+    },
+    javascript: {
+      zh: 'javascript',
+      en: 'javascript',
     },
   },
   text: {
@@ -85,7 +111,7 @@ export let source = {
       },
     },
     search: {
-      zh: '众里寻他千百度',
+      zh: '众里寻她千百度',
       en: 'Search...',
     },
     hot: {

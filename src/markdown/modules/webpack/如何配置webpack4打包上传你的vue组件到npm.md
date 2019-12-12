@@ -10,15 +10,11 @@ date: 2019/12/10
 
 ```js
 |-- src
-  |-- components
-    |-- VueTreeView //个人组件
-      |-- add.vue
-      |-- del.vue
-      |-- index.js
-      |-- index.scss
-      |-- VueTreeView.vue
-    |-- main.js
-  |-- main.js
+  |-- add.vue
+  |-- del.vue
+  |-- index.js
+  |-- index.scss
+  |-- VueTreeView.vue
 |-- .babelrc
 |-- package.json
 |-- webpack.config.js
@@ -219,14 +215,6 @@ export default VueTreeView
 </style>
 ```
 
-##### main.js
-
-```js
-import VueTreeView from './components/VueTreeView'
-
-export default VueTreeView
-```
-
 ##### .babelrc
 
 ```json
@@ -242,13 +230,12 @@ export default VueTreeView
 {
   "name": "vue2-tree-view",
   "description": "A simple organization tree chart based on Vue2.x",
-  "version": "1.0.10",
+  "version": "1.0.14",
   "main": "dist/index.js",
-  "module": "src/main.js",
+  "module": "src/index.js",
   "author": "liulu <541877028@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack  --progress",
     "publish": "npm run build && npm publish"
   },
@@ -293,8 +280,8 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
-  entry: './src/main.js',
-  mode: process.env.NODE_ENV,
+  entry: './src/index.js',
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: 'dist',
@@ -365,7 +352,7 @@ module.exports = {
 #### 项目引用
 
 ```bash
-npm i vue2-tree-view -D
+npm i vue2-tree-view -S
 ```
 
 ```js

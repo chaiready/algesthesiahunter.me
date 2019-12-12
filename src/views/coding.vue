@@ -1,10 +1,16 @@
 <template>
-  <div class="coding">coding敬请期待</div>
+  <div class="coding">
+    <ArticleList category="coding"></ArticleList>
+  </div>
 </template>
 
 <script>
+import ArticleList from './article-list.vue'
 export default {
   name: 'coding',
+  components: {
+    ArticleList,
+  },
 }
 </script>
 <style lang="scss" scoped></style>

@@ -1,12 +1,16 @@
 <template>
   <footer class="footer-container">
-    <span>{{ $t('footer.day') }} &nbsp;</span>
+    <span>{{ $t('footer.powered') }} </span>
+    <a href="https://vuejs.org">
+      <span class="keyworld"> {{ $t('footer.library') }} </span>
+    </a>
+    <span>{{ $t('footer.and') }} </span>
+    <span style="margin-left:5px">{{ $t('footer.drive') }} </span>
     <span class="gb">|</span>
-    <span>{{ $t('footer.powered') }} &nbsp;</span>
-    <span>{{ $t('footer.library') }} &nbsp;</span>
-    <span>{{ $t('footer.drive') }}&nbsp;</span>
-    <span class="gb">|</span>
-    <span>{{ $t('footer.me') }}</span>
+    <span>{{ $t('footer.design') }} </span>
+    <router-link to="/about">
+      <span class="keyworld">{{ $t('footer.me') }}</span>
+    </router-link>
   </footer>
 </template>
 
@@ -26,6 +30,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  .keyworld {
+    text-decoration: underline;
+    margin: 0 5px;
+  }
   .gb {
     display: flex;
     justify-content: center;

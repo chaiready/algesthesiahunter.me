@@ -5,54 +5,47 @@
       {{ $t('text.hot').toUpperCase() }}
     </div>
     <ul class="main">
-      <li class="it one-cut">
-        <span class="index fir">1</span>
-        <span>虚位以待</span>
+      <li class="it one-cut" v-for="(it, i) in hotList" :key="i">
+        <span
+          :class="{
+            index: true,
+            fir: i === 0,
+            sec: i === 1,
+            thr: i === 2,
+          }"
+          >{{ i + 1 }}</span
+        >
+        <router-link :to="'/articles/' + it.date" class="it-a">
+          <span>{{ it.title }}</span>
+        </router-link>
       </li>
-      <li class="it ">
-        <span class="index sec">2</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index thr">3</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">4</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">5</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">6</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">7</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">8</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">9</span>
-        <span>虚位以待</span>
-      </li>
-      <li class="it ">
-        <span class="index">10</span>
-        <span>虚位以待</span>
+      <li
+        class="it one-cut"
+        v-for="(it, i) in 10 - hotList.length"
+        :key="hotList.length + i"
+      >
+        <span
+          :class="{
+            index: true,
+            fir: i + hotList.length === 0,
+            sec: i + hotList.length === 1,
+            thr: i + hotList.length === 2,
+          }"
+          >{{ i + hotList.length + 1 }}</span
+        >
+        <span>虚位以待......</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+      hotList: [],
+    }
   },
   computed: {
     navList() {
@@ -66,14 +59,10 @@ export default {
     },
   },
   methods: {
-    switchLang() {
-      if (this.lang === 'EN') {
-        this.$i18n.locale = 'zh'
-      } else {
-        this.$i18n.locale = 'en'
-      }
-      localStorage.lang = this.$i18n.locale
-    },
+    ...mapActions('common', ['getArticleByHot']),
+  },
+  created() {
+    this.getArticleByHot().then(res => (this.hotList = res.reverse()))
   },
 }
 </script>
@@ -98,6 +87,9 @@ export default {
   .main {
     .it {
       margin-top: 10px;
+      .it-a:hover {
+        text-decoration: underline;
+      }
       .index {
         width: 18px;
         height: 18px;

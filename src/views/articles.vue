@@ -1,30 +1,34 @@
 <template>
   <div class="articles">
-    <markdown :value="article.body"></markdown>
+    <markdown v-if="article && article.body" :value="article.body"></markdown>
+    <div v-if="article && !article.body" class="empty">空空如也</div>
   </div>
 </template>
 
 <script>
-let markdown = () => import('@/components/common/markdown.vue')
-import { getArticleDetail } from '@/service/articies'
+import markdown from '@/components/common/markdown.vue'
+import lozad from 'lozad'
+import { mapActions } from 'vuex'
 export default {
   name: 'articles',
   data() {
     return {
-      article: getArticleDetail(this.$route.params.id),
+      article: {},
     }
   },
   components: {
     markdown,
   },
   computed: {},
-  methods: {},
-  created() {
-    if (!this.article) {
-      this.$router.go(-1)
-    }
-    console.log(this.article)
+  methods: {
+    ...mapActions('common', ['getArticleDetail']),
   },
+  created() {
+    this.getArticleDetail(this.$route.params.id).then(
+      res => (this.article = res)
+    )
+  },
+  mounted() {},
 }
 </script>
 <style lang="scss" scoped>

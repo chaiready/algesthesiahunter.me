@@ -49,7 +49,7 @@
           <!--today-->
           <router-link
             :to="
-              `/date/${formatDate(
+              `/articles/${formatDate(
                 day.getFullYear(),
                 day.getMonth() + 1,
                 day.getDate()
@@ -83,7 +83,7 @@ export default {
   },
   computed: {
     isEnLang() {
-      return this.$store.getters['global/isEnLang']
+      return this.$i18n.locale === 'en'
     },
   },
   methods: {

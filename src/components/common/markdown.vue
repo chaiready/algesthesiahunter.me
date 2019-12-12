@@ -1,11 +1,11 @@
 <template>
-  <div class="markdown-theme" ref="markdown"></div>
+  <div class="markdown-theme" ref="markdown" v-html="markedInit(value)"></div>
 </template>
 
 <script>
-import marked from 'marked'
-import highlight from 'highlight'
+import marked from '@/utils/marked'
 import ClipboardJS from 'clipboard'
+
 export default {
   props: {
     value: {},
@@ -14,21 +14,8 @@ export default {
     return {}
   },
   methods: {
-    markedInit() {
-      marked.setOptions({
-        renderer: new marked.Renderer(),
-        gfm: true,
-        tables: true,
-        breaks: false,
-        pedantic: false,
-        sanitize: false,
-        smartLists: true,
-        smartypants: false,
-        highlight: function(code) {
-          return highlight.highlightAuto(code).value
-        },
-      })
-      this.$refs.markdown.innerHTML = marked(this.value)
+    markedInit(v) {
+      return marked(v)
     },
     addCopyBtn() {
       let pres = this.$refs.markdown.getElementsByTagName('pre')
@@ -53,7 +40,6 @@ export default {
     },
   },
   mounted() {
-    this.markedInit()
     this.addCopyBtn()
   },
 }

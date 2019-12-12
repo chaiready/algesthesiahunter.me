@@ -1,15 +1,20 @@
 <template>
   <div class="think">
-    <ArticleList category="think"></ArticleList>
+    <ArticleList :tag="tag"></ArticleList>
   </div>
 </template>
 
 <script>
 import ArticleList from './article-list.vue'
 export default {
-  name: 'think',
+  name: 'tags',
   components: {
     ArticleList,
+  },
+  computed: {
+    tag() {
+      return this.$route.params.tag
+    },
   },
 }
 </script>

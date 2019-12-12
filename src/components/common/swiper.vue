@@ -1,8 +1,17 @@
 <template>
   <div class="swiper-container">
     <swiper :options="swiperOption">
-      <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-        <img :src="slide" />
+      <swiper-slide v-for="(it, i) in swiperSlides" :key="i">
+        <router-link
+          :to="{
+            path: '/articles/' + it.date,
+          }"
+        >
+          <div class="img">
+            <img :src="formatUrl(it.tag)" />
+            <span class="title">{{ it.title }}</span>
+          </div>
+        </router-link>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -12,10 +21,12 @@
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { mapActions } from 'vuex'
 export default {
   name: 'Swiper',
   data() {
     return {
+      swiperSlides: [],
       swiperOption: {
         centeredSlides: true,
         autoplay: {
@@ -28,15 +39,20 @@ export default {
           clickable: true,
         },
       },
-      swiperSlides: [
-        require('@/assets/imgs/img0.jpeg'),
-        require('@/assets/imgs/img1.jpeg'),
-      ],
     }
   },
   components: {
     swiper,
     swiperSlide,
+  },
+  methods: {
+    ...mapActions('common', ['getArticleByEveryTag']),
+    formatUrl(type) {
+      return require(`@/assets/imgs/${type}.png`)
+    },
+  },
+  created() {
+    this.getArticleByEveryTag().then(res => (this.swiperSlides = res))
   },
 }
 </script>
@@ -44,5 +60,35 @@ export default {
 .swiper-container {
   overflow: hidden;
   height: 200px;
+  .img {
+    position: relative;
+    height: 100%;
+    .title {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      color: $link-color;
+      padding-right: 0.6em;
+      padding-left: 1em;
+      height: 2em;
+      line-height: 2em;
+      font-size: 1em;
+      font-weight: 700;
+      border-radius: 1px;
+      letter-spacing: 0.3px;
+      max-width: 75%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background-clip: text;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        $module-bg 2em,
+        $module-bg-opacity-9,
+        $text-reversal
+      );
+    }
+  }
 }
 </style>

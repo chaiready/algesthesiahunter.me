@@ -13,22 +13,22 @@
         <svg-icon icon-class="think"></svg-icon>
         {{ navList.think }}</router-link
       >
-      <router-link class="it" to="/project">
+      <a class="it" target="_blank" href="https://algesthesiahunter.github.io">
         <svg-icon icon-class="project"></svg-icon>
-        {{ navList.project }}</router-link
+        {{ navList.project }}</a
       >
       <router-link class="it" to="/vlog">
         <svg-icon icon-class="vlog"></svg-icon>
         {{ navList.vlog }}</router-link
       >
-      <router-link class="it" to="/about">
+      <!-- <router-link class="it" to="/about">
         <svg-icon icon-class="about"></svg-icon>
         {{ navList.about }}</router-link
-      >
-      <router-link class="it" to="/guestbook">
+      > -->
+      <!-- <router-link class="it" to="/guestbook">
         <svg-icon icon-class="guestbook"></svg-icon>
         {{ navList.guestbook }}</router-link
-      >
+      > -->
     </nav>
   </div>
 </template>
@@ -53,7 +53,6 @@ export default {
 .nav-container {
   margin-right: 15px;
   width: 160px;
-  min-height: 900px;
   user-select: none;
   .nav-list {
     width: 160px;

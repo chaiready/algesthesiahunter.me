@@ -16,3 +16,5 @@ let Components = {
   },
 }
 Vue.use(Components)
+import VueLazyView from 'vue2-lazy-view'
+Vue.use(VueLazyView)

@@ -1,40 +1,39 @@
 <template>
-  <div :class="{ 'category-container': true, 'if-fixed': !categoryFixed }">
+  <div class="category-container">
     <ul class="main">
-      <li class="it">
-        <router-link to="/coding">
+      <li v-for="(it, i) in tags" :key="i">
+        <router-link class="it" :to="'/tags/' + it.tag">
           <span class="svg-box"
-            ><svg-icon icon-class="hot" class="svg"></svg-icon
+            ><svg-icon :icon-class="it.tag" class="svg"></svg-icon
           ></span>
-          <span class="text">树和远方 [10]</span></router-link
+          <span class="text"
+            >{{ $t(`tag.${it.tag}`) }} [{{ it.length }}]</span
+          ></router-link
         >
-      </li>
-      <li class="it">
-        <router-link to="/coding">
-          <span class="svg-box  "
-            ><svg-icon icon-class="hot" class="svg  "></svg-icon
-          ></span>
-          <span class="text  ">思考 [10]</span>
-        </router-link>
-      </li>
-      <li class="it">
-        <router-link to="/coding">
-          <span class="svg-box  "
-            ><svg-icon icon-class="hot" class="svg  "></svg-icon
-          ></span>
-          <span class="text    "> javasccript [10]</span>
-        </router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  props: {
-    categoryFixed: {
-      type: Boolean,
-    },
+  data() {
+    return {
+      tags: [],
+    }
+  },
+  methods: {
+    ...mapActions('common', ['getArticleByEveryTag']),
+  },
+  created() {
+    this.getArticleByEveryTag().then(res => {
+      let i = res.findIndex(v => v.tag === 'javascript')
+      let v = res[i]
+      res[i] = res[res.length - 1]
+      res[res.length - 1] = v
+      this.tags = res
+    })
   },
 }
 </script>
@@ -44,9 +43,6 @@ export default {
   padding: 0px 12px 12px 12px;
   background-color: $module-bg;
   overflow: hidden;
-  &.if-fixed {
-    position: fixed;
-  }
 }
 .main {
   display: flex;
@@ -70,12 +66,14 @@ export default {
     .svg-box {
       background-color: $module-hover-bg-opacity-3;
       width: 26px;
+      font-size: 14px;
       height: 26px;
       line-height: 26px;
       display: inline-block;
       text-align: center;
     }
     .text {
+      text-transform: capitalize;
       display: inline-block;
       height: 26px;
       line-height: 26px;
