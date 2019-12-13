@@ -57,6 +57,12 @@ const routes = [
     name: 'tags',
     component: () => import(/* webpackChunkName: "tags" */ '@/views/tags.vue'),
   },
+  {
+    path: '/search',
+    name: 'search',
+    component: () =>
+      import(/* webpackChunkName: "search" */ '@/views/search.vue'),
+  },
 ]
 
 const router = new VueRouter({

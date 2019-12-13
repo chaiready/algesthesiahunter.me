@@ -148,7 +148,7 @@ export default {
       if (d < 10) {
         d = `0${d}`
       }
-      return `${y}-${m}-${d}`
+      return `${y}/${m}/${d}`
     },
   },
 }

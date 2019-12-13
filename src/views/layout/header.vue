@@ -10,7 +10,12 @@
       </router-link>
       <div class="header-search">
         <svg-icon icon-class="search" class="search"></svg-icon>
-        <input type="text" @change="seach" :placeholder="$t('text.search')" />
+        <input
+          v-model="keyword"
+          type="text"
+          @keyup.enter="seach"
+          :placeholder="$t('text.search')"
+        />
       </div>
     </div>
   </header>
@@ -18,9 +23,26 @@
 
 <script>
 export default {
+  data() {
+    return {
+      keyword: '',
+    }
+  },
   methods: {
-    seach(a) {
-      console.log(a)
+    seach() {
+      let k = this.keyword.trim()
+      if (k !== '' && this.$route.query.keyword !== k) {
+        this.$router.push({
+          name: 'search',
+          query: {
+            keyword: k,
+          },
+        })
+      } else if (this.$route.name !== 'home') {
+        this.$router.push({
+          name: 'home',
+        })
+      }
     },
   },
 }

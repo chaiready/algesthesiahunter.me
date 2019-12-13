@@ -29,7 +29,15 @@ const actions = {
 
   getArticleByCategory: ({ commit }, category) =>
     state.sourceAttr.filter(v => v.category === category),
-
+  getArticleByKeyword: ({ commit }, keyword) =>
+    state.sourceAttr.filter(v => {
+      return (
+        v.category.includes(keyword) ||
+        v.tag.includes(keyword) ||
+        v.title.includes(keyword) ||
+        v.des.includes(keyword)
+      )
+    }),
   getArticleByHot: ({ commit }) => state.sourceAttr.filter((v, i) => i <= 10),
 
   getArticleByEveryTag: ({ commit }) => {

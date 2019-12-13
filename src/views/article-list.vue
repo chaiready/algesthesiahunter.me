@@ -46,6 +46,9 @@ export default {
     tag: {
       type: String,
     },
+    keyword: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -56,21 +59,43 @@ export default {
     ...mapState('common', ['sourceAttr']),
   },
   methods: {
-    ...mapActions('common', ['getArticleByCategory', 'getArticleByTag']),
+    ...mapActions('common', [
+      'getArticleByCategory',
+      'getArticleByTag',
+      'getArticleByKeyword',
+    ]),
     formatUrl(type) {
       return require(`@/assets/imgs/${type}.png`)
     },
   },
+  watch: {
+    keyword: {
+      handler(n) {
+        if (n) {
+          this.getArticleByKeyword(n).then(res => (this.viewList = res))
+        }
+      },
+      immediate: true,
+    },
+    tag: {
+      handler(n) {
+        if (n) {
+          this.getArticleByTag(n).then(res => (this.viewList = res))
+        }
+      },
+      immediate: true,
+    },
+    category: {
+      handler(n) {
+        if (n) {
+          this.getArticleByCategory(n).then(res => (this.viewList = res))
+        }
+      },
+      immediate: true,
+    },
+  },
   created() {
-    if (this.tag) {
-      this.getArticleByTag(this.tag).then(res => (this.viewList = res))
-    } else if (this.category) {
-      this.getArticleByCategory(this.category).then(
-        res => (this.viewList = res)
-      )
-    } else {
-      this.viewList = this.sourceAttr
-    }
+    this.viewList = this.sourceAttr
   },
 }
 </script>

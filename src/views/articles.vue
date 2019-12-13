@@ -19,16 +19,22 @@ export default {
   components: {
     markdown,
   },
-  computed: {},
+  computed: {
+    id() {
+      return this.$route.params.id
+    },
+  },
+  watch: {
+    id: {
+      handler(n) {
+        this.getArticleDetail(n).then(res => (this.article = res))
+      },
+      immediate: true,
+    },
+  },
   methods: {
     ...mapActions('common', ['getArticleDetail']),
   },
-  created() {
-    this.getArticleDetail(this.$route.params.id).then(
-      res => (this.article = res)
-    )
-  },
-  mounted() {},
 }
 </script>
 <style lang="scss" scoped>
