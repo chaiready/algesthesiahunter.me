@@ -8,7 +8,7 @@
           }"
         >
           <div class="img">
-            <img :src="formatUrl(it.tag)" />
+            <img :src="cdn + it.img" />
             <span class="title">{{ it.title }}</span>
           </div>
         </router-link>
@@ -47,9 +47,6 @@ export default {
   },
   methods: {
     ...mapActions('common', ['getArticleByEveryTag']),
-    formatUrl(type) {
-      return require(`@/assets/imgs/${type}.png`)
-    },
   },
   created() {
     this.getArticleByEveryTag().then(res => (this.swiperSlides = res))
@@ -63,13 +60,14 @@ export default {
   .img {
     position: relative;
     height: 100%;
+    width: 100%;
     .title {
       position: absolute;
       top: 1rem;
       right: 1.2rem;
       color: $link-color;
       padding-right: 0.6em;
-      padding-left: 1em;
+      padding-left: 1.1em;
       height: 2em;
       line-height: 2em;
       font-size: 1em;

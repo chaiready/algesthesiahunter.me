@@ -4,6 +4,7 @@ category: coding
 tag: webpack
 des: 写了个vue组件想打包上传到npm却又不知如何下手？
 date: 2019/12/10
+img: webpack4.png
 ---
 
 #### 整体目录

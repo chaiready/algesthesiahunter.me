@@ -4,6 +4,7 @@ category: coding
 tag: vue
 des: 对此有强烈的好奇心
 date: 2019/10/8
+img: vue1.png
 ---
 
 ### 起因

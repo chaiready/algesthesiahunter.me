@@ -3,7 +3,7 @@
     <div class="it" v-for="(it, i) in viewList" :key="i">
       <div class="img-body">
         <router-link to="/">
-          <img :src="formatUrl(it.tag)" />
+          <img :src="cdn + it.img" />
         </router-link>
       </div>
       <div class="it-body">
@@ -64,9 +64,6 @@ export default {
       'getArticleByTag',
       'getArticleByKeyword',
     ]),
-    formatUrl(type) {
-      return require(`@/assets/imgs/${type}.png`)
-    },
   },
   watch: {
     keyword: {
@@ -117,7 +114,6 @@ export default {
       flex-shrink: 0;
       img {
         height: 100%;
-        object-fit: cover;
       }
     }
     .it-body {

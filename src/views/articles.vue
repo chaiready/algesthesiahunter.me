@@ -1,7 +1,16 @@
 <template>
   <div class="articles">
-    <markdown v-if="article && article.body" :value="article.body"></markdown>
-    <div v-if="article && !article.body" class="empty">空空如也</div>
+    <template v-if="article && article.body">
+      <div class="title">
+        <h2>{{ article.attributes.title }}</h2>
+        <img
+          :src="cdn + article.attributes.img"
+          @click="addImgPopup(cdn + article.attributes.img)"
+        />
+      </div>
+      <markdown :value="article.body"></markdown>
+    </template>
+    <div v-else class="empty">空空如也</div>
   </div>
 </template>
 
@@ -34,6 +43,11 @@ export default {
   },
   methods: {
     ...mapActions('common', ['getArticleDetail']),
+    addImgPopup(src) {
+      if (window.utils) {
+        window.utils.addImgPopup(src)
+      }
+    },
   },
 }
 </script>
@@ -41,5 +55,17 @@ export default {
 .articles {
   padding: 12px 24px;
   background-color: $module-bg;
+  .title {
+    h2 {
+      margin: 1em 0 1.5em;
+      text-align: center;
+      font-weight: 700;
+      font-size: 19.285px;
+    }
+    img {
+      height: 200px;
+      cursor: pointer;
+    }
+  }
 }
 </style>

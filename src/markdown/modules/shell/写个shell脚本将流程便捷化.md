@@ -4,6 +4,7 @@ des: 将打包的单页面应用代码打包上传至服务器
 category: coding
 tag: shell
 date: 2019/12/11
+img: shell1.png
 ---
 
 ### tips
