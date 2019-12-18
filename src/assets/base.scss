@@ -69,6 +69,7 @@ li {
   list-style: none;
 }
 div,
+img,
 span,
 svg,
 h1,
@@ -225,24 +226,21 @@ img {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transition: all 0.08s;
   background-color: transparent;
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
   > img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 10%;
+    max-height: 10%;
+    object-fit: contain;
   }
-
   &.display {
-    opacity: 1;
     visibility: visible;
-    transition: all 0.08s;
+    opacity: 1;
     background-color: rgba(80, 80, 80, 0.5);
-
-    > img {
-      transform: scale(1);
-      transition: all 0.08s;
+    img {
+      max-width: 90%;
+      max-height: 90%;
     }
   }
 }

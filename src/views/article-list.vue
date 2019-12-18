@@ -122,7 +122,6 @@ export default {
       overflow: hidden;
       flex-shrink: 0;
       img {
-        transition: all 0.25s;
         height: 100%;
         width: 180px;
       }

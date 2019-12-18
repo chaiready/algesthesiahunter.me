@@ -4,11 +4,7 @@ const delImgPopup = () => {
   if (mask) {
     window.onscroll = null
     mask.setAttribute('class', '')
-    setTimeout(() => {
-      if (mask) {
-        document.body.removeChild(mask)
-      }
-    }, 350)
+    document.body.removeChild(mask)
   }
 }
 
@@ -19,7 +15,6 @@ const addImgPopup = (src, className) => {
   }
   const image = document.createElement('img')
   image.src = src
-  image.setAttribute('class', className)
 
   const oldMask = document.getElementById('image-popup')
   if (oldMask) {
@@ -29,10 +24,10 @@ const addImgPopup = (src, className) => {
   mask.setAttribute('id', 'image-popup')
   mask.appendChild(image)
   document.body.appendChild(mask)
-
   setTimeout(() => {
     mask.setAttribute('class', 'display')
-  }, 100)
+  }, 10)
+
   // 监听滚动和点击事件
   window.onscroll = delImgPopup
   mask.onclick = delImgPopup
