@@ -37,7 +37,7 @@ export default {
     opacity: 0.3;
     height: 100%;
     width: 100%;
-    background: url('~assets/imgs/bg.jpg') center center no-repeat;
+    background: url($cdn+'bg.jpg') center center no-repeat;
     background-size: auto 100%;
   }
 }

@@ -1,10 +1,69 @@
 .markdown-theme {
+  table {
+    display: table;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: $border-solid;
+    width: 100%;
+    margin-bottom: 24px;
+
+    th {
+      font-family: inherit;
+      font-size: inherit;
+      background: $module-bg;
+      white-space: nowrap;
+      font-weight: 600;
+      border: $border-solid;
+      padding: 8px 16px;
+    }
+
+    td {
+      border: $border-solid;
+      padding: 8px 16px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-width: none;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    border-radius: 2px;
+    opacity: 0.9;
+  }
   p {
     line-height: 2.2em;
     text-indent: 2em;
     margin-bottom: 1em;
   }
+  ul {
+    list-style-type: square;
+  }
+  ul,
+  ol {
+    > li {
+      line-height: 1.8em;
+      padding: 0.5em 0.8em;
 
+      &:hover {
+        background-color: $module-hover-bg;
+      }
+
+      > p {
+        text-indent: 0;
+      }
+
+      > ul {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
   h1,
   h2,
   h3,

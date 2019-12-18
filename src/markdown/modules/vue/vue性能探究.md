@@ -23,25 +23,19 @@ expanded change: 点击节点展开渲染时间（这里统一统计最外层数
 | first rendering | 3.60107421875ms | 3.666748046875ms | 111.51904296875ms |
 | expanded change | 5.94482421875ms | 5.020263671875ms | 48.31103515625ms  |
 
-<table>
-  <tr>
-    <th>demo-5</th>
-    <th>demo-6</th>
-    <th>文章最强优化</th>
-  </tr>
-  <tbody>
-    <tr>
-      <td align="center" valign="middle">
-          <img width="222px" src="../../../assets/imgs/vue性能探究/5.png">
-      </td>
-      <td align="center" valign="middle">
-          <img width="222px" src="../../../assets/imgs/vue性能探究/6.png">
-      </td>
-      <td align="center" valign="middle">
-          <img width="222px" src="../../../assets/imgs/vue性能探究/x.png">
-      </td>
-  </tbody>
-</table>
+火焰图如下:
+
+#### demo-5
+
+![img](vue性能探究/5.png)
+
+#### demo-6
+
+![img](vue性能探究/6.png)
+
+#### demo-x
+
+![img](vue性能探究/x.png)
 
 ### 总结
 

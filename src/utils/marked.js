@@ -1,7 +1,21 @@
 import marked from 'marked'
 import highlight from 'highlight'
+const renderer = new marked.Renderer()
+const imgRender = src => {
+  src = `${window.cdn}${src}`
+  const imageHtml = `
+    <img
+      class="lozad"
+      src="${src}"
+      onclick="if (window.utils) window.utils.addImgPopup('${src}')"
+    />
+  `
+  return imageHtml.replace(/\s+/g, ' ').replace(/\n/g, ' ')
+}
+renderer.image = imgRender
+
 marked.setOptions({
-  renderer: new marked.Renderer(),
+  renderer,
   gfm: true,
   tables: true,
   breaks: false,
@@ -13,10 +27,9 @@ marked.setOptions({
     return highlight.highlightAuto(code).value
   },
 })
-const renderer = new marked.Renderer()
 export default content => {
   if (typeof content !== 'string') {
     return ''
   }
-  return marked(content, { renderer })
+  return marked(content)
 }
