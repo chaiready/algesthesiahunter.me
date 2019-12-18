@@ -2,7 +2,11 @@
   <div class="article-list">
     <div class="it" v-for="(it, i) in viewList" :key="i">
       <div class="img-body">
-        <router-link to="/">
+        <router-link
+          :to="{
+            path: '/articles/' + it.date,
+          }"
+        >
           <img :src="cdn + it.img" />
         </router-link>
       </div>
@@ -106,14 +110,21 @@ export default {
     overflow: hidden;
     &:hover {
       background-color: $module-hover-bg;
+      img {
+        transform: translateX(-3px);
+        opacity: 0.95;
+      }
     }
     .img-body {
       width: 170px;
       height: 120px;
       display: flex;
+      overflow: hidden;
       flex-shrink: 0;
       img {
+        transition: all 0.25s;
         height: 100%;
+        width: 180px;
       }
     }
     .it-body {
