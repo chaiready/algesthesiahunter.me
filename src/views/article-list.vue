@@ -7,7 +7,7 @@
             path: '/articles/' + it.date,
           }"
         >
-          <img :src="cdn + it.img" />
+          <img class="lozad" :data-src="cdn + it.img" />
         </router-link>
       </div>
       <div class="it-body">
@@ -42,6 +42,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import lozad from 'lozad'
 export default {
   props: {
     category: {
@@ -97,6 +98,10 @@ export default {
   },
   created() {
     this.viewList = this.sourceAttr
+  },
+  mounted() {
+    const observer = lozad()
+    observer.observe()
   },
 }
 </script>

@@ -4,7 +4,8 @@
       <div class="title">
         <h2>{{ article.attributes.title }}</h2>
         <img
-          :src="cdn + article.attributes.img"
+          class="lozad"
+          :data-src="cdn + article.attributes.img"
           @click="addImgPopup(cdn + article.attributes.img)"
         />
       </div>
@@ -36,7 +37,13 @@ export default {
   watch: {
     id: {
       handler(n) {
-        this.getArticleDetail(n).then(res => (this.article = res))
+        this.getArticleDetail(n).then(res => {
+          this.article = res
+          this.$nextTick(() => {
+            const observer = lozad()
+            observer.observe()
+          })
+        })
       },
       immediate: true,
     },

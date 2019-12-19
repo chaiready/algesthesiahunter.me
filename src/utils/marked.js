@@ -6,7 +6,7 @@ const imgRender = src => {
   const imageHtml = `
     <img
       class="lozad"
-      src="${src}"
+      data-src="${src}"
       onclick="if (window.utils) window.utils.addImgPopup('${src}')"
     />
   `

@@ -1,21 +1,56 @@
 <template>
-  <div class="markdown-theme" ref="markdown" v-html="markedInit(value)"></div>
+  <div>
+    <div
+      class="markdown-theme"
+      ref="markdown"
+      v-html="marked(contentFilter)"
+    ></div>
+    <div ref="mk-more" class="mk-more"></div>
+  </div>
 </template>
 
 <script>
 import marked from '@/utils/marked'
 import ClipboardJS from 'clipboard'
-
+import lozad from 'lozad'
 export default {
   props: {
     value: {},
   },
   data() {
-    return {}
+    return {
+      limit: 1300,
+      content: null,
+      index: 0,
+    }
+  },
+  computed: {
+    contentFilter() {
+      return this.value.slice(0, (this.index + 1) * this.limit)
+    },
+    maxIndex() {
+      return Math.ceil(this.value.length / this.limit)
+    },
   },
   methods: {
-    markedInit(v) {
-      return marked(v)
+    marked,
+    markedInit() {
+      const options = {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+      }
+      let io = new IntersectionObserver(this.markedCallback, options)
+      io.observe(this.$refs['mk-more'])
+    },
+    markedCallback(v) {
+      if (v[0].isIntersecting && this.index < this.maxIndex) {
+        this.index++
+        this.$nextTick(() => {
+          const observer = lozad()
+          observer.observe()
+          this.addCopyBtn()
+        })
+      }
     },
     addCopyBtn() {
       let pres = this.$refs.markdown.getElementsByTagName('pre')
@@ -24,10 +59,12 @@ export default {
       }
       pres.forEach((v, i) => {
         let code = v.firstChild
-        code.setAttribute('id', `copy_target_${i}`)
-        let div = document.createElement('div')
-        div.innerHTML = `<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${i}">Copy</div>`
-        v.appendChild(div)
+        if (!code.getAttribute('id')) {
+          code.setAttribute('id', `copy_target_${i}`)
+          let div = document.createElement('div')
+          div.innerHTML = `<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${i}">Copy</div>`
+          v.appendChild(div)
+        }
       })
       let clipboard = new ClipboardJS('.esa-clipboard-button')
       clipboard.on('success', e => {
@@ -40,11 +77,7 @@ export default {
     },
   },
   mounted() {
-    this.addCopyBtn()
+    this.markedInit()
   },
 }
 </script>
-<style lang="scss">
-.markdown-theme {
-}
-</style>

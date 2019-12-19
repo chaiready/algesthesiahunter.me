@@ -22,6 +22,7 @@
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { mapActions } from 'vuex'
+import lozad from 'lozad'
 export default {
   name: 'Swiper',
   data() {
@@ -50,6 +51,10 @@ export default {
   },
   created() {
     this.getArticleByEveryTag().then(res => (this.swiperSlides = res))
+  },
+  mounted() {
+    const observer = lozad()
+    observer.observe()
   },
 }
 </script>
