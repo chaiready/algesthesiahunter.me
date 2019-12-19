@@ -27,6 +27,7 @@ export default {
   margin-top: 14px;
   background-color: $module-bg;
   height: 72px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -25,20 +25,26 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.g-background-img {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-color: $body-bg;
-  .background-image {
-    opacity: 0.3;
-    height: 100%;
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 60px);
+  .g-background-img {
+    position: fixed;
     width: 100%;
-    background: url($cdn+'bg.jpg') center center no-repeat;
-    background-size: auto 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: $body-bg;
+    .background-image {
+      opacity: 0.3;
+      height: 100%;
+      width: 100%;
+      background: url($cdn+'bg.jpg') center center no-repeat;
+      background-size: 100% 100%;
+    }
   }
 }
 </style>

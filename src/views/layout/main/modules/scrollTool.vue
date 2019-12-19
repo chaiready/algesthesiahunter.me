@@ -17,14 +17,13 @@ export default {
   data() {
     return {}
   },
-  computed: {},
   methods: {
     scroll(type) {
       let num
       if (!type) {
         num = 0
       } else {
-        num = document.body.clientHeight
+        num = document.getElementById('main').clientHeight
       }
       scrollTo(num)
     },

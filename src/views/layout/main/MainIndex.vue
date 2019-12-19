@@ -1,5 +1,5 @@
 <template>
-  <main class="main-container">
+  <main class="main-container" id="main">
     <Nav></Nav>
     <ToolBox></ToolBox>
     <transition name="fade" mode="out-in">
