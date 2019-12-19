@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       limit: 1300,
-      content: null,
       index: 0,
     }
   },
