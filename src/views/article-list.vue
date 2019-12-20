@@ -152,7 +152,6 @@ export default {
       display: flex;
       flex-direction: column;
       .title {
-        width: 100%;
         display: inline-block;
         &:hover {
           margin-left: 7px;

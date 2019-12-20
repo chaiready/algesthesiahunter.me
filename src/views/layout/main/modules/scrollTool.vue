@@ -34,11 +34,14 @@ export default {
 
 <style scoped lang="scss">
 .tool-container {
+  position: fixed;
+  bottom: 50px;
   .tool-box {
-    transform: translateX(70px);
-    position: fixed;
-    bottom: 35px;
+    position: absolute;
+    left: 1150px;
+    bottom: 100px;
     width: 40px;
+    height: 110px;
     display: flex;
     flex-wrap: wrap;
     font-size: 22px;

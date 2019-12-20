@@ -41,7 +41,6 @@ export default {
     transition: opacity 0.5s cubic-bezier(0.55, 0, 0.1, 1);
     min-height: 1px;
     position: relative;
-    overflow: hidden;
     flex: 1;
     width: 642px;
   }
