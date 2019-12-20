@@ -69,12 +69,21 @@ export default {
       'getArticleByTag',
       'getArticleByKeyword',
     ]),
+    lozadRender() {
+      this.$nextTick(() => {
+        const observer = lozad()
+        observer.observe()
+      })
+    },
   },
   watch: {
     keyword: {
       handler(n) {
         if (n) {
-          this.getArticleByKeyword(n).then(res => (this.viewList = res))
+          this.getArticleByKeyword(n).then(res => {
+            this.viewList = res
+            this.lozadRender()
+          })
         }
       },
       immediate: true,
@@ -82,7 +91,10 @@ export default {
     tag: {
       handler(n) {
         if (n) {
-          this.getArticleByTag(n).then(res => (this.viewList = res))
+          this.getArticleByTag(n).then(res => {
+            this.viewList = res
+            this.lozadRender()
+          })
         }
       },
       immediate: true,
@@ -90,7 +102,10 @@ export default {
     category: {
       handler(n) {
         if (n) {
-          this.getArticleByCategory(n).then(res => (this.viewList = res))
+          this.getArticleByCategory(n).then(res => {
+            this.viewList = res
+            this.lozadRender()
+          })
         }
       },
       immediate: true,
@@ -98,10 +113,7 @@ export default {
   },
   created() {
     this.viewList = this.sourceAttr
-  },
-  mounted() {
-    const observer = lozad()
-    observer.observe()
+    this.lozadRender()
   },
 }
 </script>
