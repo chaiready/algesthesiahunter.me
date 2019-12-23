@@ -12,7 +12,7 @@ RUN mkdir -p /code/dist \
   RUN mkdir -p /app/etc/nginx/conf.d \
   && mv /code/default.conf /app/etc/nginx/conf.d
 
-RUN npm i cnpm -g&&cnpm i \
+RUN npm i \
   npm run build \
   && mv /code/dist/* /app/usr/share/nginx/html/
 
