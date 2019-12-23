@@ -13,7 +13,7 @@ RUN mkdir -p /code/dist \
   && mv /code/default.conf /app/etc/nginx/conf.d
 
 RUN npm i \
-  npm run build \
+  && npm run build \
   && mv /code/dist/* /app/usr/share/nginx/html/
 
 # Main
