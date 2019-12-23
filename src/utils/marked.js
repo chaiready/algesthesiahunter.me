@@ -1,5 +1,5 @@
 import marked from 'marked'
-import highlight from 'highlight'
+import highlight from 'highlight.js'
 const renderer = new marked.Renderer()
 const imgRender = src => {
   src = `${window.cdn}${src}`
