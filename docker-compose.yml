@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "/home/axy541877028/app/config/ssl:/config/ssl"
+      - "/home/axy541877028/app/config/ssl:/home/axy541877028/app/config/ssl"
   # mysql:
   #   network_mode: host
   #   container_name: mysql
