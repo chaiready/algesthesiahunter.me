@@ -6,6 +6,8 @@ services:
     image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-ui:v1.1
     ports:
       - "80:80"
+    volumes:
+      - "/home/axy541877028/app/config/ssl:/config/ssl"
   # mysql:
   #   network_mode: host
   #   container_name: mysql
