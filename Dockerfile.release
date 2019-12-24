@@ -22,4 +22,5 @@ ENV GIT_COMMIT ${gitCommit}
 
 COPY --from=builder /app/ /
 CMD echo "ui gitCommit:${GIT_COMMIT}" \
+  && openresty -t \
   && openresty -g 'daemon off;'
