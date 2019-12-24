@@ -3,11 +3,11 @@ services:
   ui:
     # network_mode: host
     container_name: ui
-    image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-ui:v1.1
+    image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-ui:latest
     ports:
       - "80:80"
     volumes:
-      - "/home/axy541877028/app/ssl:/ssl"
+      - "/Users/liulu/Documents/website/sslforfree:/ssl"
   # mysql:
   #   network_mode: host
   #   container_name: mysql
