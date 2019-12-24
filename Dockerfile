@@ -7,14 +7,13 @@ ENV VERSION ${version}
 ADD . /code
 WORKDIR /code
 RUN mkdir -p /code/dist \
-  && mkdir -p /app/data/cache \
-  && mkdir -p /app/usr/share/nginx/html \
-  RUN mkdir -p /app/etc/nginx \
-  && mv /code/nginx.conf /app/etc/nginx/
+  && mkdir -p /app/usr/local/openresty/nginx/html \
+  && mkdir -p /app/usr/local/openresty/nginx/conf \
+  RUN mv /code/nginx.conf /app/usr/local/openresty/nginx/conf/nginx.conf
 
 RUN npm i \
   && npm run build \
-  && mv /code/dist/* /app/usr/share/nginx/html/
+  && mv /code/dist/* /app/usr/local/openresty/nginx/html/
 
 # Main
 FROM openresty/openresty:1.15.8.2-alpine
