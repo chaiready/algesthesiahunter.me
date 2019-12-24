@@ -9,8 +9,8 @@ WORKDIR /code
 RUN mkdir -p /code/dist \
   && mkdir -p /app/data/cache \
   && mkdir -p /app/usr/share/nginx/html \
-  RUN mkdir -p /app/etc/nginx/conf.d \
-  && mv /code/default.conf /app/etc/nginx/conf.d
+  RUN mkdir -p /app/etc/nginx \
+  && mv /code/nginx.conf /app/etc/nginx/
 
 RUN npm i \
   && npm run build \
