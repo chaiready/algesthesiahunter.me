@@ -1,11 +1,11 @@
-version: "1.0"
+version: "3.7"
 services:
   ui:
-    network_mode: host
+    # network_mode: host
     container_name: ui
-    image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-ui:v1.0
+    image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-ui:v1.1
     ports:
-      - "80"
+      - "80:80"
   # mysql:
   #   network_mode: host
   #   container_name: mysql
