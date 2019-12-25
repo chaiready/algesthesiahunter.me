@@ -6,6 +6,7 @@ services:
     image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-ui:latest
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - "/Users/liulu/Documents/website/sslforfree:/ssl"
   # mysql:
