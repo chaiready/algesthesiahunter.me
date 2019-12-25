@@ -11,7 +11,9 @@ RUN mkdir -p /code/dist \
   && mkdir -p /app/usr/local/openresty/nginx/conf
 RUN mv /code/nginx.conf /app/usr/local/openresty/nginx/conf/nginx.conf
 
-RUN npm i \
+# RUN npm i \
+RUN npm i cnpm -g \
+  && cnpm i \
   && npm run build \
   && mv /code/dist/* /app/usr/local/openresty/nginx/html/
 
