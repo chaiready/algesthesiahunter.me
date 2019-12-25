@@ -6,8 +6,7 @@ ENV VERSION ${version}
 
 ADD . /code
 WORKDIR /code
-RUN mkdir -p /code/dist \
-  && mkdir -p /app/usr/local/openresty/nginx/html \
+RUN mkdir -p /app/usr/local/openresty/nginx/html \
   && mkdir -p /app/usr/local/openresty/nginx/conf
 RUN mv /code/nginx.conf /app/usr/local/openresty/nginx/conf/nginx.conf
 

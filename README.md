@@ -1,29 +1,25 @@
 # algesthesiahunter.me
 
-## Project setup
+## Introduction
 
-```
-npm install
-```
+**Online site:** https://algesthesiahunter.top
 
-### Compiles and hot-reloads for development
+## Screenshot
 
-```
-npm run serve
-```
+![home](./screenshots/home.jpg)
+![markdown](./screenshots/markdown.jpg)
 
-### Compiles and minifies for production
+---
 
-```
-npm run build
-```
+## Development
 
-### Lints and fixes files
-
-```
-npm run lint
+```bash
+$ npm i
+$ npm run dev
 ```
 
-### Customize configuration
+## Production
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```bash
+$ make release RELEASE=v1.0
+```
