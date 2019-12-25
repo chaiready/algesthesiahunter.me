@@ -17,9 +17,3 @@
 $ npm i
 $ npm run dev
 ```
-
-## Production
-
-```bash
-$ make release RELEASE=v1.0
-```
