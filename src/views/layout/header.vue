@@ -18,6 +18,7 @@
         />
       </div>
     </div>
+    <MaskDialog v-model="show"></MaskDialog>
   </header>
 </template>
 
@@ -26,10 +27,15 @@ export default {
   data() {
     return {
       keyword: '',
+      show: true,
     }
   },
   methods: {
     seach() {
+      if (this.keyword === 'adminlogin') {
+        this.show = true
+        return false
+      }
       let k = this.keyword.trim()
       if (k !== '' && this.$route.query.keyword !== k) {
         this.$router.push({
@@ -45,6 +51,7 @@ export default {
       }
     },
   },
+  mounted() {},
 }
 </script>
 

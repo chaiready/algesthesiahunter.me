@@ -9,6 +9,13 @@ services:
       - "443:443"
     volumes:
       - "/Users/liulu/Documents/website/sslforfree:/ssl"
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.2.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/Users/liulu/Documents/data:/data"
   # mysql:
   #   network_mode: host
   #   container_name: mysql

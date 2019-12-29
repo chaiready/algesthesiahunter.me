@@ -1,9 +1,13 @@
+import http from 'utils/http'
 import source from '@/markdown'
 import sort from '@/utils/sort'
+import MD5 from 'crypto-js/md5'
 const state = {
   sourceData: [],
   sourceAttr: [],
+  token: localStorage.token,
 }
+
 for (const [k, v] of source) {
   let l = v.size
   for (const [key, value] of v.entries()) {
@@ -13,8 +17,12 @@ for (const [k, v] of source) {
     state.sourceAttr = sort(state.sourceAttr, null, val => new Date(val.date))
   }
 }
-const mutations = {}
-
+const mutations = {
+  UPDATE_TOKEN(state, token) {
+    state.token = token
+    localStorage.token = token
+  },
+}
 const actions = {
   getArticleDetail: ({ commit }, id) => {
     let arr = state.sourceData.filter(v => v.attributes.date === id)
@@ -48,6 +56,12 @@ const actions = {
       }
     })
     return Object.values(o)
+  },
+  login: ({ commit }, password) => {
+    let code = MD5(password).toString()
+    return http.post('/api/auth/login', { password: code }).then(res => {
+      commit('UPDATE_TOKEN', res.token)
+    })
   },
 }
 
