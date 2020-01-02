@@ -10,7 +10,8 @@ RUN mkdir -p /app/usr/local/openresty/nginx/html \
   && mkdir -p /app/usr/local/openresty/nginx/conf
 RUN mv /code/nginx.conf /app/usr/local/openresty/nginx/conf/nginx.conf
 
-RUN npm i \
+RUN npm i yarn -g\
+  && yarn \
   && npm run build \
   && mv /code/dist/* /app/usr/local/openresty/nginx/html/
 
