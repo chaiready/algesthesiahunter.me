@@ -9,7 +9,11 @@
         <div class="header-slogan">{{ $t('text.slogan') }}</div>
       </router-link>
       <div class="header-search">
-        <svg-icon icon-class="search" class="search"></svg-icon>
+        <svg-icon
+          icon-class="search"
+          class="search"
+          @click="switchMode"
+        ></svg-icon>
         <input
           v-model="keyword"
           type="text"
@@ -18,19 +22,45 @@
         />
       </div>
     </div>
-    <MaskDialog v-model="show"></MaskDialog>
+    <MaskDialog v-model="show" @submit="submit" title="管理员登录">
+      <div class="form">
+        <span>密码</span>
+        <input
+          type="password"
+          class="inp"
+          v-focus
+          v-model="password"
+          @keyup.enter="submit"
+          @click="() => {}"
+        />
+      </div>
+    </MaskDialog>
   </header>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
       keyword: '',
-      show: true,
+      show: false,
+      password: null,
     }
   },
+  computed: {
+    ...mapState('common', ['token', 'mode']),
+  },
   methods: {
+    ...mapActions('common', ['updateMode', 'login']),
+    submit() {
+      this.login(this.password).then(() => (this.show = !this.show))
+    },
+    switchMode() {
+      if (this.token) {
+        this.updateMode(!this.mode)
+      }
+    },
     seach() {
       if (this.keyword === 'adminlogin') {
         this.show = true
@@ -102,6 +132,9 @@ export default {
       color: $text;
       padding: 0 8px;
       background-color: transparent;
+      &:focus {
+        border-color: transparent !important;
+      }
     }
   }
 }

@@ -1,3 +1,7 @@
+/*
+ * @Description:定制化marked
+ * @author: <https://github.com/algesthesiahunter>
+ */
 import marked from 'marked'
 import highlight from 'highlight.js'
 const renderer = new marked.Renderer()

@@ -1,3 +1,7 @@
+/*
+ * @Description:提示信息组件
+ * @author: <https://github.com/algesthesiahunter>
+ */
 import { fadeIn } from '@/utils/animation'
 export function showMessage(content) {
   let div = document.createElement('div')

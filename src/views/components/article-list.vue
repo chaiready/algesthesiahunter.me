@@ -64,6 +64,7 @@ export default {
     ...mapState('common', ['sourceAttr']),
   },
   methods: {
+    ...mapActions('article', ['getArticles']),
     ...mapActions('common', [
       'getArticleByCategory',
       'getArticleByTag',
@@ -112,6 +113,7 @@ export default {
     },
   },
   created() {
+    this.getArticles()
     this.viewList = this.sourceAttr
     this.lozadRender()
   },

@@ -1,5 +1,8 @@
+/*
+ * @Description:scroll滑动组件
+ * @author: <https://github.com/algesthesiahunter>
+ */
 import { animation } from './animation'
-
 const move = amount => {
   document.documentElement.scrollTop = amount
   document.body.parentNode.scrollTop = amount

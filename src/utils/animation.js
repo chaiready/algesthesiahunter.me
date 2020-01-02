@@ -1,3 +1,7 @@
+/*
+ * @Description:各种养眼动画
+ * @author: <https://github.com/algesthesiahunter>
+ */
 import bezierEasing from 'bezier-easing'
 const typeAni = {
   ease: [0.25, 0.1, 0.25, 1.0],

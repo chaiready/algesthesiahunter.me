@@ -36,7 +36,7 @@ export default {
     markedInit() {
       const options = {
         root: null,
-        rootMargin: '0px 0px 0px 0px',
+        rootMargin: '50px 0px 0px 0px',
       }
       let io = new IntersectionObserver(this.markedCallback, options)
       io.observe(this.$refs['mk-more'])

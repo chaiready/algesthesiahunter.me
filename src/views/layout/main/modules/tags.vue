@@ -1,32 +1,93 @@
 <template>
   <div class="category-container">
     <ul class="main">
-      <li v-for="(it, i) in tags" :key="i">
-        <router-link class="it" :to="'/tags/' + it.tag">
+      <li v-for="(it, i) in tags" :key="i" class="li">
+        <router-link class="it" :to="'/tags/' + it.name">
           <span class="svg-box"
-            ><svg-icon :icon-class="it.tag" class="svg"></svg-icon
+            ><svg-icon :icon-class="it.name" class="svg"></svg-icon
           ></span>
           <span class="text"
-            >{{ $t(`tag.${it.tag}`) }} [{{ it.length }}]</span
-          ></router-link
+            >{{ $t(`tag.${it.name}`) }} [{{ it.count }}]
+          </span></router-link
         >
+        <operating
+          v-if="mode"
+          :it="it"
+          class="operating"
+          @edit="modeChange(0, it)"
+          @ConfirmSubmit="ConfirmSubmit"
+        ></operating>
+      </li>
+      <li>
+        <a href="javascript:void(0);" class="it" @click="modeChange(1)">
+          <span class="svg-box"
+            ><svg-icon icon-class="tag" class="svg"></svg-icon
+          ></span>
+          <span class="text">addtag</span>
+        </a>
       </li>
     </ul>
+    <MaskDialog
+      v-model="show"
+      :title="type ? '添加Tag' : '编辑Tag'"
+      @submit="submit"
+    >
+      <div class="form">
+        <span>名称</span>
+        <input type="text" v-focus v-model="name" @keyup.enter="submit" />
+      </div>
+    </MaskDialog>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return {
       tags: [],
+      name: null,
+      show: false,
+      type: 0,
+      it: null,
     }
+  },
+  computed: {
+    ...mapState('common', ['mode']),
   },
   methods: {
     ...mapActions('common', ['getArticleByEveryTag']),
+    ...mapActions('tag', ['getTags', 'postTag', 'deleteTag', 'putTag']),
+    ConfirmSubmit(id) {
+      this.deleteTag(this.id).then(() => this.init())
+    },
+    submit() {
+      if (this.type) {
+        this.postTag(this.name).then(() => this.init())
+        return false
+      }
+      this.putTag({ id: this.it._id, params: { name: this.name } }).then(() =>
+        this.init()
+      )
+    },
+    modeChange(type, it) {
+      this.show = true
+      this.type = type
+      if (type === 1) {
+        //新增
+        this.name = null
+        return false
+      }
+      // 编辑
+      this.name = it.name
+      this.it = it
+    },
+    init() {
+      this.getTags().then(res => (this.tags = res))
+    },
   },
   created() {
+    this.init()
     this.getArticleByEveryTag().then(res => {
       let i = res.findIndex(v => v.tag === 'javascript')
       let v = res[i]
@@ -47,6 +108,22 @@ export default {
 .main {
   display: flex;
   flex-wrap: wrap;
+  .li {
+    position: relative;
+    &:hover {
+      .operating {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    .operating {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      right: 10px;
+      top: -2px;
+    }
+  }
   .it {
     margin-top: 12px;
     margin-right: 8px;

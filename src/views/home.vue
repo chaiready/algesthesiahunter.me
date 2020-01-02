@@ -9,7 +9,7 @@
 <script>
 import Swiper from '@/components/common/swiper.vue'
 import Announcement from '@/components/common/announcement.vue'
-import ArticleList from './article-list.vue'
+import ArticleList from './components/article-list.vue'
 export default {
   name: 'Home',
   data() {

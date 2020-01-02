@@ -1,3 +1,7 @@
+/*
+ * @Description:各种排序
+ * @author: <https://github.com/algesthesiahunter>
+ */
 export const insertSort = function(arr) {
   for (let i = 1; i < arr.length; i++) {
     if (arr[i] > arr[0]) {

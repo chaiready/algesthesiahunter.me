@@ -1,3 +1,7 @@
+/*
+ * @Description:图片点击上遮罩图片放大
+ * @author: <https://github.com/algesthesiahunter>
+ */
 // 销毁图片弹窗
 const delImgPopup = () => {
   const mask = document.getElementById('image-popup')

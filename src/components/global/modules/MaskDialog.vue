@@ -1,26 +1,30 @@
 <template>
-  <div class="dialog" v-if="value">
-    <div class="dialog-main">
-      <div class="title">
-        <svg-icon icon-class="delete" class="delete" @click="close"></svg-icon>
-      </div>
-      <div class="form">
-        <span>管理员登录</span>
-        <input
-          type="password"
-          class="inp"
-          v-focus
-          v-model="password"
-          @keyup.enter="submit"
-          @click="() => {}"
-        />
+  <transition name="fade">
+    <div class="dialog" v-if="value">
+      <div class="dialog-main">
+        <div class="title">
+          {{ title }}
+          <svg-icon
+            icon-class="delete"
+            class="delete"
+            @click="close"
+          ></svg-icon>
+        </div>
+        <div class="body">
+          <slot></slot>
+        </div>
+        <div class="footer">
+          <ElButton @click="close">取 消</ElButton>
+          <ElButton style="margin-left:8px" type="primary" @click="submit"
+            >确 定</ElButton
+          >
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   name: 'MaskDialog',
   props: {
@@ -28,11 +32,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    title: {
+      type: String,
+      default: '标题',
+    },
   },
   data() {
-    return {
-      password: null,
-    }
+    return {}
   },
   watch: {
     value(n) {
@@ -44,18 +50,14 @@ export default {
       }
     },
   },
-  computed: {},
   methods: {
-    ...mapActions('common', ['login']),
     submit() {
-      this.login(this.password).then(() => this.$emit('input', false))
+      this.$emit('submit')
     },
     close() {
       this.$emit('input', false)
     },
   },
-  created() {},
-  mounted() {},
 }
 </script>
 <style lang="scss" scoped>
@@ -68,37 +70,36 @@ export default {
   background: rgba($black, 0.5);
   z-index: 2019;
   .dialog-main {
-    padding: 20px;
     position: relative;
     margin: 200px auto;
-    background: $body-bg;
+    background: $module-bg;
     border-radius: 2px;
     box-sizing: border-box;
     width: 460px;
     .title {
-      margin-bottom: 30px;
-      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 24px;
+      padding-right: 15px !important;
       text-align: end;
+      font-weight: 500;
+      font-size: 16px;
+      color: $text;
+      line-height: 24px;
+      border-bottom: 1px solid $module-bg;
       .delete {
-        font-size: 28px;
+        font-size: 24px;
         cursor: pointer;
       }
     }
-    .form {
-      font-size: 16px;
-      margin-bottom: 10px;
-      .inp {
-        border: 1px solid $black-light;
-        display: inline-block;
-        height: 34px;
-        border-radius: 2px;
-        padding: 0 15px;
-        margin-left: 30px;
-        width: 260px;
-        &:focus {
-          border: 1px solid $primary;
-        }
-      }
+    .footer {
+      border-top: 1px solid $module-bg;
+      padding: 10px 16px;
+      text-align: right;
+    }
+    .body {
+      padding: 24px;
+      font-size: 14px;
     }
   }
 }

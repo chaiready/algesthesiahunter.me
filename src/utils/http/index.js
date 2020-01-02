@@ -4,7 +4,7 @@
 import axios from 'axios'
 import popCodeError from 'utils/http/pop-code-error'
 import { showMessage } from 'utils/showMessage'
-let token = localStorage.token
+import router from '@/router'
 // axios初始化配置
 // 返回数据的格式，可选值为arraybuffer,blob,document,json,text,stream，默认值为json
 export const resTypeHttp = responseType => {
@@ -21,13 +21,9 @@ export const resTypeHttp = responseType => {
     config => {
       // 在发送请求之前做某件事
       // 若是有做鉴权token , 就给头部带上token
+      let token = localStorage.token
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
-      } else {
-        token = localStorage.token
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`
-        }
       }
       return config
     },
@@ -39,6 +35,12 @@ export const resTypeHttp = responseType => {
     res => {
       if (res.data && res.data.status === 0) {
         // 失败
+        if (res.data.code === 401) {
+          showMessage('请重新登陆')
+          /* 对未授权的处理 */
+          localStorage.removeItem('token')
+          router.push({ name: 'home' })
+        }
         return Promise.reject(showMessage(res.data.message))
       }
       if (res.data && res.data.status === 1) {
