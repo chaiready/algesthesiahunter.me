@@ -11,6 +11,11 @@
     <router-link to="/about">
       <span class="keyworld">{{ $t('footer.me') }}</span>
     </router-link>
+    <div>
+      <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank"
+        >网站备案号</a
+      >
+    </div>
   </footer>
 </template>
 
