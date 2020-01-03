@@ -18,10 +18,9 @@ export function delPop() {
     const v = list[i]
     fadeIn(v)
     setTimeout(() => {
-      ori.removeChild(v)
+      v.parentNode.removeChild(v)
     }, 100)
   }
-  return ori
 }
 /**
  * @description: 注入并渲染popconfirm
@@ -29,7 +28,8 @@ export function delPop() {
  * @return:
  */
 export function popChange(event, vm) {
-  let ori = delPop()
+  delPop()
+  let ori = document.getElementById('popover-main')
   let div = document.createElement('div')
   div.setAttribute('id', 'create-pop')
   ori.appendChild(div)
@@ -56,8 +56,11 @@ export function popChange(event, vm) {
  * @param {type}
  * @return:
  */
-let div = document.createElement('div')
-div.setAttribute('id', 'popover-main')
-div.setAttribute('style', 'position: absolute;top: 0px;left: 0px;')
-document.body.appendChild(div)
-document.body.onclick = delPop
+let popoverMain = document.getElementById('popover-main')
+if (!popoverMain) {
+  let div = document.createElement('div')
+  div.setAttribute('id', 'popover-main')
+  div.setAttribute('style', 'position: absolute;top: 0px;left: 0px;')
+  document.body.appendChild(div)
+  document.body.onclick = delPop
+}

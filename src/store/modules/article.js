@@ -10,14 +10,19 @@ const state = {}
 const mutations = {}
 
 const actions = {
-  getArticles: ({ commit }) => http.get('/api/article'),
-  postArticle: ({ commit }, name) =>
-    http.post('/api/tag', { name }).then(() => showMessage('添加Article成功')),
+  getArticles: ({ commit }, params) => http.get('/api/article', { params }),
+  getArticleDetail: ({ commit }, id) => http.get(`/api/article/${id}`),
+  postArticle: ({ commit }, article) =>
+    http
+      .post('/api/article', article)
+      .then(() => showMessage('添加Article成功')),
   deleteArticle: ({ commit }, id) =>
-    http.delete(`/api/tag/${id}`).then(() => showMessage('删除Article成功')),
+    http
+      .delete(`/api/article/${id}`)
+      .then(() => showMessage('删除Article成功')),
   putArticle: ({ commit }, { id, params }) =>
     http
-      .put(`/api/tag/${id}`, params)
+      .put(`/api/article/${id}`, params)
       .then(() => showMessage('修改Article成功')),
 }
 

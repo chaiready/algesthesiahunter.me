@@ -1,15 +1,15 @@
 <template>
   <div class="articles">
-    <template v-if="article && article.body">
+    <template v-if="article && article.content">
       <div class="title">
-        <h2>{{ article.attributes.title }}</h2>
+        <h2>{{ article.title }}</h2>
         <img
           class="lozad"
-          :data-src="cdn + article.attributes.img"
-          @click="addImgPopup(cdn + article.attributes.img)"
+          :data-src="cdn + article.img"
+          @click="addImgPopup(cdn + article.img)"
         />
       </div>
-      <markdown :value="article.body"></markdown>
+      <markdown :value="article.content"></markdown>
     </template>
     <div v-else class="empty">空空如也</div>
   </div>
@@ -49,7 +49,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('common', ['getArticleDetail']),
+    ...mapActions('article', ['getArticleDetail']),
     addImgPopup(src) {
       if (window.utils) {
         window.utils.addImgPopup(src)

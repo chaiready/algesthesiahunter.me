@@ -25,6 +25,19 @@ export const resTypeHttp = responseType => {
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }
+      // 删除垃圾数据
+      if (config.params) {
+        for (const k in config.params) {
+          if (
+            config.params[k] === undefined ||
+            config.params[k] === '' ||
+            config.params[k] === null
+          ) {
+            Reflect.deleteProperty(config.params, k)
+          }
+        }
+      }
+      console.log(config)
       return config
     },
     err => Promise.reject(err)

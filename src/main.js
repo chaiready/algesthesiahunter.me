@@ -10,6 +10,10 @@ import '@/directives/global'
 import '@/assets/markdown.theme.scss'
 import { showMessage } from '@/utils/showMessage'
 import '@/utils/imgPopup'
+import filters from './filters'
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 Vue.prototype.showMessage = showMessage
 
 Vue.prototype.cdn = 'http://q2otndneo.bkt.clouddn.com/'

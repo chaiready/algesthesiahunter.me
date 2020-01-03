@@ -6,7 +6,7 @@
   <div
     class="popover"
     :style="{ left: x + 'px', top: y + 'px' }"
-    @click.stop="() => {}"
+    @click.stop="() => null"
   >
     <div class="popover-main">
       <div class="popover-arrow"></div>

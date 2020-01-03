@@ -5,12 +5,21 @@
 import { showMessage } from 'utils/showMessage'
 import http from 'utils/http'
 
-const state = {}
+const state = {
+  tags: [],
+}
 
-const mutations = {}
+const mutations = {
+  UPDATE_TAGS(state, tags) {
+    state.tags = tags
+  },
+}
 
 const actions = {
-  getTags: ({ commit }) => http.get('/api/tag'),
+  getTags: ({ commit }) =>
+    http.get('/api/tag').then(tags => {
+      commit('UPDATE_TAGS', tags)
+    }),
   postTag: ({ commit }, name) =>
     http.post('/api/tag', { name }).then(() => showMessage('添加Tag成功')),
   deleteTag: ({ commit }, id) =>

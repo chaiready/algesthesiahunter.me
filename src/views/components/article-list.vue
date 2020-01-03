@@ -1,10 +1,10 @@
 <template>
   <div class="article-list">
-    <div class="it" v-for="(it, i) in viewList" :key="i">
+    <div class="it" v-for="(it, i) in viewList.data" :key="i">
       <div class="img-body">
         <router-link
           :to="{
-            path: '/articles/' + it.date,
+            path: '/articles/' + it._id,
           }"
         >
           <img class="lozad" :data-src="cdn + it.img" />
@@ -15,7 +15,7 @@
           <router-link
             class="title one-cut"
             :to="{
-              path: '/articles/' + it.date,
+              path: '/articles/' + it._id,
             }"
           >
             {{ it.title }}
@@ -25,18 +25,65 @@
         <div class="it-meta">
           <div class="time">
             <svg-icon icon-class="calendar"></svg-icon>
-            {{ it.date }}
+            {{ it.createdAt | unixToCommonFilter }}
           </div>
           <div class="category">
             <router-link :to="'/' + it.category">
               <svg-icon icon-class="category"></svg-icon>
-              {{ $t(`nav.${it.category}`) }}</router-link
+              {{ $t(`nav.${getCategorysName(it.category)}`) }}</router-link
             >
           </div>
         </div>
       </div>
+      <operating
+        v-if="mode"
+        :it="it"
+        class="operating"
+        @edit="modeChange(it)"
+        @ConfirmSubmit="ConfirmSubmit"
+      ></operating>
     </div>
     <div class="empty" v-if="viewList.length === 0">空空如也</div>
+    <MaskDialog v-model="show" title="编辑article" @submit="submit">
+      <div class="form">
+        <span>标题</span>
+        <input type="text" class="inp" v-focus v-model="form.title" />
+      </div>
+      <div class="form">
+        <span>分类</span>
+        <select v-model="form.category">
+          <option v-for="(it, i) in categorys" :key="i" :value="it._id">{{
+            it.name
+          }}</option>
+        </select>
+      </div>
+      <div class="form">
+        <span>标签</span>
+        <div class="checkbox-box">
+          <div v-for="(it, i) in tags" :key="i" class="item">
+            <input
+              type="checkbox"
+              :id="it._id"
+              :value="it._id"
+              v-model="form.tags"
+            />
+            <label :for="it._id">{{ it.name }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <span>图片</span>
+        <input type="text" class="inp" v-model="form.img" />
+      </div>
+      <div class="form">
+        <span>描述</span>
+        <textarea rows="2" type="text" class="inp" v-model="form.des" />
+      </div>
+      <div class="form">
+        <span>内容</span>
+        <textarea rows="5" type="text" class="inp" v-model="form.content" />
+      </div>
+    </MaskDialog>
   </div>
 </template>
 
@@ -58,22 +105,102 @@ export default {
   data() {
     return {
       viewList: [],
+      show: false,
+      form: {
+        tags: [],
+      },
+      current: null,
+      page: {
+        requestPage: 1,
+        limit: 20,
+      },
+      password: null,
     }
   },
   computed: {
-    ...mapState('common', ['sourceAttr']),
+    ...mapState('category', ['categorys']),
+    ...mapState('tag', ['tags']),
+    ...mapState('common', ['mode']),
+    categoryId() {
+      let categoryId
+      for (let i = 0; i < this.categorys.length; i++) {
+        const v = this.categorys[i]
+        if (v.name === this.category) {
+          categoryId = v._id
+          break
+        }
+      }
+      return categoryId
+    },
+    tagId() {
+      let tagId
+      for (let i = 0; i < this.tags.length; i++) {
+        const v = this.tags[i]
+        if (v.name === this.tag) {
+          tagId = v._id
+          break
+        }
+      }
+      return tagId
+    },
   },
   methods: {
-    ...mapActions('article', ['getArticles']),
+    ...mapActions('article', ['getArticles', 'deleteArticle', 'putArticle']),
     ...mapActions('common', [
       'getArticleByCategory',
       'getArticleByTag',
       'getArticleByKeyword',
     ]),
+    modeChange(it) {
+      //编辑
+      this.show = true
+      this.form = it
+      this.current = it
+    },
+    submit() {
+      this.putArticle({
+        id: this.current._id,
+        params: this.form,
+      }).then(() => this.init())
+    },
+    getCategorysName(id) {
+      let name
+      for (let i = 0; i < this.categorys.length; i++) {
+        const v = this.categorys[i]
+        if (v._id === id) {
+          name = v.name
+          break
+        }
+      }
+      return name
+    },
     lozadRender() {
       this.$nextTick(() => {
         const observer = lozad()
         observer.observe()
+      })
+    },
+    ConfirmSubmit(id) {
+      this.deleteArticle(id).then(() => this.init())
+    },
+    initData() {
+      this.lozadRender()
+      this.show = false
+      this.form = {
+        tags: [],
+      }
+      this.current = null
+    },
+    init() {
+      this.getArticles({
+        requestPage: this.page.requestPage,
+        limit: this.page.limit,
+        keyword: this.keyword,
+        category: this.categoryId,
+        tag: this.tagId,
+      }).then(res => {
+        this.viewList = res
+        this.initData()
       })
     },
   },
@@ -81,10 +208,7 @@ export default {
     keyword: {
       handler(n) {
         if (n) {
-          this.getArticleByKeyword(n).then(res => {
-            this.viewList = res
-            this.lozadRender()
-          })
+          this.init()
         }
       },
       immediate: true,
@@ -92,10 +216,7 @@ export default {
     tag: {
       handler(n) {
         if (n) {
-          this.getArticleByTag(n).then(res => {
-            this.viewList = res
-            this.lozadRender()
-          })
+          this.init()
         }
       },
       immediate: true,
@@ -103,19 +224,14 @@ export default {
     category: {
       handler(n) {
         if (n) {
-          this.getArticleByCategory(n).then(res => {
-            this.viewList = res
-            this.lozadRender()
-          })
+          this.init()
         }
       },
       immediate: true,
     },
   },
   created() {
-    this.getArticles()
-    this.viewList = this.sourceAttr
-    this.lozadRender()
+    this.init()
   },
 }
 </script>
@@ -127,7 +243,12 @@ export default {
     padding: 7px;
     display: flex;
     overflow: hidden;
+    position: relative;
     &:hover {
+      .operating {
+        visibility: visible;
+        opacity: 1;
+      }
       background-color: $module-hover-bg;
       img {
         transform: translateX(-3px);

@@ -12,7 +12,7 @@
       ></svg-icon>
     </span>
     <PopConfirm
-      :title="'确定删除 ' + it.name + ' ？'"
+      :title="'确定删除 ' + name + ' ？'"
       @ConfirmSubmit="$emit('ConfirmSubmit', it._id)"
     >
       <span>
@@ -30,6 +30,17 @@
 export default {
   props: {
     it: {},
+  },
+  computed: {
+    name() {
+      let name = null
+      if (this.it.name) {
+        name = this.it.name
+      } else {
+        name = this.it.title
+      }
+      return name
+    },
   },
   data() {
     return {}

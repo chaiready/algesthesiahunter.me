@@ -45,8 +45,10 @@ export default {
       let bodyEl = document.body
       if (n) {
         bodyEl.style.position = 'fixed'
+        bodyEl.style.width = '100vw'
       } else {
         bodyEl.style.position = 'static'
+        bodyEl.style.width = 'auto'
       }
     },
   },
@@ -70,8 +72,10 @@ export default {
   background: rgba($black, 0.5);
   z-index: 2019;
   .dialog-main {
-    position: relative;
-    margin: 200px auto;
+    position: absolute;
+    left: 50%;
+    top: 180px;
+    transform: translateX(-50%);
     background: $module-bg;
     border-radius: 2px;
     box-sizing: border-box;

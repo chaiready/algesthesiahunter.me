@@ -10,6 +10,12 @@
       </router-link>
       <div class="header-search">
         <svg-icon
+          v-if="mode"
+          icon-class="add.article"
+          class="add"
+          @click="modeChange"
+        ></svg-icon>
+        <svg-icon
           icon-class="search"
           class="search"
           @click="switchMode"
@@ -22,8 +28,52 @@
         />
       </div>
     </div>
-    <MaskDialog v-model="show" @submit="submit" title="管理员登录">
-      <div class="form">
+    <MaskDialog
+      v-model="show"
+      @submit="submit"
+      :title="type ? '添加文章' : '管理员登录'"
+    >
+      <template v-if="type">
+        <div class="form">
+          <span>标题</span>
+          <input type="text" class="inp" v-focus v-model="form.title" />
+        </div>
+        <div class="form">
+          <span>分类</span>
+          <select v-model="form.category">
+            <option v-for="(it, i) in categorys" :key="i" :value="it._id">{{
+              it.name
+            }}</option>
+          </select>
+        </div>
+        <div class="form">
+          <span>标签</span>
+          <div class="checkbox-box">
+            <div v-for="(it, i) in tags" :key="i" class="item">
+              <input
+                type="checkbox"
+                :id="it._id"
+                :value="it._id"
+                v-model="form.tags"
+              />
+              <label :for="it._id">{{ it.name }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <span>图片</span>
+          <input type="text" class="inp" v-model="form.img" />
+        </div>
+        <div class="form">
+          <span>描述</span>
+          <textarea rows="2" type="text" class="inp" v-model="form.des" />
+        </div>
+        <div class="form">
+          <span>内容</span>
+          <textarea rows="5" type="text" class="inp" v-model="form.content" />
+        </div>
+      </template>
+      <div v-else class="form">
         <span>密码</span>
         <input
           type="password"
@@ -43,17 +93,44 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
+      type: false,
       keyword: '',
       show: false,
       password: null,
+      form: {
+        tags: [],
+      },
     }
   },
   computed: {
+    ...mapState('tag', ['tags']),
+    ...mapState('category', ['categorys']),
     ...mapState('common', ['token', 'mode']),
   },
   methods: {
     ...mapActions('common', ['updateMode', 'login']),
+    ...mapActions('article', ['postArticle']),
+    modeChange() {
+      this.show = true
+      this.type = true
+      this.form = {
+        tags: [],
+      }
+    },
+    add() {
+      this.postArticle(this.form).then(
+        () =>
+          (this.form = {
+            tags: [],
+          })
+      )
+    },
     submit() {
+      if (this.type) {
+        //新增
+        this.add()
+        return false
+      }
       this.login(this.password).then(() => (this.show = !this.show))
     },
     switchMode() {
@@ -64,6 +141,7 @@ export default {
     seach() {
       if (this.keyword === 'adminlogin') {
         this.show = true
+        this.type = false
         return false
       }
       let k = this.keyword.trim()
@@ -123,8 +201,16 @@ export default {
     align-items: center;
     opacity: 0.8;
     .search {
-      transform: translateY(1px);
       font-size: 16px;
+    }
+    .add {
+      margin-right: 20px;
+      font-size: 40px;
+      padding: 12px;
+      cursor: pointer;
+      &:hover {
+        color: $primary;
+      }
     }
     input {
       height: 20px;

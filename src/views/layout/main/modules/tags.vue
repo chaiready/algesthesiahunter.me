@@ -18,12 +18,12 @@
           @ConfirmSubmit="ConfirmSubmit"
         ></operating>
       </li>
-      <li>
+      <li v-if="mode">
         <a href="javascript:void(0);" class="it" @click="modeChange(1)">
           <span class="svg-box"
             ><svg-icon icon-class="tag" class="svg"></svg-icon
           ></span>
-          <span class="text">addtag</span>
+          <span class="text">妙手生花</span>
         </a>
       </li>
     </ul>
@@ -45,30 +45,30 @@ import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return {
-      tags: [],
       name: null,
       show: false,
       type: 0,
-      it: null,
+      current: null,
     }
   },
   computed: {
     ...mapState('common', ['mode']),
+    ...mapState('tag', ['tags']),
   },
   methods: {
-    ...mapActions('common', ['getArticleByEveryTag']),
     ...mapActions('tag', ['getTags', 'postTag', 'deleteTag', 'putTag']),
     ConfirmSubmit(id) {
-      this.deleteTag(this.id).then(() => this.init())
+      this.deleteTag(id).then(() => this.init())
     },
     submit() {
       if (this.type) {
         this.postTag(this.name).then(() => this.init())
         return false
       }
-      this.putTag({ id: this.it._id, params: { name: this.name } }).then(() =>
-        this.init()
-      )
+      this.putTag({
+        id: this.current._id,
+        params: { name: this.name },
+      }).then(() => this.init())
     },
     modeChange(type, it) {
       this.show = true
@@ -80,21 +80,14 @@ export default {
       }
       // 编辑
       this.name = it.name
-      this.it = it
+      this.current = it
     },
     init() {
-      this.getTags().then(res => (this.tags = res))
+      this.getTags()
     },
   },
   created() {
     this.init()
-    this.getArticleByEveryTag().then(res => {
-      let i = res.findIndex(v => v.tag === 'javascript')
-      let v = res[i]
-      res[i] = res[res.length - 1]
-      res[res.length - 1] = v
-      this.tags = res
-    })
   },
 }
 </script>
@@ -115,13 +108,6 @@ export default {
         visibility: visible;
         opacity: 1;
       }
-    }
-    .operating {
-      position: absolute;
-      opacity: 0;
-      visibility: hidden;
-      right: 10px;
-      top: -2px;
     }
   }
   .it {

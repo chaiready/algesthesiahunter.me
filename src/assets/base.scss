@@ -244,8 +244,16 @@ img {
   }
 }
 .form {
+  display: flex;
   font-size: 14px;
   margin-bottom: 10px;
+  vertical-align: top;
+  span {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    min-width: 50px;
+  }
   input {
     border: 1px solid $text;
     background-color: $module-bg;
@@ -260,4 +268,58 @@ img {
       border: 1px solid $primary;
     }
   }
+  select {
+    border: 1px solid $text;
+    background-color: $module-bg;
+    display: inline-block;
+    height: 32px;
+    color: $text;
+    border-radius: 2px;
+    padding: 0 15px;
+    margin-left: 30px;
+    width: 260px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 2px;
+    outline: none;
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+  textarea {
+    border: 1px solid $text;
+    background-color: $module-bg;
+    display: inline-block;
+    color: $text;
+    border-radius: 2px;
+    padding: 15px;
+    margin-left: 30px;
+    resize: none;
+
+    width: 260px;
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+  .checkbox-box {
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+      input {
+        cursor: pointer;
+        width: 20px !important;
+      }
+      label {
+        cursor: pointer;
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+  }
+}
+.operating {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  right: 10px;
+  top: -2px;
 }
