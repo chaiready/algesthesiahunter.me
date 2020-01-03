@@ -40,8 +40,6 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
-    "front-matter-loader": "^0.2.0",
-    "json-loader": "^0.5.7",
     "prettier": "^1.19.1",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",

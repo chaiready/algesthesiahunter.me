@@ -87,7 +87,7 @@ export default {
   .lang {
     width: 40px;
     height: 25px;
-    color: $text-reversal;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;

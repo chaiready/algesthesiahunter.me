@@ -52,8 +52,9 @@ export default {
       }
     },
     addCopyBtn() {
-      let pres = this.$refs.markdown.getElementsByTagName('pre')
-      if (!pres.length) {
+      let pres =
+        this.$refs.markdown && this.$refs.markdown.getElementsByTagName('pre')
+      if (!pres || (pres && !pres.length)) {
         return false
       }
       pres.forEach((v, i) => {

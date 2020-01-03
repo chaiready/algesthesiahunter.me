@@ -1,10 +1,10 @@
 <template>
   <div class="swiper-container">
     <swiper :options="swiperOption">
-      <swiper-slide v-for="(it, i) in swiperSlides" :key="i">
+      <swiper-slide v-for="(it, i) in home" :key="i">
         <router-link
           :to="{
-            path: '/articles/' + it.date,
+            path: '/articles/' + it._id,
           }"
         >
           <div class="img">
@@ -21,13 +21,12 @@
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import lozad from 'lozad'
 export default {
   name: 'Swiper',
   data() {
     return {
-      swiperSlides: [],
       swiperOption: {
         centeredSlides: true,
         autoplay: {
@@ -42,15 +41,12 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapState('article', ['home']),
+  },
   components: {
     swiper,
     swiperSlide,
-  },
-  methods: {
-    ...mapActions('common', ['getArticleByEveryTag']),
-  },
-  created() {
-    this.getArticleByEveryTag().then(res => (this.swiperSlides = res))
   },
   mounted() {
     const observer = lozad()

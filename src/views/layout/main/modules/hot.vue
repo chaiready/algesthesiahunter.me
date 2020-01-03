@@ -5,7 +5,7 @@
       {{ $t('text.hot').toUpperCase() }}
     </div>
     <ul class="main">
-      <li class="it one-cut" v-for="(it, i) in hotList" :key="i">
+      <li class="it one-cut" v-for="(it, i) in home" :key="i">
         <span
           :class="{
             index: true,
@@ -15,23 +15,23 @@
           }"
           >{{ i + 1 }}</span
         >
-        <router-link :to="'/articles/' + it.date" class="it-a">
+        <router-link :to="'/articles/' + it._id" class="it-a">
           <span>{{ it.title }}</span>
         </router-link>
       </li>
       <li
         class="it one-cut"
-        v-for="(it, i) in 10 - hotList.length"
-        :key="hotList.length + i"
+        v-for="(it, i) in 10 - home.length"
+        :key="home.length + i"
       >
         <span
           :class="{
             index: true,
-            fir: i + hotList.length === 0,
-            sec: i + hotList.length === 1,
-            thr: i + hotList.length === 2,
+            fir: i + home.length === 0,
+            sec: i + home.length === 1,
+            thr: i + home.length === 2,
           }"
-          >{{ i + hotList.length + 1 }}</span
+          >{{ i + home.length + 1 }}</span
         >
         <span>虚位以待......</span>
       </li>
@@ -40,29 +40,22 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   data() {
-    return {
-      hotList: [],
-    }
+    return {}
   },
   computed: {
-    navList() {
-      return this.$t('nav')
-    },
-    navListKey() {
-      return this.$t('nav')
-    },
-    lang() {
-      return this.$t('languages')
-    },
+    ...mapState('article', ['home']),
   },
   methods: {
-    ...mapActions('common', ['getArticleByHot']),
+    ...mapActions('article', ['getHomeArticles']),
   },
   created() {
-    this.getArticleByHot().then(res => (this.hotList = res.reverse()))
+    this.getHomeArticles({
+      requestPage: 1,
+      limit: 10,
+    })
   },
 }
 </script>

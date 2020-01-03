@@ -55,18 +55,6 @@ module.exports = {
       .end()
 
     config.module
-      .rule('markdown')
-      .test(/\.md$/)
-      .include.add(resolve('src/markdown'))
-      .end()
-      .use('json-loader')
-      .loader('json-loader')
-      .end()
-      .use('front-matter-loader')
-      .loader('front-matter-loader')
-      .end()
-
-    config.module
       .rule('vue')
       .use('vue-loader')
       .loader('vue-loader')

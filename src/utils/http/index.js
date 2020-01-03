@@ -37,7 +37,6 @@ export const resTypeHttp = responseType => {
           }
         }
       }
-      console.log(config)
       return config
     },
     err => Promise.reject(err)

@@ -3,7 +3,7 @@
     <Nav></Nav>
     <ToolBox></ToolBox>
     <transition name="fade" mode="out-in">
-      <router-view class="main" />
+      <router-view class="main" :key="$route.path" />
     </transition>
     <Aside></Aside>
     <ScrollTool></ScrollTool>

@@ -28,7 +28,7 @@
             {{ it.createdAt | unixToCommonFilter }}
           </div>
           <div class="category">
-            <router-link :to="'/' + it.category">
+            <router-link :to="'/' + getCategorysName(it.category)">
               <svg-icon icon-class="category"></svg-icon>
               {{ $t(`nav.${getCategorysName(it.category)}`) }}</router-link
             >
@@ -43,7 +43,9 @@
         @ConfirmSubmit="ConfirmSubmit"
       ></operating>
     </div>
-    <div class="empty" v-if="viewList.length === 0">空空如也</div>
+    <div class="empty" v-if="viewList.data && viewList.data.length === 0">
+      空空如也
+    </div>
     <MaskDialog v-model="show" title="编辑article" @submit="submit">
       <div class="form">
         <span>标题</span>
@@ -104,7 +106,9 @@ export default {
   },
   data() {
     return {
-      viewList: [],
+      viewList: {
+        data: [],
+      },
       show: false,
       form: {
         tags: [],
@@ -197,7 +201,7 @@ export default {
         limit: this.page.limit,
         keyword: this.keyword,
         category: this.categoryId,
-        tag: this.tagId,
+        tags: this.tagId,
       }).then(res => {
         this.viewList = res
         this.initData()
@@ -211,7 +215,6 @@ export default {
           this.init()
         }
       },
-      immediate: true,
     },
     tag: {
       handler(n) {
@@ -219,7 +222,6 @@ export default {
           this.init()
         }
       },
-      immediate: true,
     },
     category: {
       handler(n) {
@@ -227,7 +229,6 @@ export default {
           this.init()
         }
       },
-      immediate: true,
     },
   },
   created() {
