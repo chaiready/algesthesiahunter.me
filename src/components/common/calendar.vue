@@ -47,7 +47,7 @@
           }"
         >
           <!--today-->
-          <router-link
+          <!-- <router-link
             :to="
               `/articles/${formatDate(
                 day.getFullYear(),
@@ -55,9 +55,9 @@
                 day.getDate()
               )}`
             "
-          >
-            {{ day.getDate() }}
-          </router-link>
+          > -->
+          {{ day.getDate() }}
+          <!-- </router-link> -->
         </span>
       </li>
     </ul>
