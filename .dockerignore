@@ -10,3 +10,4 @@ selenium-debug.log
 node_modules/
 .cache
 .cache-loader
+yarn.lock

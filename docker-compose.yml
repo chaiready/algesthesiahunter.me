@@ -22,7 +22,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - "/Users/liulu/Documents/data:/data"
+      - "/Users/liulu/Documents/website/data:/data"
   # mysql:
   #   network_mode: host
   #   container_name: mysql
