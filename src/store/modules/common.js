@@ -6,7 +6,7 @@ import http from 'utils/http'
 import MD5 from 'crypto-js/md5'
 import { showMessage } from 'utils/showMessage'
 const state = {
-  mode: true,
+  mode: false,
   token: localStorage.token,
 }
 const mutations = {

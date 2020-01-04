@@ -13,9 +13,6 @@ const mutations = {
   UPDATE_HOME(state, home) {
     state.home = home
   },
-  UPDATE_MODE(state, mode) {
-    state.mode = mode
-  },
 }
 
 const actions = {
