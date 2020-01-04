@@ -44,20 +44,29 @@
               day.getFullYear() == new Date().getFullYear() &&
               day.getMonth() == new Date().getMonth() &&
               day.getDate() == new Date().getDate(),
+            current:
+              day.getFullYear() == currentDate.getFullYear() &&
+              day.getMonth() == currentDate.getMonth() &&
+              day.getDate() == currentDate.getDate(),
           }"
         >
+          <svg-icon
+            v-if="dayHasArticle(day)"
+            class="info has"
+            icon-class="info"
+          ></svg-icon>
           <!--today-->
-          <!-- <router-link
+          <router-link
             :to="
-              `/articles/${formatDate(
+              `/search?date=${formatDate(
                 day.getFullYear(),
                 day.getMonth() + 1,
                 day.getDate()
               )}`
             "
-          > -->
-          {{ day.getDate() }}
-          <!-- </router-link> -->
+          >
+            {{ day.getDate() }}
+          </router-link>
         </span>
       </li>
     </ul>
@@ -65,6 +74,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'calendar',
   data() {
@@ -76,17 +86,45 @@ export default {
       days: [],
       weeksZh: ['一', '二', '三', '四', '五', '六', '七'],
       weeksEn: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      timeList: [],
+      currentDate: new Date(),
     }
   },
   mounted() {
     this.initData(null)
   },
+  watch: {
+    date(n) {
+      let res = new Date(n)
+      if (res !== 'Invalid Date') {
+        this.currentDate = res
+      }
+    },
+  },
   computed: {
     isEnLang() {
       return this.$i18n.locale === 'en'
     },
+    date() {
+      return this.$route.query.date
+    },
   },
   methods: {
+    ...mapActions('article', ['getArticlesByDate']),
+    dayHasArticle(day) {
+      if (day.getDate() === this.currentDate.getDate()) {
+        return false
+      }
+      let res = false
+      for (let i = 0; i < this.timeList.length; i++) {
+        const v = this.timeList[i]
+        if (new Date(v.createdAt).getDate() === day.getDate()) {
+          res = true
+          break
+        }
+      }
+      return res
+    },
     initData(cur) {
       const date = cur ? new Date(cur) : new Date()
       this.currentDay = date.getDate()
@@ -115,6 +153,18 @@ export default {
         d.setDate(d.getDate() + i)
         this.days.push(d)
       }
+      const d = new Date(this.currentYear, this.currentMonth, 0)
+      this.getArticlesByDate({
+        startAt: `${this.currentYear}/${this.currentMonth}/1`,
+        endAt: `${this.currentYear}/${this.currentMonth}/${d.getDate()}`,
+      }).then(res => {
+        this.timeList = res.data.map(v => {
+          return {
+            _id: v._id,
+            createdAt: v.createdAt,
+          }
+        })
+      })
     },
     pick(date) {
       alert(
@@ -168,7 +218,6 @@ export default {
       height: 28px;
       line-height: 28px;
       text-align: center;
-
       &.arrow {
         width: 28px;
         background-color: $module-hover-bg;
@@ -223,7 +272,16 @@ export default {
       > .item {
         display: block;
         border-radius: 100%;
-
+        position: relative;
+        .info {
+          position: absolute;
+          top: 0;
+          right: 0;
+          &.has {
+            color: $keyword;
+            opacity: 0.7;
+          }
+        }
         > a {
           display: block;
         }
@@ -231,9 +289,15 @@ export default {
         &:hover {
           background-color: $module-hover-bg-opacity-3;
         }
-
         &.active {
           background-color: $module-hover-bg;
+        }
+        &.current {
+          background-color: $primary;
+          opacity: 0.8;
+          a {
+            color: white;
+          }
         }
       }
     }

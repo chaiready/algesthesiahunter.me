@@ -23,12 +23,6 @@ export default {
     }
   },
   computed: {
-    navList() {
-      return this.$t('nav')
-    },
-    navListKey() {
-      return this.$t('nav')
-    },
     lang() {
       return this.$t('languages')
     },

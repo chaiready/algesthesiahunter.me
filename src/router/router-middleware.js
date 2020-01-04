@@ -6,6 +6,7 @@ let middleware = router => {
     if (to.name in source.nav) {
       const name = `nav.${to.name}`
       let title = `${i18n.t(name)}  |  `.toUpperCase()
+      // let title = `12 `.toUpperCase()
       let str = `时光旅行到站，${dayjs().format('YYYY')} 年 ${dayjs().format(
         'MM'
       )} 月 ${dayjs().format(

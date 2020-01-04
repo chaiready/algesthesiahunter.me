@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <ArticleList :keyword="keyword"></ArticleList>
+    <ArticleList :keyword="keyword" :date="date"></ArticleList>
   </div>
 </template>
 
@@ -14,6 +14,9 @@ export default {
   computed: {
     keyword() {
       return this.$route.query.keyword
+    },
+    date() {
+      return this.$route.query.date
     },
   },
 }

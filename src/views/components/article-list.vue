@@ -92,6 +92,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import lozad from 'lozad'
+import dayjs from 'dayjs'
 export default {
   props: {
     category: {
@@ -101,6 +102,9 @@ export default {
       type: String,
     },
     keyword: {
+      type: String,
+    },
+    date: {
       type: String,
     },
   },
@@ -149,7 +153,12 @@ export default {
     },
   },
   methods: {
-    ...mapActions('article', ['getArticles', 'deleteArticle', 'putArticle']),
+    ...mapActions('article', [
+      'getArticlesByDate',
+      'getArticles',
+      'deleteArticle',
+      'putArticle',
+    ]),
     ...mapActions('common', [
       'getArticleByCategory',
       'getArticleByTag',
@@ -195,6 +204,17 @@ export default {
       }
       this.current = null
     },
+    initByDate() {
+      let start = `${dayjs(this.date).format('YYYY/MM/DD')} 00:00:00`
+      let end = `${dayjs(this.date).format('YYYY/MM/DD')} 23:59:59`
+      this.getArticlesByDate({
+        startAt: start,
+        endAt: end,
+      }).then(res => {
+        this.viewList = res
+        this.initData()
+      })
+    },
     init() {
       this.getArticles({
         requestPage: this.page.requestPage,
@@ -209,6 +229,13 @@ export default {
     },
   },
   watch: {
+    date: {
+      handler(n) {
+        if (n) {
+          this.initByDate()
+        }
+      },
+    },
     keyword: {
       handler(n) {
         if (n) {

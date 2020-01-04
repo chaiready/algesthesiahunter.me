@@ -24,6 +24,8 @@ const actions = {
       .get('/api/article', { params })
       .then(res => commit('UPDATE_HOME', res.data)),
   getArticles: ({ commit }, params) => http.get('/api/article', { params }),
+  getArticlesByDate: ({ commit }, params) =>
+    http.get('/api/article/search/time', { params }),
   getArticleDetail: ({ commit }, id) => http.get(`/api/article/${id}`),
   postArticle: ({ commit }, article) =>
     http
