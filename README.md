@@ -12,8 +12,8 @@
 
 ## Screenshot
 
-![home](./screenshots/home.jpg)
-![markdown](./screenshots/markdown.jpg)
+![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/home.jpg)
+![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/markdown.jpg)
 
 ---
 
