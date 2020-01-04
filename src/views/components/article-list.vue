@@ -232,6 +232,9 @@ export default {
     date: {
       handler(n) {
         if (n) {
+          this.viewList = {
+            data: [],
+          }
           this.initByDate()
         }
       },
