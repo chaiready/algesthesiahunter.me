@@ -14,8 +14,6 @@ services:
     image: registry.cn-shenzhen.aliyuncs.com/algesthesiahunter/algesthesiahunter-api:latest
     ports:
       - "3000:3000"
-    volumes:
-      - "/Users/liulu/Documents/website/sslforfree:/ssl"
   mongodb:
     container_name: mongodb
     image: mongo:4.2.0
