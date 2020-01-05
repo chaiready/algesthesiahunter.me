@@ -2,7 +2,18 @@
   a {
     color: $primary !important;
   }
+  .gt-container .gt-svg svg {
+    fill: $primary !important;
+  }
+  .gt-container .gt-ico-github svg {
+    fill: $theme-black !important;
+  }
   .gt-container {
+    .gt-user {
+      svg {
+        fill: $text !important;
+      }
+    }
     .gt-btn {
       border: 1px solid $primary !important;
       background-color: $primary !important;
@@ -14,14 +25,10 @@
     .gt-ico-tip {
       .gt-svg {
         transform: translateY(-1.5px);
-        svg {
-          fill: $primary !important;
-        }
       }
     }
   }
-  .gt-comments {
-    .gt-comment-content {
-    }
+  .gt-comment-body.markdown-body {
+    font-size: 14px !important;
   }
 }
