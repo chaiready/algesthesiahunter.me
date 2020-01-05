@@ -23,6 +23,7 @@ import { mapActions } from 'vuex'
 import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
 import MD5 from 'crypto-js/md5'
+import { rightTitle } from 'utils/title'
 export default {
   name: 'articles',
   data() {
@@ -43,6 +44,7 @@ export default {
       handler(n) {
         this.getArticleDetail(n).then(res => {
           this.article = res
+          document.title = ` ${res.title} | ${rightTitle} `
           this.$nextTick(() => {
             const observer = lozad()
             observer.observe()
