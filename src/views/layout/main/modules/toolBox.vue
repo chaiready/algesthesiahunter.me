@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      theme: 'default',
+      theme: 'dark',
     }
   },
   computed: {
