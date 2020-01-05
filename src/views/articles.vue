@@ -10,6 +10,7 @@
         />
       </div>
       <markdown :value="article.content"></markdown>
+      <div id="gitalk-container"></div>
     </template>
     <div v-else class="empty">空空如也</div>
   </div>
@@ -19,6 +20,8 @@
 import markdown from '@/components/common/markdown.vue'
 import lozad from 'lozad'
 import { mapActions } from 'vuex'
+import 'gitalk/dist/gitalk.css'
+import Gitalk from 'gitalk'
 export default {
   name: 'articles',
   data() {
@@ -42,6 +45,7 @@ export default {
           this.$nextTick(() => {
             const observer = lozad()
             observer.observe()
+            this.initGitalk()
           })
         })
       },
@@ -54,6 +58,18 @@ export default {
       if (window.utils) {
         window.utils.addImgPopup(src)
       }
+    },
+    initGitalk() {
+      const gitalk = new Gitalk({
+        clientID: '06b5cef9988469ced515',
+        clientSecret: '023eace06a9416b02f69ad2dd81dd7969a660aa5',
+        repo: 'gitalk.algesthesiahunter',
+        owner: 'Algesthesiahunter',
+        admin: ['Algesthesiahunter'],
+        id: this.$route.fullPath,
+        distractionFreeMode: false, // Facebook-like distraction free mode
+      })
+      gitalk.render('gitalk-container')
     },
   },
 }
