@@ -1,11 +1,27 @@
 #gitalk-container {
+  a {
+    color: $primary !important;
+  }
   .gt-container {
     .gt-btn {
       border: 1px solid $primary !important;
       background-color: $primary !important;
     }
+    .gt-btn-preview {
+      color: $primary !important;
+      background-color: $module-bg !important;
+    }
+    .gt-ico-tip {
+      .gt-svg {
+        transform: translateY(-1.5px);
+        svg {
+          fill: $primary !important;
+        }
+      }
+    }
   }
-  .gt-container a {
-    color: $primary !important;
+  .gt-comments {
+    .gt-comment-content {
+    }
   }
 }
