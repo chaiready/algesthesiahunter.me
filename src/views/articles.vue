@@ -22,6 +22,7 @@ import lozad from 'lozad'
 import { mapActions } from 'vuex'
 import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
+import MD5 from 'crypto-js/md5'
 export default {
   name: 'articles',
   data() {
@@ -66,7 +67,7 @@ export default {
         repo: 'gitalk.algesthesiahunter',
         owner: 'Algesthesiahunter',
         admin: ['Algesthesiahunter'],
-        id: this.$route.fullPath,
+        id: MD5(this.$route.fullPath).toString(),
         distractionFreeMode: false, // Facebook-like distraction free mode
       })
       gitalk.render('gitalk-container')

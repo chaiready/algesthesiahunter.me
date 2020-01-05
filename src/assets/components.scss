@@ -1,0 +1,11 @@
+#gitalk-container {
+  .gt-container {
+    .gt-btn {
+      border: 1px solid $primary !important;
+      background-color: $primary !important;
+    }
+  }
+  .gt-container a {
+    color: $primary !important;
+  }
+}
