@@ -41,9 +41,9 @@
           class="item"
           :class="{
             active:
-              day.getFullYear() == new Date().getFullYear() &&
-              day.getMonth() == new Date().getMonth() &&
-              day.getDate() == new Date().getDate(),
+              day.getFullYear() == todayDate.year &&
+              day.getMonth() == todayDate.month &&
+              day.getDate() == todayDate.day,
             current:
               day.getFullYear() == currentDate.getFullYear() &&
               day.getMonth() == currentDate.getMonth() &&
@@ -74,9 +74,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   name: 'calendar',
+  props: {
+    timeList: {
+      type: Array,
+      default: () => [],
+    },
+    lang: {
+      type: String,
+      default: 'en',
+    },
+  },
   data() {
     return {
       currentDay: 1,
@@ -86,31 +95,32 @@ export default {
       days: [],
       weeksZh: ['一', '二', '三', '四', '五', '六', '七'],
       weeksEn: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      timeList: [],
       currentDate: new Date(),
+      todayDate: {
+        year: 1970,
+        month: 1,
+        day: 1,
+      },
     }
   },
   mounted() {
-    this.initData(null)
-  },
-  watch: {
-    date(n) {
-      let res = new Date(n)
-      if (res !== 'Invalid Date') {
-        this.currentDate = res
-      }
-    },
+    let date = new Date()
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDay()
+    this.todayDate = {
+      year,
+      month,
+      day,
+    }
+    this.initData(this.formatDate(year, month, day))
   },
   computed: {
     isEnLang() {
-      return this.$i18n.locale === 'en'
-    },
-    date() {
-      return this.$route.query.date
+      return this.lang === 'en'
     },
   },
   methods: {
-    ...mapActions('article', ['getArticlesByDate']),
     dayHasArticle(day) {
       if (day.getDate() === this.currentDate.getDate()) {
         return false
@@ -126,7 +136,7 @@ export default {
       return res
     },
     initData(cur) {
-      const date = cur ? new Date(cur) : new Date()
+      let date = new Date(cur)
       this.currentDay = date.getDate()
       this.currentYear = date.getFullYear()
       this.currentMonth = date.getMonth() + 1
@@ -139,7 +149,7 @@ export default {
         this.currentMonth,
         this.currentDay
       )
-      // console.log("today:" + str + "," + this.currentWeek)
+      // console.log(`today:${str},${this.currentWeek}`)
       this.days.length = 0
       // 今天是周日，放在第一行第7个位置，前面6个
       for (let i = this.currentWeek - 1; i >= 0; i--) {
@@ -148,28 +158,18 @@ export default {
         // console.log("y:" + d.getDate())
         this.days.push(d)
       }
+      // console.log(this.days)
       for (let i = 1; i <= 35 - this.currentWeek; i++) {
         const d = new Date(str)
         d.setDate(d.getDate() + i)
         this.days.push(d)
       }
+      // console.log(this.days)
       const d = new Date(this.currentYear, this.currentMonth, 0)
-      this.getArticlesByDate({
+      this.$emit('initData', {
         startAt: `${this.currentYear}/${this.currentMonth}/1`,
         endAt: `${this.currentYear}/${this.currentMonth}/${d.getDate()}`,
-      }).then(res => {
-        this.timeList = res.data.map(v => {
-          return {
-            _id: v._id,
-            createdAt: v.createdAt,
-          }
-        })
       })
-    },
-    pick(date) {
-      alert(
-        this.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
-      )
     },
     pickPre(year, month) {
       //  setDate(0); 上月最后一天
@@ -184,10 +184,6 @@ export default {
       d.setDate(35)
       this.initData(this.formatDate(d.getFullYear(), d.getMonth() + 1, 1))
     },
-    pickYear(year, month) {
-      alert(`${year},${month}`)
-    },
-    // 返回 类似 2016-01-02 格式的字符串
     formatDate(year, month, day) {
       const y = year
       let m = month
@@ -222,14 +218,12 @@ export default {
         width: 28px;
         background-color: $module-hover-bg;
         cursor: pointer;
-
         &:hover {
           background-color: $module-hover-bg-darken-10;
         }
       }
     }
   }
-
   > .days,
   > .weekdays {
     list-style: none;
@@ -237,7 +231,6 @@ export default {
     margin: 0;
     overflow: hidden;
     margin-bottom: 8px;
-
     > li {
       display: block;
       float: left;
@@ -245,30 +238,24 @@ export default {
       text-align: center;
     }
   }
-
   > .weekdays {
     height: 28px;
     line-height: 28px;
   }
-
   > .days-loading {
     width: 100%;
     height: 14rem;
   }
-
   > .days {
     min-height: 140px;
     margin-bottom: 0;
     position: relative;
-
     > li {
       line-height: 35px;
-
       > .other-month {
         opacity: 0.3;
         cursor: initial;
       }
-
       > .item {
         display: block;
         border-radius: 100%;
@@ -285,7 +272,6 @@ export default {
         > a {
           display: block;
         }
-
         &:hover {
           background-color: $module-hover-bg-opacity-3;
         }
