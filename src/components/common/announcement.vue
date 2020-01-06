@@ -1,61 +1,110 @@
 <template>
   <div class="announcement-container">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="(slide, index) in swiperSlides" :key="index">
-        <div class="main">
-          <svg-icon icon-class="windmill" class="svg"></svg-icon>
-          <span>{{ slide }}</span>
+    <div class="title">
+      <svg-icon
+        icon-class="windmill"
+        class="svg"
+        :style="{
+          transform: `rotate(${rotatedeg * 90}deg)`,
+        }"
+      ></svg-icon>
+    </div>
+    <div class="bg"></div>
+    <transition name="module" mode="out-in">
+      <div
+        class="swiper"
+        key="swiper"
+        v-swiper:swiper="swiperOption"
+        @transitionStart="handleSwiperTransitionStart"
+      >
+        <div class="swiper-wrapper">
+          <div
+            :key="index"
+            class="swiper-slide slide-item"
+            v-for="(slide, index) in swiperSlides"
+          >
+            <div class="content filter">{{ slide }}</div>
+          </div>
         </div>
-      </swiper-slide>
-    </swiper>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import 'swiper/dist/css/swiper.css'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+// import 'swiper/dist/css/swiper.css'
 export default {
   name: 'announcement',
   data() {
     return {
+      rotatedeg: 0,
       swiperOption: {
         direction: 'vertical',
+        height: 36,
         autoplay: {
-          delay: 3000,
+          delay: 3500,
+          disableOnInteraction: false,
         },
       },
       swiperSlides: [
         '吹出去的牛逼能绕地球转三圈',
         '遇强则弱，遇弱则强',
-        '一个人最想进步的时刻就是在他旁边有个比他吊的人存在',
-        '不知道为什么越来越喜欢独处以至于朋友之间交流的时候不知道讲什么',
         '时间就是金钱，效率就是生命',
       ],
     }
   },
-  components: {
-    swiper,
-    swiperSlide,
+  methods: {
+    handleSwiperTransitionStart() {
+      this.rotatedeg = this.swiper.activeIndex || 0
+    },
   },
 }
 </script>
 <style lang="scss" scoped>
 .announcement-container {
+  background-color: $module-bg;
   overflow: hidden;
   height: 36px;
-  .main {
-    position: relative;
+  position: relative;
+  .title {
+    float: left;
+    transform: rotate(45deg);
+    transform-origin: center center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .svg {
+      color: $text-reversal;
+      width: 60px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+  }
+  .filter {
+    color: $text-reversal;
     height: 36px;
     display: flex;
     align-items: center;
-    font-size: 13.3px;
-    background-color: #b5b5b5;
-    user-select: none;
-    color: $text-reversal;
-    .svg {
-      width: 60px;
-      font-size: 16px;
-    }
+  }
+
+  .bg {
+    left: 0;
+    position: absolute;
+    transform: rotate(-60deg) translateY(-59%);
+    opacity: 0.7;
+    border-bottom-width: 12px;
+    z-index: -1;
+    border-bottom-style: solid;
+    border-color: #b5b5b5;
+    background: linear-gradient(
+      90deg,
+      $theme-black 0%,
+      $theme-black 50%,
+      $module-bg 90%
+    );
+    padding-bottom: 50%;
+    width: 100%;
   }
 }
 </style>

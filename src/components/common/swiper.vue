@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       swiperOption: {
+        loop: true,
         centeredSlides: true,
         autoplay: {
           delay: 2500,
@@ -58,6 +59,9 @@ export default {
 .swiper-container {
   overflow: hidden;
   height: 200px;
+  .pag {
+    color: $text-reversal;
+  }
   .img {
     position: relative;
     height: 100%;

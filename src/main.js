@@ -11,6 +11,7 @@ import '@/assets/markdown.theme.scss'
 import { showMessage } from '@/utils/showMessage'
 import '@/utils/imgPopup'
 import filters from './filters'
+import 'utils/swiper'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
