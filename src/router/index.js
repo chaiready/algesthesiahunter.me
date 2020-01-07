@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '@/views/home.vue'
 import middleware from './router-middleware'
 import { scrollTo } from 'utils/scroll-to'
 Vue.use(VueRouter)
@@ -8,26 +7,43 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: home,
+    component: () =>
+      import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+    redirect: { name: 'home' },
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: () =>
+          import(/* webpackChunkName: "home" */ '@/views/home.vue'),
+      },
+    ],
   },
   {
-    path: '/coding',
-    name: 'coding',
+    path: '/category1',
+    name: 'category1',
     component: () =>
-      import(/* webpackChunkName: "coding" */ '@/views/coding.vue'),
-  },
-  {
-    path: '/think',
-    name: 'think',
-    component: () =>
-      import(/* webpackChunkName: "think" */ '@/views/think.vue'),
-  },
-  {
-    path: '/project',
-    name: 'project',
-    component: () =>
-      import(/* webpackChunkName: "project" */ '@/views/project.vue'),
+      import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+    children: [
+      {
+        path: '/articles/:id(.*)',
+        name: 'articles',
+        component: () =>
+          import(/* webpackChunkName: "articles" */ '@/views/articles.vue'),
+      },
+      {
+        path: '/tags/:tag(.*)',
+        name: 'tags',
+        component: () =>
+          import(/* webpackChunkName: "tags" */ '@/views/tags.vue'),
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: () =>
+          import(/* webpackChunkName: "search" */ '@/views/search.vue'),
+      },
+    ],
   },
   {
     path: '/vlog',
@@ -39,29 +55,6 @@ const routes = [
     name: 'about',
     component: () =>
       import(/* webpackChunkName: "about" */ '@/views/about.vue'),
-  },
-  {
-    path: '/guestbook',
-    name: 'guestbook',
-    component: () =>
-      import(/* webpackChunkName: "guestbook" */ '@/views/guestbook.vue'),
-  },
-  {
-    path: '/articles/:id(.*)',
-    name: 'articles',
-    component: () =>
-      import(/* webpackChunkName: "articles" */ '@/views/articles.vue'),
-  },
-  {
-    path: '/tags/:tag(.*)',
-    name: 'tags',
-    component: () => import(/* webpackChunkName: "tags" */ '@/views/tags.vue'),
-  },
-  {
-    path: '/search',
-    name: 'search',
-    component: () =>
-      import(/* webpackChunkName: "search" */ '@/views/search.vue'),
   },
 ]
 
@@ -83,4 +76,39 @@ const router = new VueRouter({
 })
 
 middleware(router)
+
+const otherRoutes = arr => {
+  let resRouter = [
+    {
+      path: '/category',
+      name: 'category',
+      component: () =>
+        import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+      children: [],
+    },
+    {
+      path: '*',
+      redirect: { name: 'home' },
+    },
+  ]
+  for (let i = 0; i < arr.length; i++) {
+    const v = arr[i]
+    resRouter[0].children.push({
+      path: `/${v.name}`,
+      name: v.name,
+      props: {
+        categoryType: v.name,
+      },
+      component: () =>
+        import(
+          /* webpackChunkName: "categoryPage" */ '@/views/category-page.vue'
+        ),
+    })
+  }
+  return resRouter
+}
+
+export const addRoutesByCategorys = categorys =>
+  router.addRoutes(otherRoutes(categorys))
+
 export default router

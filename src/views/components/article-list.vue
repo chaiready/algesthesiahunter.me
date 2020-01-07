@@ -30,8 +30,8 @@
           <div class="category">
             <router-link :to="'/' + getCategorysName(it.category)">
               <svg-icon icon-class="category"></svg-icon>
-              {{ $t(`nav.${getCategorysName(it.category)}`) }}</router-link
-            >
+              {{ getI18Name(it.category) }}
+            </router-link>
           </div>
         </div>
       </div>
@@ -175,6 +175,12 @@ export default {
         id: this.current._id,
         params: this.form,
       }).then(() => this.init())
+    },
+    getI18Name(id) {
+      let name = this.getCategorysName(id)
+      if (name) {
+        return this.$t(`nav.${name}`)
+      }
     },
     getCategorysName(id) {
       let name

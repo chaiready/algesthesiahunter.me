@@ -2,10 +2,7 @@
   <main class="main-container" id="main">
     <Nav></Nav>
     <ToolBox></ToolBox>
-    <transition name="fade" mode="out-in">
-      <router-view class="main" :key="$route.path" />
-    </transition>
-    <Aside></Aside>
+    <router-view />
     <ScrollTool></ScrollTool>
   </main>
 </template>
@@ -14,7 +11,6 @@
 import Nav from './modules/nav.vue'
 import ToolBox from './modules/toolBox.vue'
 import ScrollTool from './modules/scrollTool.vue'
-import Aside from './modules/aside.vue'
 export default {
   name: 'Main',
   data() {
@@ -24,7 +20,6 @@ export default {
     Nav,
     ToolBox,
     ScrollTool,
-    Aside,
   },
 }
 </script>
@@ -33,16 +28,8 @@ export default {
 .main-container {
   position: relative;
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
   width: 1100px;
   margin: 0 auto;
-  .main {
-    transition: opacity 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-    min-height: 1px;
-    position: relative;
-    flex: 1;
-    width: 642px;
-  }
 }
 </style>

@@ -4,7 +4,7 @@
  */
 import { showMessage } from 'utils/showMessage'
 import http from 'utils/http'
-
+import { addRoutesByCategorys } from '@/router'
 const state = {
   categorys: [],
 }
@@ -12,6 +12,7 @@ const state = {
 const mutations = {
   UPDATE_CATEGORY(state, categorys) {
     state.categorys = categorys
+    addRoutesByCategorys(categorys)
   },
 }
 

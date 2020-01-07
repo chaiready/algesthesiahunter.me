@@ -23,20 +23,10 @@
         <svg-icon icon-class="project"></svg-icon>
         {{ navList.project }}</a
       >
-      <!-- <router-link class="it" to="/vlog">
-        <svg-icon icon-class="vlog"></svg-icon>
-        {{ navList.vlog }}</router-link
-      > -->
-
       <router-link class="it" to="/about">
         <svg-icon icon-class="about"></svg-icon>
         {{ navList.about }}
       </router-link>
-
-      <!-- <router-link class="it" to="/guestbook">
-        <svg-icon icon-class="guestbook"></svg-icon>
-        {{ navList.guestbook }}</router-link
-      > -->
       <a
         href="javascript:void(0);"
         class="it"

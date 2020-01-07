@@ -1,16 +1,18 @@
 <template>
-  <div class="coding">
-    <ArticleList category="coding"></ArticleList>
+  <div :class="categoryType">
+    <ArticleList :category="categoryType"></ArticleList>
   </div>
 </template>
 
 <script>
 import ArticleList from './components/article-list.vue'
 export default {
-  name: 'coding',
+  props: {
+    categoryType: String,
+  },
+  name: 'categoryType',
   components: {
     ArticleList,
   },
 }
 </script>
-<style lang="scss" scoped></style>

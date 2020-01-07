@@ -24,6 +24,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home-container {
+  width: 642px;
   .announcement {
     margin-top: 15px;
     margin-bottom: 15px;
