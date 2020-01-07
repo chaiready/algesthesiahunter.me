@@ -12,6 +12,8 @@
 
 ## Screenshot
 
+![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/1_home.jpg)
+![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/1_markdown.jpg)
 ![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/home.jpg)
 ![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/markdown.jpg)
 
