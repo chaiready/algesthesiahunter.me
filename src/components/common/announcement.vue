@@ -34,6 +34,7 @@
                 @ConfirmSubmit="ConfirmSubmit"
               ></operating>
             </div>
+            <div class="date">~ {{ it.updatedAt | dateAgo(lang) }}</div>
           </div>
         </div>
       </div>
@@ -74,7 +75,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('common', ['mode']),
+    ...mapState('common', ['mode', 'lang']),
     ...mapState('announcement', ['announcements']),
   },
   methods: {
@@ -146,6 +147,13 @@ export default {
       font-size: 16px;
       transition: all 0.3s;
     }
+  }
+  .date {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-dividers;
   }
   .filter {
     height: 36px;

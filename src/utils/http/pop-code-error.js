@@ -2,7 +2,7 @@
  * @Description: 针对http的错误码报错
  */
 import { showMessage } from '../showMessage'
-import router from '@/router'
+import store from '@/store'
 function popError(res) {
   if (!res.data) {
     // 后端报错返回空
@@ -18,10 +18,8 @@ function popError(res) {
   const code = res.status || res.data.code
   // 401重新登录
   if (code === 401) {
-    showMessage('请重新登陆')
     /* 对未授权的处理 */
-    localStorage.removeItem('token')
-    router.push({ name: 'home' })
+    store.dispatch('common/loginOut')
     return
   }
   if (typeof res.data === 'string') {

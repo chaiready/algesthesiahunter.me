@@ -37,7 +37,9 @@ export function popChange(event, vm) {
   fadeIn(app)
   setTimeout(() => {
     let vue = new Vue({
-      template: `<popover y="${event.y}" x="${event.x}" title="${vm.title}"></popover>`,
+      template: `<popover y="${event.pageY - 5}" x="${event.pageX}" title="${
+        vm.title
+      }"></popover>`,
       components: {
         popover,
       },

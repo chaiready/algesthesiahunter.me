@@ -1,7 +1,7 @@
 <template>
   <div class="tool-container">
     <div
-      :class="{ 'lang cu-p us-n': true, 'lang-bg': lang === 'ZH' }"
+      :class="{ 'lang cu-p us-n': true, 'lang-bg': lang === 'zh' }"
       title="Switch language"
       @click="switchLang"
     ></div>
@@ -16,42 +16,32 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
-  data() {
-    return {
-      theme: 'dark',
-    }
-  },
   computed: {
-    lang() {
-      return this.$t('languages')
-    },
+    ...mapState('common', ['theme', 'lang']),
   },
   methods: {
+    ...mapActions('common', ['updateLang', 'updateTheme']),
     changeToRed() {
       document.body.classList.remove(this.theme)
+      let theme
       if (this.theme === 'default') {
-        this.theme = 'dark'
+        theme = 'dark'
       } else {
-        this.theme = 'default'
+        theme = 'default'
       }
-      document.body.classList.add(this.theme)
-      localStorage.theme = this.theme
+      document.body.classList.add(theme)
+      this.updateTheme(theme)
     },
     switchLang() {
-      if (this.lang === 'EN') {
+      if (this.lang === 'en') {
         this.$i18n.locale = 'zh'
       } else {
         this.$i18n.locale = 'en'
       }
-      localStorage.lang = this.$i18n.locale
+      this.updateLang(this.$i18n.locale)
     },
-  },
-  mounted() {
-    if (localStorage.theme) {
-      this.theme = localStorage.theme
-    }
-    document.body.classList.add(this.theme)
   },
 }
 </script>
