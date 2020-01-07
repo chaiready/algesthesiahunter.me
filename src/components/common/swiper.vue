@@ -1,26 +1,37 @@
 <template>
   <div class="swiper-container">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="(it, i) in home" :key="i">
-        <router-link
-          :to="{
-            path: '/articles/' + it._id,
-          }"
-        >
-          <div class="img">
-            <img :src="cdn + it.img" />
-            <span class="title">{{ it.title }}</span>
+    <transition name="module" mode="out-in">
+      <div class="swiper" key="swiper" v-swiper:swiper="swiperOption">
+        <div class="swiper-wrapper">
+          <div
+            :key="index"
+            class="swiper-slide slide-item"
+            v-for="(it, index) in home"
+          >
+            <div class="content filter">
+              <router-link
+                :to="{
+                  path: '/articles/' + it._id,
+                }"
+              >
+                <div class="img">
+                  <img :src="cdn + it.img" />
+                  <span class="title">{{ it.title }}</span>
+                </div>
+              </router-link>
+            </div>
           </div>
-        </router-link>
-      </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+        </div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+        ></div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import 'swiper/dist/css/swiper.css'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { mapActions, mapState } from 'vuex'
 import lozad from 'lozad'
 export default {
@@ -29,25 +40,25 @@ export default {
     return {
       swiperOption: {
         loop: true,
-        centeredSlides: true,
+        height: 200,
         autoplay: {
           delay: 2500,
           disableOnInteraction: false,
         },
         lazy: true,
         pagination: {
-          el: '.swiper-pagination',
           clickable: true,
+          el: '.swiper-pagination',
         },
+        mousewheel: true,
+        observeParents: true,
+        grabCursor: false,
+        preloadImages: false,
       },
     }
   },
   computed: {
     ...mapState('article', ['home']),
-  },
-  components: {
-    swiper,
-    swiperSlide,
   },
   mounted() {
     const observer = lozad()
@@ -64,7 +75,7 @@ export default {
   }
   .img {
     position: relative;
-    height: 100%;
+    height: 200px;
     width: 100%;
     .title {
       position: absolute;

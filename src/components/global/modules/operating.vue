@@ -36,8 +36,10 @@ export default {
       let name = null
       if (this.it.name) {
         name = this.it.name
-      } else {
+      } else if (this.it.title) {
         name = this.it.title
+      } else {
+        name = this.it.content
       }
       return name
     },
