@@ -149,7 +149,7 @@ export default {
   }
   .content {
     padding: 16px 24px;
-    width: 600px;
+    width: 620px;
   }
   .block {
     margin: 16px;
@@ -203,7 +203,7 @@ export default {
     }
   }
   .map-iframe {
-    padding-right: 48px;
+    padding-right: 28px;
     width: 100%;
     height: 340px;
   }
