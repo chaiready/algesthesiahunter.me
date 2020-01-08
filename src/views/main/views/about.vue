@@ -143,11 +143,9 @@ export default {
   }
   .its {
     font-size: 14px;
-    margin-bottom: 16px;
-    box-shadow: 0 0 14px 2px $module-hover-bg;
     border-radius: 2px;
+    background-color: $module-bg;
     margin-right: 12px;
-    margin-bottom: 12px;
   }
   .content {
     padding: 16px 24px;
