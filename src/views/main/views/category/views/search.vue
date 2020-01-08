@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ArticleList from './components/article-list.vue'
+import ArticleList from '@/components/common/article-list.vue'
 export default {
   name: 'search',
   components: {

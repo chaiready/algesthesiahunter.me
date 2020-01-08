@@ -9,9 +9,9 @@
   </div>
 </template>
 <script>
-import Header from '@/views/layout/header.vue'
-import Footer from '@/views/layout/footer.vue'
-import Main from '@/views/layout/main/MainIndex.vue'
+import Header from '@/views/header.vue'
+import Footer from '@/views/footer.vue'
+import Main from '@/views/main/index.vue'
 export default {
   name: 'App',
   data() {

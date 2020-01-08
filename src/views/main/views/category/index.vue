@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Aside from '@/views/layout/main/modules/aside.vue'
+import Aside from './modules/aside.vue'
 export default {
   name: 'category',
   components: {

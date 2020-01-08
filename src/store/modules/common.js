@@ -6,9 +6,10 @@ import http from 'utils/http'
 import MD5 from 'crypto-js/md5'
 import { showMessage } from 'utils/showMessage'
 const { token, mode, lang, theme } = localStorage
+
 const state = {
   token: token ? token : null,
-  mode: mode ? mode : false,
+  mode: mode === 'true',
   lang: lang ? lang : 'zh',
   theme: theme ? theme : 'dark',
 }
@@ -31,7 +32,7 @@ const mutations = {
   },
 }
 const actions = {
-  loginOut: ({ commit }) => {
+  logout: ({ commit }) => {
     commit('UPDATE_TOKEN', null)
     showMessage('请重新登陆')
   },

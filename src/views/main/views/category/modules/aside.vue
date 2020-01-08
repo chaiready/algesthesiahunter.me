@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import hot from './hot.vue'
-import tags from './tags.vue'
+import hot from './modules/hot.vue'
+import tags from './modules/tags.vue'
 import calendar from '@/components/common/calendar.vue'
 import { mapActions } from 'vuex'
 export default {

@@ -19,7 +19,7 @@ function popError(res) {
   // 401重新登录
   if (code === 401) {
     /* 对未授权的处理 */
-    store.dispatch('common/loginOut')
+    store.dispatch('common/logout')
     return
   }
   if (typeof res.data === 'string') {

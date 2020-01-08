@@ -50,7 +50,7 @@ export const resTypeHttp = responseType => {
         if (res.data.code === 401) {
           showMessage('请重新登陆')
           /* 对未授权的处理 */
-          store.dispatch('common/loginOut')
+          store.dispatch('common/logout')
         }
         return Promise.reject(showMessage(res.data.message))
       }

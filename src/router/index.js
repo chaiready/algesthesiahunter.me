@@ -8,14 +8,18 @@ const routes = [
   {
     path: '/',
     component: () =>
-      import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+      import(
+        /* webpackChunkName: "category" */ '@/views/main/views/category/index.vue'
+      ),
     redirect: { name: 'home' },
     children: [
       {
         path: '/',
         name: 'home',
         component: () =>
-          import(/* webpackChunkName: "home" */ '@/views/home.vue'),
+          import(
+            /* webpackChunkName: "home" */ '@/views/main/views/category/views/home.vue'
+          ),
       },
     ],
   },
@@ -23,38 +27,41 @@ const routes = [
     path: '/category1',
     name: 'category1',
     component: () =>
-      import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+      import(
+        /* webpackChunkName: "category" */ '@/views/main/views/category/index.vue'
+      ),
     children: [
       {
         path: '/articles/:id(.*)',
         name: 'articles',
         component: () =>
-          import(/* webpackChunkName: "articles" */ '@/views/articles.vue'),
+          import(
+            /* webpackChunkName: "articles" */ '@/views/main/views/category/views/articles.vue'
+          ),
       },
       {
         path: '/tags/:tag(.*)',
         name: 'tags',
         component: () =>
-          import(/* webpackChunkName: "tags" */ '@/views/tags.vue'),
+          import(
+            /* webpackChunkName: "tags" */ '@/views/main/views/category/views/tags.vue'
+          ),
       },
       {
         path: '/search',
         name: 'search',
         component: () =>
-          import(/* webpackChunkName: "search" */ '@/views/search.vue'),
+          import(
+            /* webpackChunkName: "search" */ '@/views/main/views/category/views/search.vue'
+          ),
       },
     ],
-  },
-  {
-    path: '/vlog',
-    name: 'vlog',
-    component: () => import(/* webpackChunkName: "vlog" */ '@/views/vlog.vue'),
   },
   {
     path: '/about',
     name: 'about',
     component: () =>
-      import(/* webpackChunkName: "about" */ '@/views/about.vue'),
+      import(/* webpackChunkName: "about" */ '@/views/main/views/about.vue'),
   },
 ]
 
@@ -83,7 +90,9 @@ const otherRoutes = arr => {
       path: '/category',
       name: 'category',
       component: () =>
-        import(/* webpackChunkName: "category" */ '@/views/category.vue'),
+        import(
+          /* webpackChunkName: "category" */ '@/views/main/views/category/index.vue'
+        ),
       children: [],
     },
     {
@@ -101,7 +110,7 @@ const otherRoutes = arr => {
       },
       component: () =>
         import(
-          /* webpackChunkName: "categoryPage" */ '@/views/category-page.vue'
+          /* webpackChunkName: "categoryPage" */ '@/views/main/views/category/views/category-page.vue'
         ),
     })
   }
