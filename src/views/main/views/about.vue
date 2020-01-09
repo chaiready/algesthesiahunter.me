@@ -10,7 +10,7 @@
           <div class="it">
             <svg-icon icon-class="like" class="icon like"></svg-icon>
             <div>
-              指弹、coding、骑行、长跑、听音乐、DATA2、孤独
+              指弹、coding、骑行、长跑、音乐、DOTA2、孤独
             </div>
           </div>
           <div class="it">
