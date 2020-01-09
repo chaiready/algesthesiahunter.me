@@ -62,7 +62,7 @@
             <h2>霜末之冬</h2>
           </div>
           <div>A web front-end developer</div>
-          <div class="find">众里寻它</div>
+          <div class="find">众里寻他</div>
           <img :src="cdn + 'weixin.png'" class="wx" alt="" />
         </div>
       </div>
