@@ -22,14 +22,14 @@ const actions = {
   },
 
   getArticles({ commit }, params) {
-    return this.$axios.$get('/api/article', { params })
+    return this.$axios.$get('/api/article', { params }).catch(() => {})
   },
 
   getArticlesByDate({ commit }, params) {
     return this.$axios.$get('/api/article/search/time', { params })
   },
   getArticleDetail({ commit }, id) {
-    return this.$axios.$get(`/api/article/${id}`)
+    return this.$axios.$get(`/api/article/${id}`).catch(() => {})
   },
   postArticle({ commit }, article) {
     return this.$axios
