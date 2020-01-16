@@ -4,7 +4,7 @@
   </a>
   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   <a href="https://github.com/Algesthesiahunter/algesthesiahunter.me" target="blank">
-    <img style='margin-bottom:10px' src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/logo.me.png" height="90" alt="algesthesiahunter Logo" />
+    <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/me.png" height="90" alt="algesthesiahunter Logo" />
   </a>
 </p>
 
