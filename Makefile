@@ -26,6 +26,3 @@ else
 	docker build -f Dockerfile.release --build-arg version=${RELEASE}  -t ${RLS_IMG} ${TOP_DIR}
 	docker push ${RLS_IMG}
 endif
-
-build:
-	npm run build
