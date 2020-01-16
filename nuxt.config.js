@@ -22,6 +22,10 @@ export default {
       class: 'dark',
     },
   },
+  cache: {
+    max: 100,
+    maxAge: 1000 * 60 * 15,
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -75,7 +79,7 @@ export default {
     extend(config, ctx) {
       config.resolve.alias.vue = 'vue/dist/vue.common'
       // 排除 nuxt 原配置的影响
-      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
+      const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
       svgRule.exclude = [resolve(__dirname, 'assets/svg')]
 
       config.module.rules.push({
@@ -88,9 +92,9 @@ export default {
         },
       })
 
-      config.module.rules.forEach(rule => {
+      config.module.rules.forEach((rule) => {
         if (/scss/.test(rule.test.toString())) {
-          rule.oneOf.forEach(item => {
+          rule.oneOf.forEach((item) => {
             item.use.push({
               loader: 'sass-loader',
               options: {
