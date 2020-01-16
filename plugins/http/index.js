@@ -4,7 +4,7 @@
 import popCodeError from '@/plugins/http/pop-code-error'
 import { showMessage } from '@/utils/show-message'
 export default function({ $axios, store }) {
-  $axios.onRequest(config => {
+  $axios.onRequest((config) => {
     // 在发送请求之前做某件事
     // 若是有做鉴权token , 就给头部带上token
     const token = store.state.common.token
@@ -25,7 +25,7 @@ export default function({ $axios, store }) {
     }
   })
 
-  $axios.onResponse(res => {
+  $axios.onResponse((res) => {
     if (res.data && res.data.status === 0) {
       // 失败
       if (res.data.code === 401) {
@@ -44,13 +44,14 @@ export default function({ $axios, store }) {
     return res.data // 兼容
   })
 
-  $axios.onError(err => {
+  $axios.onError((err) => {
     // 返回错误统一处理
     if (err.response && err.response.data) {
       popCodeError(err.response.data, store)
+      return Promise.reject(err)
     } else {
       popCodeError(err, store)
+      return Promise.reject(err)
     }
-    return Promise.reject(err)
   })
 }

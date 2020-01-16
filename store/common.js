@@ -56,7 +56,7 @@ const actions = {
     const code = MD5(password).toString()
     return this.$axios
       .$post('/api/auth/login', { password: code })
-      .then(res => {
+      .then((res) => {
         commit('UPDATE_TOKEN', res.token)
         showMessage('管理员登录成功')
       })

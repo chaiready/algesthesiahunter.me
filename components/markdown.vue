@@ -72,11 +72,11 @@ export default {
         }
       }
       const clipboard = new ClipboardJS('.esa-clipboard-button')
-      clipboard.on('success', e => {
+      clipboard.on('success', (e) => {
         this.showMessage('代码已复制')
         e.clearSelection()
       })
-      clipboard.on('error', e => {
+      clipboard.on('error', (e) => {
         this.showMessage('代码复制失败')
       })
     },

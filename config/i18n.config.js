@@ -145,7 +145,7 @@ function judge(res, obj, type) {
   }
 }
 function formatData(obj) {
-  Object.keys(config).forEach(v => {
+  Object.keys(config).forEach((v) => {
     judge(config[v], obj, v)
   })
 }

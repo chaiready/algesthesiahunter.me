@@ -47,7 +47,7 @@ module.exports = {
         // 箭头函数参数括号 默认avoid 可选 avoid| always
         // avoid 能省略括号的时候就省略 例如x => x
         // always 总是有括号
-        // arrowParens: 'avoid'
+        arrowParens: 'always'
         // quoteProps:'consistent',
       },
     ],
@@ -57,6 +57,8 @@ module.exports = {
     'no-console': 0,
     'vue/order-in-components': 0,
     'vue/require-component-is': 0,
+    'vue/attributes-order': 0,
+    'vue/no-v-html': 0,
   },
   env: {
     browser: true,

@@ -4,9 +4,9 @@
       <div class="title">
         <h2>{{ title }}</h2>
         <img
+          class="lozad"
           :data-src="cdn + img"
           @click="addImgPopup(cdn + img)"
-          class="lozad"
         />
       </div>
       <markdown :value="content"></markdown>

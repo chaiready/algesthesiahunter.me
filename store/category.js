@@ -15,7 +15,7 @@ const mutations = {
 
 const actions = {
   getCategorys({ commit }) {
-    return this.$axios.$get('/api/category').then(categorys => {
+    return this.$axios.$get('/api/category').then((categorys) => {
       commit('UPDATE_CATEGORY', categorys)
     })
   },

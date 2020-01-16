@@ -18,7 +18,7 @@ const actions = {
   getHomeArticles({ commit }, params) {
     return this.$axios
       .$get('/api/article', { params })
-      .then(res => commit('UPDATE_HOME', res.data))
+      .then((res) => commit('UPDATE_HOME', res.data))
   },
 
   getArticles({ commit }, params) {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 const files = require.context('./modules', false, /\.vue$/)
 const modules = {}
-files.keys().forEach(key => {
+files.keys().forEach((key) => {
   if (key === './index.js') {
     return
   }

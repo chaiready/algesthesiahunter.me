@@ -16,7 +16,7 @@ const mutations = {
 
 const actions = {
   getAnnouncements({ commit }) {
-    return this.$axios.$get('/api/announcement').then(announcement => {
+    return this.$axios.$get('/api/announcement').then((announcement) => {
       commit('UPDATE_ANNOUNCEMENT', announcement)
     })
   },

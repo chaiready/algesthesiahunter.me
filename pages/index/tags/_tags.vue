@@ -11,6 +11,11 @@ export default {
   components: {
     ArticleList,
   },
+  data() {
+    return {
+      data: [],
+    }
+  },
   asyncData({ store, query }) {
     return store.dispatch('article/getArticles', {
       page: query.page ? query.page : 1,

@@ -16,7 +16,7 @@ const mutations = {
 
 const actions = {
   getTags({ commit }) {
-    return this.$axios.$get('/api/tag').then(tags => {
+    return this.$axios.$get('/api/tag').then((tags) => {
       commit('UPDATE_TAGS', tags)
     })
   },

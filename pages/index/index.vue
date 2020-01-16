@@ -18,7 +18,9 @@ export default {
     ArticleList,
   },
   data() {
-    return {}
+    return {
+      data: [],
+    }
   },
   asyncData({ store, query }) {
     return store.dispatch('article/getArticles', {

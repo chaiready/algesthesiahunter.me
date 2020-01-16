@@ -62,7 +62,7 @@ export default {
       this.getArticles({
         page: this.page ? this.page : 1,
         keyword: this.keyword,
-      }).then(res => {
+      }).then((res) => {
         this.data = res.data
         this.initData()
       })
@@ -73,7 +73,7 @@ export default {
       this.getArticlesByDate({
         startAt: start,
         endAt: end,
-      }).then(res => {
+      }).then((res) => {
         this.data = res.data
         this.initData()
       })

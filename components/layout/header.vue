@@ -187,7 +187,7 @@ export default {
         },
       }
     })()
-    document.onkeydown = event => {
+    document.onkeydown = (event) => {
       const e = event || window.event
       if (e && e.keyCode === 76) {
         if (num.add()) {

@@ -3,7 +3,7 @@
  * @author: <https://github.com/algesthesiahunter>
  */
 import { animation } from './animation'
-const move = amount => {
+const move = (amount) => {
   document.documentElement.scrollTop = amount
   document.body.parentNode.scrollTop = amount
   document.body.scrollTop = amount

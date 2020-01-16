@@ -8,7 +8,7 @@
       <hot></hot>
     </div>
     <calendar
-      :timeList="timeList"
+      :time-list="timeList"
       @initData="initData"
       :lang="$i18n.locale"
       class="calendar"
@@ -65,8 +65,8 @@ export default {
       this.getArticlesByDate({
         startAt: params.startAt,
         endAt: params.endAt,
-      }).then(res => {
-        this.timeList = res.data.map(v => {
+      }).then((res) => {
+        this.timeList = res.data.map((v) => {
           return {
             _id: v._id,
             createdAt: v.createdAt,

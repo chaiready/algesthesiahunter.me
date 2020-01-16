@@ -5,7 +5,7 @@
 import marked from 'marked'
 import highlight from 'highlight.js'
 const renderer = new marked.Renderer()
-const imgRender = src => {
+const imgRender = (src) => {
   src = `${window.cdn}${src}`
   const imageHtml = `
     <img
@@ -31,7 +31,7 @@ marked.setOptions({
     return highlight.highlightAuto(code).value
   },
 })
-export default content => {
+export default (content) => {
   if (typeof content !== 'string') {
     return ''
   }
