@@ -1,0 +1,225 @@
+@import '@/assets/components.scss';
+.markdown-theme {
+  table {
+    display: table;
+    font-size: 13px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: $border-solid;
+    width: 100%;
+    margin-bottom: 24px;
+
+    th {
+      font-family: inherit;
+      font-size: inherit;
+      background: $module-bg;
+      white-space: nowrap;
+      font-weight: 600;
+      border: $border-solid;
+      padding: 8px 16px;
+    }
+
+    td {
+      border: $border-solid;
+      padding: 8px 16px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-width: none;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    border-radius: 2px;
+    opacity: 0.9;
+  }
+  p {
+    line-height: 2.2em;
+    text-indent: 2em;
+    margin-bottom: 1em;
+  }
+  ul {
+    list-style-type: square;
+  }
+  ul,
+  ol {
+    > li {
+      line-height: 1.8em;
+      padding: 0.5em 0.8em;
+
+      &:hover {
+        background-color: $module-hover-bg;
+      }
+
+      > p {
+        text-indent: 0;
+      }
+
+      > ul {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: inherit;
+    font-family: inherit;
+    line-height: inherit;
+  }
+
+  h1 {
+    font-weight: 700;
+    margin: 1em 0;
+  }
+
+  h2 {
+    font-weight: 700;
+    margin: 1em 0;
+  }
+
+  h3 {
+    font-weight: 600;
+    margin: 1em 0;
+  }
+
+  h4 {
+    font-weight: 500;
+    margin: 1em 0;
+  }
+
+  h5 {
+    font-weight: 500;
+    margin: 1em 0;
+  }
+
+  h6 {
+    font-weight: 400;
+    margin: 1em 0;
+  }
+  & > pre {
+    display: block;
+    color: white;
+    overflow-x: auto;
+    background: #282c34 !important;
+    padding: 14px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    position: relative;
+    & > code {
+      display: block;
+      color: #a6e22e;
+      overflow-x: auto;
+      font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New,
+        monospace !important;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+  del {
+    text-decoration: line-through;
+  }
+  p {
+    font-size: 14px;
+    code {
+      background-color: $body-bg;
+      padding: 3px 4px;
+      border-radius: 4px;
+      color: $keyword;
+    }
+  }
+}
+
+/*
+
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f;
+}
+
+.hljs,
+.hljs-tag,
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+  color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+  color: #a6e22e;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+  color: #66d9ef;
+}
+
+.hljs-symbol,
+.hljs-attribute {
+  color: #66d9ef;
+}
+
+.hljs-params,
+.hljs-class .hljs-title {
+  color: #a6e22e;
+}
+
+.hljs-string,
+.hljs-type,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+  color: #98c379;
+}
+.hljs-built_in {
+  color: #66d9ef;
+}
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
+}

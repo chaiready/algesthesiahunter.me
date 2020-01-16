@@ -1,6 +1,6 @@
 <p align="center">
   <a style='padding:20px 0' href="https://github.com/Algesthesiahunter/algesthesiahunter.me" target="blank">
-    <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/icon.png" width="90" alt="algesthesiahunter Logo" />
+    <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/icon.png" width="90" alt="algesthesiahunter Logo" />
   </a>
 </p>
 
@@ -12,10 +12,10 @@
 
 ## Screenshot
 
-![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/1_home.jpg)
-![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/1_markdown.jpg)
-![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/home.jpg)
-![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/github/screenshots/markdown.jpg)
+![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/screenshots/1_home.jpg)
+![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/screenshots/1_markdown.jpg)
+![home](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/screenshots/home.jpg)
+![markdown](https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/screenshots/markdown.jpg)
 
 ---
 

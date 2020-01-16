@@ -1,0 +1,44 @@
+#gitalk-container {
+  a {
+    color: $primary !important;
+  }
+  .gt-container .gt-svg svg {
+    fill: $primary !important;
+  }
+  .gt-container .gt-ico-github svg {
+    fill: $theme-black !important;
+  }
+  .gt-container {
+    .gt-user {
+      svg {
+        fill: $text !important;
+      }
+    }
+    .gt-btn {
+      border: 1px solid $primary !important;
+      background-color: $primary !important;
+    }
+    .gt-btn-preview {
+      color: $primary !important;
+      background-color: $module-bg !important;
+    }
+    .gt-ico-tip {
+      .gt-svg {
+        transform: translateY(-1.5px);
+      }
+    }
+  }
+  .gt-comment-body.markdown-body {
+    font-size: 14px !important;
+  }
+  .gt-comment{
+    img{
+      transition:transform 0.5s ease-out;
+    }
+    &:hover{
+      img{
+        transform:rotate(360deg);
+      }
+    }
+  }
+}
