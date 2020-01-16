@@ -4,7 +4,7 @@
   </a>
   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   <a href="https://github.com/surmon-china/surmon.me" target="blank">
-    <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/icon.png" height="90" alt="algesthesiahunter Logo" />
+    <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/icon.png" height="70" alt="algesthesiahunter Logo" />
   </a>
 </p>
 
