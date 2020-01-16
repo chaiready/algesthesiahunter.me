@@ -1,12 +1,20 @@
 <p align="center">
-  <a style='padding:20px 0' href="https://github.com/Algesthesiahunter/algesthesiahunter.me" target="blank">
-    <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/icon.png" width="90" alt="algesthesiahunter Logo" />
+  <a href="https://github.com/nuxt/nuxt.js" target="blank">
+    <img src="https://nuxtjs.org/meta_400.png" height="90" alt="nuxt logo" />
+  </a>
+  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <a href="https://github.com/surmon-china/surmon.me" target="blank">
+        <img src="https://raw.githubusercontent.com/Algesthesiahunter/algesthesiahunter.me/master/.github/icon.png" width="90" alt="algesthesiahunter Logo" />
   </a>
 </p>
 
 # algesthesiahunter.me
 
 ## Introduction
+
+**My personal website and blog, powered by [Nuxt.js](https://github.com/nuxt/nuxt.js).**
+
+**使用 [Nuxt.js](https://github.com/nuxt/nuxt.js) 构建的个人网站。**
 
 **Online site:** https://algesthesiahunter.top
 
