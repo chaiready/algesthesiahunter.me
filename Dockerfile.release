@@ -7,10 +7,10 @@ ENV VERSION ${version}
 ADD . /code
 WORKDIR /code
 
-RUN mkdir -p /app
-
 RUN npm i yarn -g \
   && yarn \
   && yarn build
+
+WORKDIR /code
 
 CMD yarn start
