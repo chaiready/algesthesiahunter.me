@@ -11,6 +11,4 @@ RUN npm i yarn -g \
   && yarn \
   && yarn build
 
-WORKDIR /code
-
 CMD yarn start

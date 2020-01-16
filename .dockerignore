@@ -1,6 +1,7 @@
 .git/
 .idea/
 .github/
+.nuxt/
 
 
 .DS_Store
