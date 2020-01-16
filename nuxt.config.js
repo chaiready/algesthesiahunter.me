@@ -1,20 +1,26 @@
 import { resolve } from 'path'
 import { i18nConfig } from './config/i18n.config'
 import { VUE_APP_HTTP_HOST } from './config/env'
+import { meta } from './config/meta'
 export default {
   mode: 'universal',
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: meta.title,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: meta.description,
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: meta.keywords,
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

@@ -28,6 +28,11 @@ export default {
   components: {
     markdown,
   },
+  head() {
+    return {
+      title: `${this.title} | ${this.category}`,
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       document.title = ` ${this.title} | ${rightTitle} `
