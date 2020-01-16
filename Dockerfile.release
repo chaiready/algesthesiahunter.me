@@ -8,7 +8,8 @@ ADD . /code
 WORKDIR /code
 
 RUN npm i yarn -g \
-  && yarn \
-  && yarn build
+  && yarn
+
+RUN yarn build
 
 CMD yarn start
