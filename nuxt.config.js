@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import fs from 'fs'
 import { i18nConfig } from './config/i18n.config'
 import { VUE_APP_HTTP_HOST } from './config/env'
 import { meta } from './config/meta'
@@ -116,9 +115,5 @@ export default {
   server: {
     port: 3001, // default: 3000
     host: '0.0.0.0', // default: localhost,
-    https: {
-      key: fs.readFileSync(resolve(__dirname, '/ssl/private.key')),
-      cert: fs.readFileSync(resolve(__dirname, '/ssl/certificate.crt')),
-    },
   },
 }

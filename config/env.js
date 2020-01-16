@@ -10,4 +10,4 @@ export const isModern = process && process.modern
 
 export const VUE_APP_HTTP_HOST = isDevMode
   ? 'http://localhost:3000'
-  : 'https://api.algesthesiahunter.top'
+  : 'http://api.algesthesiahunter.top'
