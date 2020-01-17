@@ -54,10 +54,6 @@ export const source = {
       zh: '强力驱动',
       en: ' ',
     },
-    vue: {
-      zh: 'Vue',
-      en: 'Vue',
-    },
     nuxt: {
       zh: 'Nuxt',
       en: 'Nuxt',

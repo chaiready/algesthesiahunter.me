@@ -1,9 +1,6 @@
 <template>
   <footer class="footer-container">
     <span>{{ $t('footer.powered') }} </span>
-    <a href="https://vuejs.org">
-      <span class="keyworld">{{ $t('footer.vue') }}</span>
-    </a>
     、<a href="https://nuxtjs.org"
       ><span class="keyworld">{{ $t('footer.nuxt') }}</span></a
     >
