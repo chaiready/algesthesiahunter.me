@@ -35,7 +35,6 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
   router: {
     middleware: ['router-middleware'],
   },
