@@ -40,4 +40,4 @@ const addImgPopup = (src, className) => {
 window.utils = window.utils || {}
 window.utils.addImgPopup = addImgPopup
 window.utils.delImgPopup = delImgPopup
-window.cdn = 'http://q2otndneo.bkt.clouddn.com/'
+window.cdn = 'https://cdn.algesthesiahunter.top/'
