@@ -1,7 +1,7 @@
 <template>
   <footer class="footer-container">
     <span>{{ $t('footer.powered') }} </span>
-    、<a href="https://nuxtjs.org"
+    <a href="https://nuxtjs.org"
       ><span class="keyworld">{{ $t('footer.nuxt') }}</span></a
     >
     、<a href="https://nestjs.com"
@@ -14,10 +14,13 @@
     <NuxtLink to="/about">
       <span class="keyworld">{{ $t('footer.me') }}</span>
     </NuxtLink>
+    <span class="gb">|</span>
+    <span>蜀ICP备20002208号</span>
   </footer>
 </template>
 <style scoped lang="scss">
 .footer-container {
+  user-select: none;
   margin-top: 14px;
   background-color: $module-bg;
   height: 72px;
