@@ -67,7 +67,7 @@
         </div>
       </div>
     </div>
-    <div class="block map-container">
+    <div class="block map-container" v-if="mapShow">
       <iframe src="/html/map.html" class="map-iframe"></iframe>
     </div>
   </div>
@@ -76,6 +76,14 @@
 <script>
 export default {
   name: 'About',
+  data() {
+    return {
+      mapShow: false,
+    }
+  },
+  mounted() {
+    this.$nextTick(() => (this.mapShow = true))
+  },
 }
 </script>
 <style lang="scss" scoped>
