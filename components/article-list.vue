@@ -29,7 +29,9 @@
           </div>
           <div class="category">
             <NuxtLink
-              :to="'/category/' + it.category.name + '?id=' + it.category._id"
+              :to="
+                '/category/' + it.category.name + '?category=' + it.category._id
+              "
             >
               <svg-icon icon-class="category"></svg-icon>
               {{ $t(`nav.${it.category.name}`) }}

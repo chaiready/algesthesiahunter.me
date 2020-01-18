@@ -6,7 +6,9 @@
           <span class="svg-box"
             ><svg-icon :icon-class="it.name" class="svg"></svg-icon
           ></span>
-          <span class="text">{{ $t(`tag.${it.name}`) }} [{{ it.count }}] </span>
+          <span class="text"
+            >{{ $t(`tag.${it.name}`) }} [{{ it.articles }}]
+          </span>
         </NuxtLink>
         <operating
           v-if="mode"
