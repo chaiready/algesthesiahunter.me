@@ -90,7 +90,7 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.mapShow = true
-      }, 200)
+      }, 300)
     })
   },
 }

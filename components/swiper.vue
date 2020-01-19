@@ -11,7 +11,7 @@
             <div class="content filter">
               <NuxtLink
                 :to="{
-                  path: '/articles/' + it._id,
+                  path: pathLang('/articles/' + it._id, lang),
                 }"
               >
                 <div class="img">
@@ -59,6 +59,7 @@ export default {
   },
   computed: {
     ...mapState('article', ['home']),
+    ...mapState('common', ['lang']),
   },
   mounted() {
     const observer = lozad()

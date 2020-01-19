@@ -9,6 +9,7 @@ function funcBack(store, name, title) {
   store.dispatch('common/updateTitle', str)
 }
 function middleware({ app, route, store }) {
+  app.head.bodyAttrs.class = store.state.common.theme
   const title = ''
   let path = route.path.replace(/\/*[a-z]*\//g, '')
   if (path === '') {

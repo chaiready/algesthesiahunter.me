@@ -4,7 +4,7 @@
       <div class="img-body">
         <NuxtLink
           :to="{
-            path: '/articles/' + it._id,
+            path: pathLang(`/articles/${it._id}`, lang),
           }"
         >
           <img :data-src="cdn + it.img" class="lozad" />
@@ -14,7 +14,7 @@
         <h5>
           <NuxtLink
             :to="{
-              path: '/articles/' + it._id,
+              path: pathLang('/articles/' + it._id, lang),
             }"
             class="title one-cut"
           >
@@ -29,9 +29,15 @@
           </div>
           <div class="category">
             <NuxtLink
-              :to="
-                '/category/' + it.category.name + '?category=' + it.category._id
-              "
+              :to="{
+                path: pathLang(
+                  '/category/' +
+                    it.category.name +
+                    '?category=' +
+                    it.category._id,
+                  lang
+                ),
+              }"
             >
               <svg-icon icon-class="category"></svg-icon>
               {{ $t(`nav.${it.category.name}`) }}
@@ -117,7 +123,7 @@ export default {
   computed: {
     ...mapState('category', ['categorys']),
     ...mapState('tag', ['tags']),
-    ...mapState('common', ['mode']),
+    ...mapState('common', ['mode', 'lang']),
   },
   methods: {
     ...mapActions('article', ['getArticles', 'deleteArticle', 'putArticle']),

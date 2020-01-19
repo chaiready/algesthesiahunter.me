@@ -15,7 +15,7 @@
           }"
           >{{ i + 1 }}</span
         >
-        <NuxtLink :to="'/articles/' + it._id" class="it-a">
+        <NuxtLink :to="pathLang('/articles/' + it._id, lang)" class="it-a">
           <span>{{ it.title }}</span>
         </NuxtLink>
       </li>
@@ -47,6 +47,7 @@ export default {
   },
   computed: {
     ...mapState('article', ['home']),
+    ...mapState('common', ['lang']),
   },
 }
 </script>

@@ -2,7 +2,10 @@
   <div class="category-container">
     <ul class="main">
       <li v-for="(it, i) in tags" :key="i" class="li">
-        <NuxtLink :to="'/tags/' + it.name + '?tags=' + it._id" class="it">
+        <NuxtLink
+          :to="pathLang('/tags/' + it.name + '?tags=' + it._id, lang)"
+          class="it"
+        >
           <span class="svg-box"
             ><svg-icon :icon-class="it.name" class="svg"></svg-icon
           ></span>
@@ -53,7 +56,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('common', ['mode']),
+    ...mapState('common', ['mode', 'lang']),
     ...mapState('tag', ['tags']),
   },
   methods: {

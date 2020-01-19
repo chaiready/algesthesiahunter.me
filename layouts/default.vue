@@ -9,7 +9,6 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
 import Header from '@/components/layout/header.vue'
 import Footer from '@/components/layout/footer.vue'
 import Main from '@/components/layout/main/index.vue'
@@ -19,12 +18,6 @@ export default {
     Header,
     Main,
     Footer,
-  },
-  methods: {
-    ...mapActions('common', ['browserInit']),
-  },
-  mounted() {
-    this.browserInit()
   },
 }
 </script>

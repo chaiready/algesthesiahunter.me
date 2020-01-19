@@ -1,7 +1,7 @@
 <template>
   <header ref="header" class="header-container">
     <div class="header">
-      <NuxtLink to="/" class="header-main">
+      <NuxtLink :to="pathLang('/', lang)" class="header-main">
         <div class="logo-main">
           <svg-icon icon-class="logo"></svg-icon>
           <div>lgesthesiahunter</div>
@@ -105,7 +105,7 @@ export default {
   computed: {
     ...mapState('tag', ['tags']),
     ...mapState('category', ['categorys']),
-    ...mapState('common', ['token', 'mode']),
+    ...mapState('common', ['token', 'mode', 'lang']),
   },
   methods: {
     ...mapActions('common', ['updateMode', 'login']),

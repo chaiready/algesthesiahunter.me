@@ -39,6 +39,11 @@ export default {
       } else {
         lang = 'en'
       }
+      const path = this.$route.name
+      const newPath = path.replace(/[a-z]{2}$/, lang)
+      this.$router.push({
+        name: newPath,
+      })
       this.updateLang(lang)
     },
   },

@@ -11,13 +11,21 @@
     <span style="margin-left:5px">{{ $t('footer.drive') }} </span>
     <span class="gb">|</span>
     <span>{{ $t('footer.design') }} </span>
-    <NuxtLink to="/about">
+    <NuxtLink :to="pathLang('/about', lang)">
       <span class="keyworld">{{ $t('footer.me') }}</span>
     </NuxtLink>
     <span class="gb">|</span>
     <span>蜀ICP备20002208号</span>
   </footer>
 </template>
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState('common', ['lang']),
+  },
+}
+</script>
 <style scoped lang="scss">
 .footer-container {
   user-select: none;

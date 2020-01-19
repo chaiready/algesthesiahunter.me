@@ -58,11 +58,14 @@
           <!--today-->
           <NuxtLink
             :to="
-              `/search?date=${formatDate(
-                day.getFullYear(),
-                day.getMonth() + 1,
-                day.getDate()
-              )}`
+              pathLang(
+                `/search?date=${formatDate(
+                  day.getFullYear(),
+                  day.getMonth() + 1,
+                  day.getDate()
+                )}`,
+                lang
+              )
             "
           >
             {{ day.getDate() }}

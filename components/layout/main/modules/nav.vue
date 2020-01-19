@@ -1,13 +1,13 @@
 <template>
   <div class="nav-container">
     <nav class="nav-list">
-      <NuxtLink :to="'/'" class="it" exact>
+      <NuxtLink :to="pathLang('/', lang)" class="it" exact>
         <svg-icon icon-class="home"></svg-icon>
         {{ navList.home }}</NuxtLink
       >
       <div v-for="(it, i) in categorys" :key="i" class="operating-it">
         <NuxtLink
-          :to="'/category/' + it.name + '?category=' + it._id"
+          :to="pathLang(`/category/${it.name}?category=${it._id}`, lang)"
           class="it"
         >
           <svg-icon :icon-class="it.name"></svg-icon>
@@ -26,7 +26,7 @@
         <svg-icon icon-class="project"></svg-icon>
         {{ navList.project }}</a
       >
-      <NuxtLink class="it" to="/about">
+      <NuxtLink class="it" :to="pathLang('/about', lang)">
         <svg-icon icon-class="about"></svg-icon>
         {{ navList.about }}
       </NuxtLink>
@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('common', ['mode']),
+    ...mapState('common', ['mode', 'lang']),
     ...mapState('category', ['categorys']),
     navList() {
       return this.$t('nav')
