@@ -126,12 +126,19 @@ export default {
     ...mapState('common', ['mode', 'lang']),
   },
   methods: {
-    ...mapActions('article', ['getArticles', 'deleteArticle', 'putArticle']),
+    ...mapActions('article', [
+      'getArticles',
+      'deleteArticle',
+      'putArticle',
+      'getArticleDetail',
+    ]),
     modeChange(it) {
       // 编辑
       this.show = true
-      this.form = it
-      this.current = it
+      this.getArticleDetail(it._id).then((res) => {
+        this.form = res
+        this.current = res
+      })
     },
     submit() {
       this.putArticle({
