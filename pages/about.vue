@@ -81,11 +81,16 @@ export default {
       mapShow: false,
     }
   },
+  head(app) {
+    return {
+      title: `${this.$store.state.common.title}`,
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
         this.mapShow = true
-      }, 100)
+      }, 200)
     })
   },
 }

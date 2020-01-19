@@ -11,6 +11,11 @@ export default {
   components: {
     ArticleList,
   },
+  head(app) {
+    return {
+      title: `${this.$store.state.common.title}`,
+    }
+  },
   data() {
     return {
       data: [],
