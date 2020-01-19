@@ -90,9 +90,6 @@ export default {
       this.getTags()
     },
   },
-  mounted() {
-    this.init()
-  },
 }
 </script>
 <style lang="scss" scoped>

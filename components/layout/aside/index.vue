@@ -10,7 +10,7 @@
     <calendar
       :time-list="timeList"
       @initData="initData"
-      :lang="$i18n.locale"
+      :lang="lang"
       class="calendar"
     />
     <tags :class="{ 'if-fixed': !tagsFixed }"></tags>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import hot from './modules/hot.vue'
 import tags from './modules/tags.vue'
 import calendar from './modules/calendar.vue'
@@ -44,8 +44,9 @@ export default {
     },
   },
   computed: {
+    ...mapState('common', ['lang']),
     isEnLang() {
-      return this.$i18n.locale === 'en'
+      return this.lang === 'en'
     },
     date() {
       return this.$route.query.date

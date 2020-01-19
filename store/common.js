@@ -7,7 +7,7 @@ import { showMessage } from '@/utils/show-message'
 const state = () => ({
   token: null,
   title: null,
-  mode: 0,
+  mode: false,
   lang: 'zh',
   theme: 'dark',
 })
@@ -17,9 +17,7 @@ const mutations = {
     localStorage.token = token
   },
   UPDATE_MODE(state, mode) {
-    const res = mode + '' === 'true'
-    localStorage.mode = res
-    state.mode = res
+    state.mode = mode
   },
   UPDATE_LANG(state, lang) {
     const res = lang === 'en' ? 'en' : 'zh'
@@ -40,9 +38,8 @@ const mutations = {
 }
 const actions = {
   browserInit({ commit }) {
-    const { token, mode, lang, theme } = localStorage
+    const { token, lang, theme } = localStorage
     commit('UPDATE_TOKEN', token)
-    commit('UPDATE_MODE', mode)
     commit('UPDATE_LANG', lang)
     commit('UPDATE_THEME', theme)
   },

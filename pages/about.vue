@@ -87,11 +87,9 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.mapShow = true
-      }, 300)
-    })
+    setTimeout(() => {
+      this.mapShow = true
+    }, 300)
   },
 }
 </script>

@@ -47,8 +47,7 @@ export default {
    */
   plugins: [
     { src: '@/plugins/http' },
-    { src: '@/plugins/extend/server' },
-    { src: '@/plugins/extend/client', mode: 'client' },
+    { src: '@/plugins/server' },
     { src: '@/plugins/init.client', mode: 'client' },
   ],
   /*

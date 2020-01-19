@@ -27,6 +27,9 @@ export default {
       page: query.page ? query.page : 1,
     })
   },
+  fetch({ store }) {
+    return store.dispatch('tag/getTags')
+  },
 }
 </script>
 <style lang="scss" scoped>

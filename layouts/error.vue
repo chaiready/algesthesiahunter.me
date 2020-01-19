@@ -7,9 +7,9 @@
           This page could not be found
         </h2>
       </div>
-      <p class="error-link">
+      <div class="error-link">
         <nuxt-link class="link" to="/"> rua~</nuxt-link>
-      </p>
+      </div>
     </div>
   </div>
 </template>
