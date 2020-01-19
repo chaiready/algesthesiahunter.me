@@ -112,13 +112,13 @@ export default {
     const date = new Date()
     const year = date.getFullYear()
     const month = date.getMonth() + 1
-    const day = date.getDay()
+    const day = date.getDate()
     this.todayDate = {
       year,
       month,
       day,
     }
-    this.initData(this.formatDate(year, month, day))
+    this.initData(this.formatDate(year, month, 1))
   },
   methods: {
     dayHasArticle(day) {

@@ -4,7 +4,6 @@
  */
 import MD5 from 'crypto-js/md5'
 import { showMessage } from '@/utils/show-message'
-
 const state = () => ({
   token: null,
   mode: 0,
@@ -25,6 +24,7 @@ const mutations = {
     const res = lang === 'en' ? 'en' : 'zh'
     localStorage.lang = res
     state.lang = res
+    this.$i18n.locale = res
   },
   UPDATE_THEME(state, theme) {
     const res = theme === 'default' ? 'default' : 'dark'
@@ -41,12 +41,6 @@ const actions = {
     commit('UPDATE_MODE', mode)
     commit('UPDATE_LANG', lang)
     commit('UPDATE_THEME', theme)
-    setInterval(() => {
-      const title = document.title
-      const word = title.slice(0, 1)
-      const end = title.slice(1, title.length)
-      document.title = end + word
-    }, 300)
   },
   logout: ({ commit }) => {
     commit('UPDATE_TOKEN', null)

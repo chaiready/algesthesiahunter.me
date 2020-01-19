@@ -30,12 +30,11 @@ export default {
   },
   head() {
     return {
-      title: `${this.title} | ${this.category}`,
+      title: `${this.title} | ${rightTitle}`,
     }
   },
   mounted() {
     this.$nextTick(() => {
-      document.title = ` ${this.title} | ${rightTitle} `
       const observer = lozad()
       observer.observe()
       this.initGitalk()

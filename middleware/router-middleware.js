@@ -1,4 +1,3 @@
-import { rightTitle } from '@/utils/title'
 import { source } from '@/config/i18n.config.js'
 function middleware({ app, route, store }) {
   let title = ''
@@ -12,7 +11,7 @@ function middleware({ app, route, store }) {
     if (i18Res) {
       title = `${store.$i18n.t(name)}  |  `.toUpperCase()
     }
+    app.head.title = title
   }
-  app.head.title = title + rightTitle
 }
 export { middleware as default }

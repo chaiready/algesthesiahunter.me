@@ -33,12 +33,13 @@ export default {
       this.updateTheme(theme)
     },
     switchLang() {
+      let lang
       if (this.lang === 'en') {
-        this.$i18n.locale = 'zh'
+        lang = 'zh'
       } else {
-        this.$i18n.locale = 'en'
+        lang = 'en'
       }
-      this.updateLang(this.$i18n.locale)
+      this.updateLang(lang)
     },
   },
 }
