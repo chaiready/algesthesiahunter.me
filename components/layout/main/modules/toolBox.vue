@@ -8,7 +8,7 @@
     <div
       :class="{ 'theme cu-p de': true, 'theme-bg': theme === 'dark' }"
       @click="changeToRed(theme)"
-      title="Switch language"
+      title="Switch theme"
     >
       <svg-icon icon-class="theme"></svg-icon>
     </div>

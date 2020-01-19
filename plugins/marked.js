@@ -4,17 +4,20 @@
  */
 import marked from 'marked'
 import highlight from 'highlight.js'
+import { isBrowser } from '@/config/env'
 const renderer = new marked.Renderer()
 const imgRender = (src) => {
-  src = `${window.cdn}${src}`
-  const imageHtml = `
-    <img
-      class="lozad"
-      data-src="${src}"
-      onclick="if (window.utils) window.utils.addImgPopup('${src}')"
-    />
-  `
-  return imageHtml.replace(/\s+/g, ' ').replace(/\n/g, ' ')
+  if (isBrowser) {
+    src = `${window.cdn}${src}`
+    const imageHtml = `
+      <img
+        class="lozad"
+        data-src="${src}"
+        onclick="if (window.utils) window.utils.addImgPopup('${src}')"
+      />
+    `
+    return imageHtml.replace(/\s+/g, ' ').replace(/\n/g, ' ')
+  }
 }
 renderer.image = imgRender
 
