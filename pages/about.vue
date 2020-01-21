@@ -33,7 +33,7 @@
             <svg-icon icon-class="contact" class="icon"></svg-icon>
             <div class="contact-icon">
               <a href="https://github.com/Algesthesiahunter" target="_blink"
-                ><svg-icon icon-class="git" class="icon git"></svg-icon
+                ><svg-icon icon-class="github" class="icon github"></svg-icon
               ></a>
               <a href="mailto:541877028@qq.com"
                 ><svg-icon icon-class="email" class="icon email"></svg-icon
@@ -200,7 +200,7 @@ export default {
       text-transform: capitalize;
     }
     .contact-icon {
-      .git {
+      .github {
         &:hover {
           color: black;
         }

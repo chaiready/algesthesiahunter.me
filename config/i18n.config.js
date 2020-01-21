@@ -84,6 +84,66 @@ export const source = {
       zh: 'javascript',
       en: 'javascript',
     },
+    algorithm: {
+      zh: '算法',
+      en: 'algorithm',
+    },
+    css: {
+      zh: 'css',
+      en: 'css',
+    },
+    nodejs: {
+      zh: 'nodejs',
+      en: 'nodejs',
+    },
+    react: {
+      zh: 'react',
+      en: 'react',
+    },
+    linux: {
+      zh: 'linux',
+      en: 'linux',
+    },
+    mac: {
+      zh: 'mac',
+      en: 'mac',
+    },
+    docker: {
+      zh: 'docker',
+      en: 'docker',
+    },
+    github: {
+      zh: 'github',
+      en: 'github',
+    },
+    git: {
+      zh: 'git',
+      en: 'git',
+    },
+    security: {
+      zh: '安全',
+      en: 'security',
+    },
+    life: {
+      zh: '生活',
+      en: 'life',
+    },
+    learn: {
+      zh: '学习',
+      en: 'learn',
+    },
+    network: {
+      zh: '网络',
+      en: 'network',
+    },
+    optimization: {
+      zh: '优化',
+      en: 'optimization',
+    },
+    typescript: {
+      zh: 'typescript',
+      en: 'typescript',
+    },
   },
   text: {
     origin: {
