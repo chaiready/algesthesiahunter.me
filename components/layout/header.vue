@@ -163,40 +163,6 @@ export default {
       }
     },
   },
-  mounted() {
-    const num = (() => {
-      let l = 0
-      let start = new Date().getTime()
-
-      const addl = () => {
-        const now = new Date().getTime()
-        if (now - start <= 1000) {
-          l += 1
-          if (l === 2) {
-            l = 0
-            start = new Date().getTime()
-            return true
-          }
-        } else {
-          l = 0
-          start = new Date().getTime()
-        }
-      }
-      return {
-        add() {
-          return addl()
-        },
-      }
-    })()
-    document.onkeydown = (event) => {
-      const e = event || window.event
-      if (e && e.keyCode === 76) {
-        if (num.add()) {
-          this.popLogin()
-        }
-      }
-    }
-  },
 }
 </script>
 
