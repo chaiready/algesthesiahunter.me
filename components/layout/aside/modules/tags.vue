@@ -32,6 +32,7 @@
       </li>
     </ul>
     <MaskDialog
+      v-if="mode"
       v-model="show"
       :title="type ? '添加Tag' : '编辑Tag'"
       @submit="submit"

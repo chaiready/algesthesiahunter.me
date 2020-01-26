@@ -41,6 +41,7 @@
       >
     </nav>
     <MaskDialog
+      v-if="mode"
       v-model="show"
       :title="type ? '添加category' : '编辑category'"
       @submit="submit"

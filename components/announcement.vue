@@ -41,6 +41,7 @@
     </transition>
     <MaskDialog
       v-model="show"
+      v-if="mode"
       :title="type ? '添加公告' : '编辑公告'"
       @submit="submit"
     >

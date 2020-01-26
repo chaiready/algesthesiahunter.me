@@ -6,6 +6,7 @@ import '@/plugins/marked'
 import '@/plugins/svg'
 import '@/plugins/pop-confirm'
 import '@/plugins/img-pop'
+import '@/components/global'
 Vue.prototype.showMessage = showMessage
 
 export default function({ store, redirect, route, app }) {

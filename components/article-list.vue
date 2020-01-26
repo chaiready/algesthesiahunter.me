@@ -56,7 +56,7 @@
     <div v-if="article && article.length === 0" class="empty">
       空空如也
     </div>
-    <MaskDialog v-model="show" @submit="submit" title="编辑article">
+    <MaskDialog v-model="show" v-if="mode" @submit="submit" title="编辑article">
       <div class="form">
         <span>标题</span>
         <input v-focus v-model="form.title" type="text" class="inp" />

@@ -29,6 +29,7 @@
       </div>
     </div>
     <MaskDialog
+      v-if="mode"
       v-model="show"
       @submit="submit"
       :title="type ? '添加文章' : '管理员登录'"

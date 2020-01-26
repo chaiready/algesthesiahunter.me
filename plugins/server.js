@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import '@/plugins/filters'
-import '@/components/global'
+import '@/components/global/server'
 function pathLang(path, lang) {
   if (lang === 'zh') {
     return path
