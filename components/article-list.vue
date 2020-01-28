@@ -56,46 +56,6 @@
     <div v-if="article && article.length === 0" class="empty">
       空空如也
     </div>
-    <MaskDialog v-model="show" v-if="mode" @submit="submit" title="编辑article">
-      <div class="form">
-        <span>标题</span>
-        <input v-focus v-model="form.title" type="text" class="inp" />
-      </div>
-      <div class="form">
-        <span>分类</span>
-        <select v-model="form.category">
-          <option v-for="(it, i) in categorys" :key="i" :value="it._id">{{
-            it.name
-          }}</option>
-        </select>
-      </div>
-      <div class="form">
-        <span>标签</span>
-        <div class="checkbox-box">
-          <div v-for="(it, i) in tags" :key="i" class="item">
-            <input
-              :id="it._id"
-              :value="it._id"
-              v-model="form.tags"
-              type="checkbox"
-            />
-            <label :for="it._id">{{ it.name }}</label>
-          </div>
-        </div>
-      </div>
-      <div class="form">
-        <span>图片</span>
-        <input v-model="form.img" type="text" class="inp" />
-      </div>
-      <div class="form">
-        <span>描述</span>
-        <textarea v-model="form.des" rows="2" type="text" class="inp" />
-      </div>
-      <div class="form">
-        <span>内容</span>
-        <textarea v-model="form.content" rows="5" type="text" class="inp" />
-      </div>
-    </MaskDialog>
   </div>
 </template>
 
@@ -108,15 +68,6 @@ export default {
       type: Array,
     },
   },
-  data() {
-    return {
-      show: false,
-      form: {
-        tags: [],
-      },
-      current: null,
-    }
-  },
   mounted() {
     this.$nextTick(() => this.initData())
   },
@@ -126,25 +77,14 @@ export default {
     ...mapState('common', ['mode', 'lang']),
   },
   methods: {
-    ...mapActions('article', [
-      'getArticles',
-      'deleteArticle',
-      'putArticle',
-      'getArticleDetail',
-    ]),
+    ...mapActions('article', ['getArticles', 'deleteArticle']),
     modeChange(it) {
-      // 编辑
-      this.show = true
-      this.getArticleDetail(it._id).then((res) => {
-        this.form = res
-        this.current = res
+      this.$router.push({
+        path: '/edit',
+        query: {
+          id: it._id,
+        },
       })
-    },
-    submit() {
-      this.putArticle({
-        id: this.current._id,
-        params: this.form,
-      }).then(() => this.init())
     },
     lozadRender() {
       this.$nextTick(() => {
@@ -157,11 +97,6 @@ export default {
     },
     initData() {
       this.lozadRender()
-      this.show = false
-      this.form = {
-        tags: [],
-      }
-      this.current = null
     },
     init() {
       const { page, keyword, category, tags } = this.$route.query

@@ -34,47 +34,7 @@
       @submit="submit"
       :title="type ? '添加文章' : '管理员登录'"
     >
-      <template v-if="type">
-        <div class="form">
-          <span>标题</span>
-          <input v-focus v-model="form.title" type="text" class="inp" />
-        </div>
-        <div class="form">
-          <span>分类</span>
-          <select v-model="form.category">
-            <option v-for="(it, i) in categorys" :key="i" :value="it._id">{{
-              it.name
-            }}</option>
-          </select>
-        </div>
-        <div class="form">
-          <span>标签</span>
-          <div class="checkbox-box">
-            <div v-for="(it, i) in tags" :key="i" class="item">
-              <input
-                :id="it._id"
-                :value="it._id"
-                v-model="form.tags"
-                type="checkbox"
-              />
-              <label :for="it._id">{{ it.name }}</label>
-            </div>
-          </div>
-        </div>
-        <div class="form">
-          <span>图片</span>
-          <input v-model="form.img" type="text" class="inp" />
-        </div>
-        <div class="form">
-          <span>描述</span>
-          <textarea v-model="form.des" rows="2" type="text" class="inp" />
-        </div>
-        <div class="form">
-          <span>内容</span>
-          <textarea v-model="form.content" rows="5" type="text" class="inp" />
-        </div>
-      </template>
-      <div v-else class="form">
+      <div v-if="!type" class="form">
         <span>密码</span>
         <input
           v-focus
@@ -98,40 +58,19 @@ export default {
       keyword: '',
       show: false,
       password: null,
-      form: {
-        tags: [],
-      },
     }
   },
   computed: {
-    ...mapState('tag', ['tags']),
-    ...mapState('category', ['categorys']),
     ...mapState('common', ['token', 'mode', 'lang']),
   },
   methods: {
     ...mapActions('common', ['updateMode', 'login']),
-    ...mapActions('article', ['postArticle']),
     modeChange() {
-      this.show = true
-      this.type = true
-      this.form = {
-        tags: [],
-      }
-    },
-    add() {
-      this.postArticle(this.form).then(
-        () =>
-          (this.form = {
-            tags: [],
-          })
-      )
+      this.$router.push({
+        path: '/edit',
+      })
     },
     submit() {
-      if (this.type) {
-        // 新增
-        this.add()
-        return false
-      }
       this.login(this.password).then(() => (this.show = !this.show))
     },
     switchMode() {
