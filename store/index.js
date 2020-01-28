@@ -6,6 +6,7 @@ export const actions = {
         page: 1,
       }),
       store.dispatch('category/getCategorys'),
+      store.dispatch('tag/getTags'),
     ])
   },
 }
