@@ -2,12 +2,12 @@
   <div class="articles">
     <template v-if="content">
       <div class="title">
-        <h2>{{ title }}</h2>
         <img
           class="lozad"
           :data-src="cdn + img"
           @click="addImgPopup(cdn + img)"
         />
+        <h2>{{ title }}</h2>
       </div>
       <markdown :value="content"></markdown>
       <div id="gitalk-container"></div>
@@ -67,12 +67,12 @@ export default {
 <style lang="scss" scoped>
 .articles {
   padding: 12px 24px;
+  padding-top: 24px;
   background-color: $module-bg;
   .title {
     h2 {
       color: $md-title;
       margin: 1em 0 1.5em;
-      text-align: center;
       font-weight: 700;
       font-size: 19.285px;
     }
