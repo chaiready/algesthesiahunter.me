@@ -26,9 +26,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
-  transition: none;
   padding-top: 75px;
+  min-height: 100vh;
+  transition: none;
+  position: relative;
   .g-background-img {
     position: fixed;
     width: 100%;
