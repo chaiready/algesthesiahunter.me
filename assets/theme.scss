@@ -5,12 +5,10 @@
   $primary,
   $body-bg,
   $module-hover-bg,
-  $logo-rotate,
-  $keyword
+  $keyword,
 ) {
   #{--body-bg}: $body-bg;
   #{--theme-black}: $black;
-  #{--theme-logo-rotate}: $logo-rotate;
 
   #{--module-bg}: rgba($text-reversal, 0.6);
   #{--module-bg-opacity-5}: rgba($text-reversal, 0.5);
@@ -53,8 +51,7 @@ body {
       $primary: #0088f5,
       $body-bg: #eee,
       $module-hover-bg: rgba(197, 197, 197, 0.5),
-      $logo-rotate: none,
-      $keyword: #f56a00
+      $keyword: #f56a00,
     );
   }
   &.dark {
@@ -65,8 +62,7 @@ body {
       $primary: #ff4081,
       $body-bg: #000,
       $module-hover-bg: rgba(0, 0, 0, 0.5),
-      $logo-rotate: hue-rotate(30deg) brightness(180%) grayscale(100%),
-      $keyword: #f04134
+      $keyword: #f04134,
     );
   }
 }
