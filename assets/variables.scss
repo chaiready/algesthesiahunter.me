@@ -56,6 +56,11 @@ $font-size-h3: 18px;
 $font-size-h4: 16px;
 $font-size-h5: 14px;
 $font-size-h6: 13px;
+
+//markdown
+$md-title: var(--md-title);
+$md-quote: var(--md-quote);
+$md-quote-border: var(--md-quote-border);
 // cdn
 
 $cdn: 'https://cdn.algesthesiahunter.top/';

@@ -70,6 +70,7 @@ export default {
   background-color: $module-bg;
   .title {
     h2 {
+      color: $md-title;
       margin: 1em 0 1.5em;
       text-align: center;
       font-weight: 700;

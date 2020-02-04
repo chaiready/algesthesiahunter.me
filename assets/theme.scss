@@ -6,6 +6,9 @@
   $body-bg,
   $module-hover-bg,
   $keyword,
+  $md-title,
+  $md-quote,
+  $md-quote-border,
 ) {
   #{--body-bg}: $body-bg;
   #{--theme-black}: $black;
@@ -40,6 +43,9 @@
   #{--link-hover-color}: darken($text, 20%);
 
   #{--keyword-color}: rgba($keyword, 0.9);
+  #{--md-title}: $md-title;
+  #{--md-quote}: $md-quote;
+  #{--md-quote-border}: $md-quote-border;
 }
 
 body {
@@ -52,6 +58,9 @@ body {
       $body-bg: #eee,
       $module-hover-bg: rgba(197, 197, 197, 0.5),
       $keyword: #f56a00,
+      $md-title: #159957,
+      $md-quote: #f2f7fb,
+      $md-quote-border: #dce6f0,
     );
   }
   &.dark {
@@ -62,7 +71,10 @@ body {
       $primary: #ff4081,
       $body-bg: #000,
       $module-hover-bg: rgba(0, 0, 0, 0.5),
-      $keyword: #f04134,
+      $keyword: #7a2222,
+      $md-title: #fff,
+      $md-quote: #01150e,
+      $md-quote-border: #002315,
     );
   }
 }

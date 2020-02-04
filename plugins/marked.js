@@ -8,7 +8,9 @@ import { isBrowser } from '@/config/env'
 const renderer = new marked.Renderer()
 const imgRender = (src) => {
   if (isBrowser) {
-    src = `${window.cdn}${src}`
+    if (!/http/.test(src)) {
+      src = `${window.cdn}${src}`
+    }
     const imageHtml = `
       <img
         class="lozad"
