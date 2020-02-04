@@ -17,20 +17,12 @@ export const source = {
       en: 'coding',
     },
     project: {
-      zh: '八窗玲珑',
+      zh: '实验室',
       en: 'project',
     },
-    vlog: {
-      zh: '止于至善',
-      en: 'vlog',
-    },
     about: {
-      zh: '明月芦花',
+      zh: '狂浪生',
       en: 'about',
-    },
-    guestbook: {
-      zh: '海纳百川',
-      en: 'guestbook',
     },
   },
   footer: {
