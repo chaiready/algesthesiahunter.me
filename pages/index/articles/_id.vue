@@ -34,6 +34,14 @@ export default {
   components: {
     markdown,
   },
+  data() {
+    return {
+      origin: null,
+      img: null,
+      content: null,
+      title: null,
+    }
+  },
   head() {
     return {
       title: `${this.title} | ${rightTitle}`,
