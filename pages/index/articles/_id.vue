@@ -2,12 +2,15 @@
   <div class="articles">
     <template v-if="content">
       <div class="title">
+        <div class="origin" v-if="origin">
+          {{ $t(`text.origin.${origin}`) }}
+        </div>
+        <h2>{{ title }}</h2>
         <img
           class="lozad"
           :data-src="cdn + img"
           @click="addImgPopup(cdn + img)"
         />
-        <h2>{{ title }}</h2>
       </div>
       <markdown :value="content"></markdown>
       <div id="gitalk-container"></div>
@@ -69,10 +72,27 @@ export default {
   padding: 12px 24px;
   padding-top: 24px;
   background-color: $module-bg;
+  position: relative;
+  overflow: hidden;
   .title {
+    margin-bottom: 20px;
+    .origin {
+      transform: rotate(-45deg);
+      background-color: $md-title;
+      position: absolute;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 28px 38px;
+      padding-bottom: 12px;
+      color: $text-reversal;
+      left: -36px;
+      top: -12px;
+    }
     h2 {
       color: $md-title;
       margin: 1em 0 1.5em;
+      margin-top: 0;
+      text-align: center;
       font-weight: 700;
       font-size: 19.285px;
     }

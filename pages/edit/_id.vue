@@ -29,6 +29,14 @@
         </div>
       </div>
       <div class="w100">
+        <span>来源</span>
+        <select v-model="form.origin">
+          <option v-for="(it, i) in origin" :key="i" :value="it">{{
+            $t(`text.origin.${it}`)
+          }}</option>
+        </select>
+      </div>
+      <div class="w100">
         <span>图片</span>
         <input v-model="form.img" type="text" class="inp w100" />
       </div>
@@ -70,6 +78,7 @@ export default {
   computed: {
     ...mapState('tag', ['tags']),
     ...mapState('category', ['categorys']),
+    ...mapState('article', ['origin']),
     id() {
       return this.$route.query.id
     },
@@ -110,6 +119,7 @@ export default {
           img: res.img,
           content: res.content,
           category: res.category,
+          origin: res.origin,
         }
       })
     }

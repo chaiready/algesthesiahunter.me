@@ -6,6 +6,7 @@ import { showMessage } from '@/utils/show-message'
 
 const state = () => ({
   home: [],
+  origin: ['original', 'reprint', 'hybrid'],
 })
 
 const mutations = {

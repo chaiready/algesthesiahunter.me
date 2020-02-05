@@ -152,7 +152,7 @@ export const source = {
         en: 'rp',
       },
       hybrid: {
-        zh: ' 混撰',
+        zh: '混撰',
         en: 'hb',
       },
     },
