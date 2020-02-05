@@ -2,7 +2,10 @@
   <div class="articles">
     <template v-if="content">
       <div class="title">
-        <div class="origin" v-if="origin">
+        <div
+          :class="{ origin: true, other: origin != 'original' }"
+          v-if="origin"
+        >
           {{ $t(`text.origin.${origin}`) }}
         </div>
         <h2>{{ title }}</h2>
@@ -70,7 +73,7 @@ export default {
 <style lang="scss" scoped>
 .articles {
   padding: 12px 24px;
-  padding-top: 24px;
+  padding-top: 30px;
   background-color: $module-bg;
   position: relative;
   overflow: hidden;
@@ -78,7 +81,7 @@ export default {
     margin-bottom: 20px;
     .origin {
       transform: rotate(-45deg);
-      background-color: $md-title;
+      background-color: $green;
       position: absolute;
       font-size: 12px;
       font-weight: bold;
@@ -88,13 +91,16 @@ export default {
       left: -36px;
       top: -12px;
     }
+    .other {
+      background-color: $red;
+    }
     h2 {
       color: $md-title;
-      margin: 1em 0 1.5em;
+      margin-bottom: 1.3em;
       margin-top: 0;
       text-align: center;
       font-weight: 700;
-      font-size: 19.285px;
+      font-size: 18px;
     }
     img {
       height: 200px;

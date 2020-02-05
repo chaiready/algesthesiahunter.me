@@ -9,6 +9,12 @@
         >
           <img :data-src="cdn + it.img" class="lozad" />
         </NuxtLink>
+        <div
+          :class="{ origin: true, other: it.origin != 'original' }"
+          v-if="it.origin"
+        >
+          {{ $t(`text.origin.${it.origin}`) }}
+        </div>
       </div>
       <div class="it-body">
         <h5>
@@ -25,7 +31,7 @@
         <div class="it-meta">
           <div class="time">
             <svg-icon icon-class="calendar"></svg-icon>
-            {{ it.createdAt | unixToCommonFilter }}
+            {{ it.createdAt | unixToCommonFilter(lang) }}
           </div>
           <div class="category">
             <NuxtLink
@@ -120,6 +126,9 @@ export default {
     overflow: hidden;
     position: relative;
     &:hover {
+      .origin {
+        opacity: 1 !important;
+      }
       .operating {
         visibility: visible;
         opacity: 1;
@@ -136,9 +145,22 @@ export default {
       display: flex;
       overflow: hidden;
       flex-shrink: 0;
+      position: relative;
       img {
         height: 100%;
         width: 180px;
+      }
+      .origin {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0.6;
+        color: $text-reversal;
+        padding: 6px 8px;
+        background-color: $green;
+      }
+      .other {
+        background-color: $red;
       }
     }
     .it-body {
@@ -165,6 +187,9 @@ export default {
         display: flex;
         justify-content: space-between;
         font-size: 12px;
+        .time {
+          text-transform: uppercase;
+        }
         div {
           display: flex;
           justify-content: center;

@@ -1,9 +1,16 @@
 import dayjs from 'dayjs'
-
-export default function unixToCommonFilter(time, format) {
-  if (format) {
-    return dayjs.unix(time / 1000).format(format)
-  }
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/zh-cn'
+dayjs.extend(relativeTime)
+export default function unixToCommonFilter(time, lang, format) {
+  format = format || 'YYYY/M/D a'
   const t = dayjs(time)
-  return dayjs.unix(t / 1000).format('YYYY/M/D HH:mm:ss')
+  if (lang === 'zh') {
+    return dayjs
+      .unix(t / 1000)
+      .locale('zh-cn')
+      .format('YYYY/M/D a')
+  } else {
+    return dayjs.unix(t / 1000).format('YYYY/M/D a')
+  }
 }
