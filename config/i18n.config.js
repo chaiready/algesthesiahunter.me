@@ -136,6 +136,10 @@ export const source = {
       zh: 'typescript',
       en: 'typescript',
     },
+    tool: {
+      zh: '工具',
+      en: 'tool',
+    },
   },
   text: {
     origin: {

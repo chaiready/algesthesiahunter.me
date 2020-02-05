@@ -9,7 +9,7 @@ const state = () => ({
   title: null,
   mode: false,
   lang: 'zh',
-  theme: 'dark',
+  theme: 'default',
 })
 const mutations = {
   UPDATE_TOKEN(state, token) {
@@ -29,7 +29,7 @@ const mutations = {
     this.app.head.title = title
   },
   UPDATE_THEME(state, theme) {
-    const res = theme === 'default' ? 'default' : 'dark'
+    const res = theme === 'dark' ? 'dark' : 'default'
     document.body.classList.remove('default', 'dark')
     document.body.classList.add(res)
     localStorage.theme = res
