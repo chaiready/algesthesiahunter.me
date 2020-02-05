@@ -3,8 +3,8 @@
     <nav class="nav-list">
       <NuxtLink :to="pathLang('/', lang)" class="it" exact>
         <svg-icon icon-class="home"></svg-icon>
-        {{ navList.home }}</NuxtLink
-      >
+        {{ navList.home }}
+      </NuxtLink>
       <div v-for="(it, i) in categorys" :key="i" class="operating-it">
         <NuxtLink
           :to="pathLang(`/category/${it.name}?category=${it._id}`, lang)"
@@ -22,10 +22,10 @@
         ></operating>
       </div>
 
-      <a class="it" target="_blank" href="https://algesthesiahunter.github.io">
+      <a class="it" target="_blank" href="https://coding.algesthesiahunter.top">
         <svg-icon icon-class="project"></svg-icon>
-        {{ navList.project }}</a
-      >
+        {{ navList.project }}
+      </a>
       <NuxtLink class="it" :to="pathLang('/about', lang)">
         <svg-icon icon-class="about"></svg-icon>
         {{ navList.about }}
@@ -36,9 +36,8 @@
         href="javascript:void(0);"
         class="it"
       >
-        <svg-icon icon-class="route.category"></svg-icon>
-        妙手生花</a
-      >
+        <svg-icon icon-class="route.category"></svg-icon>妙手生花
+      </a>
     </nav>
     <MaskDialog
       v-if="mode"
