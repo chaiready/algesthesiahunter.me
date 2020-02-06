@@ -36,7 +36,7 @@ export default {
   mounted() {
     const height = window.screen.availHeight
     if (height) {
-      this.limit = 2600 * (height / 1050)
+      this.limit = (this.limit / 1050) * height
     }
     this.markedInit()
   },
