@@ -4,7 +4,7 @@
       <NuxtLink :to="pathLang('/', lang)" class="header-main">
         <div class="logo-main">
           <svg-icon icon-class="logo" v-if="website"></svg-icon>
-          <div ref="website">Algesthesiahunter</div>
+          <div ref="website" style="padding-left:8px">Algesthesiahunter</div>
         </div>
         <div class="header-slogan">{{ $t('text.slogan') }}</div>
       </NuxtLink>
@@ -105,6 +105,7 @@ export default {
   },
   mounted() {
     this.$refs.website.innerHTML = 'lgesthesiahunter'
+    this.$refs.website.style.paddingLeft = 0
     this.website = true
   },
 }
@@ -136,6 +137,9 @@ export default {
     .logo-main {
       display: flex;
       align-items: center;
+      div {
+        transition: none;
+      }
     }
     .header-slogan {
       font-size: 14px;
