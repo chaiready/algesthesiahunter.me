@@ -20,8 +20,9 @@ export default {
   },
   data() {
     return {
-      limit: 1300,
+      limit: 2600,
       index: 0,
+      clipboard: null,
     }
   },
   computed: {
@@ -33,6 +34,10 @@ export default {
     },
   },
   mounted() {
+    const height = window.screen.availHeight
+    if (height) {
+      this.limit = 2600 * (height / 1050)
+    }
     this.markedInit()
   },
   methods: {
@@ -44,16 +49,20 @@ export default {
       }
       const io = new IntersectionObserver(this.markedCallback, options)
       io.observe(this.$refs['mk-more'])
+      this.nextRender()
     },
     markedCallback(v) {
       if (v[0].isIntersecting && this.index < this.maxIndex) {
         this.index++
-        this.$nextTick(() => {
-          const observer = lozad()
-          observer.observe()
-          this.addCopyBtn()
-        })
+        this.nextRender()
       }
+    },
+    nextRender() {
+      this.$nextTick(() => {
+        const observer = lozad()
+        observer.observe()
+        this.addCopyBtn()
+      })
     },
     addCopyBtn() {
       const pres =
@@ -71,15 +80,19 @@ export default {
           v.appendChild(div)
         }
       }
-      const clipboard = new ClipboardJS('.esa-clipboard-button')
-      clipboard.on('success', (e) => {
+      this.clipboard = new ClipboardJS('.esa-clipboard-button')
+      this.clipboard.destroy()
+      this.clipboard.on('success', (e) => {
         this.showMessage('代码已复制')
         e.clearSelection()
       })
-      clipboard.on('error', (e) => {
+      this.clipboard.on('error', (e) => {
         this.showMessage('代码复制失败')
       })
     },
+  },
+  beforeDestory() {
+    this.clipboard.destroy()
   },
 }
 </script>
