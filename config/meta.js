@@ -1,5 +1,5 @@
 export const meta = {
-  title: '霜末之冬-algesthesiahunter.top',
+  title: '霜末之冬 | Algesthesiahunter',
   keywords:
     'algesthesiahunter,霜末之冬,Vue开发者,前端技术开发,javascript技术,nuxt开发者,nest开发者',
   description:
