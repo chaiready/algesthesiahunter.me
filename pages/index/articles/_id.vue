@@ -27,8 +27,8 @@ import lozad from 'lozad'
 import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
 import MD5 from 'crypto-js/md5'
-import { rightTitle } from '@/utils/title'
 import markdown from '@/components/markdown.vue'
+import { isProdMode } from '@/config/env'
 export default {
   name: 'Articles',
   components: {
@@ -44,14 +44,30 @@ export default {
   },
   head() {
     return {
-      title: `${this.title} | ${rightTitle}`,
+      title: `${this.title} | 霜末之冬 | Algesthesiahunter`,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.des,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.tags.map((v) => v.name).toString(),
+        },
+      ],
     }
   },
   mounted() {
     this.$nextTick(() => {
       const observer = lozad()
       observer.observe()
-      this.initGitalk()
+      if (isProdMode) {
+        this.initGitalk()
+      }
     })
   },
   asyncData({ store, params }) {

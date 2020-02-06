@@ -3,8 +3,8 @@
     <div class="header">
       <NuxtLink :to="pathLang('/', lang)" class="header-main">
         <div class="logo-main">
-          <svg-icon icon-class="logo"></svg-icon>
-          <div>lgesthesiahunter</div>
+          <svg-icon icon-class="logo" v-if="website"></svg-icon>
+          <div ref="website">Algesthesiahunter</div>
         </div>
         <div class="header-slogan">{{ $t('text.slogan') }}</div>
       </NuxtLink>
@@ -57,6 +57,7 @@ export default {
       type: false,
       keyword: '',
       show: false,
+      website: false,
       password: null,
     }
   },
@@ -101,6 +102,10 @@ export default {
         })
       }
     },
+  },
+  mounted() {
+    this.$refs.website.innerHTML = 'lgesthesiahunter'
+    this.website = true
   },
 }
 </script>

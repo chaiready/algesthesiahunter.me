@@ -1,11 +1,10 @@
 import { source } from '@/config/i18n.config.js'
-import { rightTitle } from '@/utils/title'
 function funcBack(store, name, title) {
   const i18Res = store.$i18n.t(name)
   if (i18Res) {
-    title = `${store.$i18n.t(name)} | `.toUpperCase()
+    title = `${store.$i18n.t(name)}`.toUpperCase()
   }
-  const str = title + rightTitle
+  const str = `${title} | 霜末之冬 | Algesthesiahunter`
   store.dispatch('common/updateTitle', str)
 }
 function middleware({ app, route, store }) {
