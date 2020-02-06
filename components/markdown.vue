@@ -81,7 +81,6 @@ export default {
         }
       }
       this.clipboard = new ClipboardJS('.esa-clipboard-button')
-      this.clipboard.destroy()
       this.clipboard.on('success', (e) => {
         this.showMessage('代码已复制')
         e.clearSelection()
