@@ -13,7 +13,6 @@
 import ClipboardJS from 'clipboard'
 import lozad from 'lozad'
 import marked from '@/plugins/marked'
-import '@/assets/markdown.theme.scss'
 export default {
   props: {
     value: {},
