@@ -33,7 +33,7 @@ marked.setOptions({
   smartLists: true,
   smartypants: false,
   highlight(code) {
-    return highlight.highlightAuto(code).value
+    return highlight.highlight('javascript', code).value
   },
 })
 export default (content) => {
