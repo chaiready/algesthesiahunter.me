@@ -32,8 +32,12 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   smartypants: false,
-  highlight(code) {
-    return highlight.highlight('javascript', code).value
+  highlight(code, lang) {
+    if (lang === 'js' || lang === 'html') {
+      return highlight.highlight('javascript', code).value
+    } else {
+      return highlight.highlightAuto(code).value
+    }
   },
 })
 export default (content) => {
