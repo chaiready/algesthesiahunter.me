@@ -104,15 +104,20 @@ export default {
   .title {
     margin-bottom: 20px;
     .origin {
+      width: 108px;
+      height: 54px;
+      text-transform: uppercase;
       transform: rotate(-45deg);
       background-color: $green;
       position: absolute;
       font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 18px;
       font-weight: bold;
-      padding: 28px 38px;
-      padding-bottom: 12px;
       color: $text-reversal;
-      left: -36px;
+      left: -42px;
       top: -12px;
     }
     .other {

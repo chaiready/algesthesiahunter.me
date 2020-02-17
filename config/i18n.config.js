@@ -157,8 +157,8 @@ export const source = {
       },
     },
     slogan: {
-      zh: '砥砺前行，未来可期',
-      en: 'Forge ahead, the future can be expected.',
+      zh: '删繁就简三秋树，领异标新二月花',
+      en: 'Entities should not be multiplied unnecessarily',
     },
     category: {
       name: {

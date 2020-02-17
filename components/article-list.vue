@@ -158,6 +158,7 @@ export default {
         color: $text-reversal;
         padding: 6px 8px;
         background-color: $green;
+        text-transform: uppercase;
       }
       .other {
         background-color: $red;
