@@ -8,5 +8,13 @@ function pathLang(path, lang) {
     return `/${lang}${path}`
   }
 }
-Vue.prototype.cdn = 'https://cdn.algesthesiahunter.top/'
+const cdn = 'https://cdn.algesthesiahunter.top/'
+Vue.prototype.cdn = cdn
+Vue.prototype.getImgUrl = (img) => {
+  if (/http/.test(img)) {
+    return img
+  } else {
+    return cdn + img
+  }
+}
 Vue.prototype.pathLang = pathLang

@@ -11,8 +11,8 @@
         <h2>{{ title }}</h2>
         <img
           class="lozad"
-          :data-src="cdn + img"
-          @click="addImgPopup(cdn + img)"
+          :data-src="getImgUrl(img)"
+          @click="addImgPopup(img)"
         />
       </div>
       <markdown :value="content"></markdown>
@@ -74,8 +74,10 @@ export default {
     return store.dispatch('article/getArticleDetail', params.id)
   },
   methods: {
-    addImgPopup(src) {
+    addImgPopup(img) {
       if (window.utils) {
+        const src = this.getImgUrl(img)
+        console.log(src)
         window.utils.addImgPopup(src)
       }
     },

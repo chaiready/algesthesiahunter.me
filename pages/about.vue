@@ -57,17 +57,17 @@
       </div>
       <div class="its">
         <div class="me">
-          <img :src="cdn + 'me.png'" class="avatar" alt="" />
+          <img :src="getImgUrl('me.png')" class="avatar" alt="" />
           <div class="name">
             <h2>霜末之冬</h2>
           </div>
           <div>A web front-end developer</div>
           <div class="find">众里寻他</div>
-          <img :src="cdn + 'weixin.png'" class="wx" alt="" />
+          <img :src="getImgUrl('weixin.png')" class="wx" alt="" />
         </div>
       </div>
     </div>
-    <div class="block map-container" v-if="mapShow">
+    <div class="block map-container">
       <iframe src="/html/map.html" class="map-iframe"></iframe>
     </div>
   </div>
@@ -76,20 +76,10 @@
 <script>
 export default {
   name: 'About',
-  data() {
-    return {
-      mapShow: false,
-    }
-  },
   head(app) {
     return {
       title: `${this.$store.state.common.title}`,
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.mapShow = true
-    }, 300)
   },
 }
 </script>
