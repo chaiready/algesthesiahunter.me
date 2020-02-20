@@ -76,6 +76,7 @@ export default {
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
   position: fixed;
   right: 1px;
+  z-index: 100;
   bottom: 60px;
   .lang {
     width: 36px;
