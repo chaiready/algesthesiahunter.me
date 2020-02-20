@@ -7,15 +7,14 @@
 </template>
 
 <script>
-import Swiper from '@/components/swiper.vue'
-import Announcement from '@/components/announcement.vue'
-import ArticleList from '@/components/article-list.vue'
 export default {
   name: 'Home',
   components: {
-    Swiper,
-    Announcement,
-    ArticleList,
+    Swiper: () => import(/* Swiper */ '@/components/swiper.vue'),
+    Announcement: () =>
+      import(/* announcement */ '@/components/announcement.vue'),
+    ArticleList: () =>
+      import(/* ArticleList */ '@/components/article-list.vue'),
   },
   data() {
     return {

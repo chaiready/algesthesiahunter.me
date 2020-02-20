@@ -27,12 +27,12 @@ import lozad from 'lozad'
 import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
 import MD5 from 'crypto-js/md5'
-import markdown from '@/components/markdown.vue'
 import { isProdMode } from '@/config/env'
+import '@/assets/markdown.theme.scss'
 export default {
   name: 'Articles',
   components: {
-    markdown,
+    markdown: () => import(/* markdown */ '@/components/markdown.vue'),
   },
   data() {
     return {

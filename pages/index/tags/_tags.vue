@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import ArticleList from '@/components/article-list.vue'
 export default {
   name: 'Tags',
   components: {
-    ArticleList,
+    ArticleList: () =>
+      import(/* ArticleList */ '@/components/article-list.vue'),
   },
   head(app) {
     return {

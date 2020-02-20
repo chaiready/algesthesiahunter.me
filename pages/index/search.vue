@@ -8,11 +8,11 @@
 import { mapActions } from 'vuex'
 import dayjs from 'dayjs'
 import { isBrowser } from '@/config/env'
-import ArticleList from '@/components/article-list.vue'
 export default {
   name: 'Search',
   components: {
-    ArticleList,
+    ArticleList: () =>
+      import(/* ArticleList */ '@/components/article-list.vue'),
   },
   data() {
     return {
