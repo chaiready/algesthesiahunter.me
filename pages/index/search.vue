@@ -1,5 +1,9 @@
 <template>
   <div class="search">
+    <div class="slogin" :style="sloginStyle">
+      <svg-icon :icon-class="name" class="slogin-svg"></svg-icon>
+      <div class="text">{{ text }}</div>
+    </div>
     <ArticleList ref="articleList" :article="data"></ArticleList>
   </div>
 </template>
@@ -31,6 +35,15 @@ export default {
     },
     keyword() {
       return this.query.keyword
+    },
+    sloginStyle() {
+      return `background-image:url(${this.cdn}category_${this.name}.jpeg)`
+    },
+    name() {
+      return 'search'
+    },
+    text() {
+      return this.$t(`text.category.${this.name}`)
     },
   },
   watch: {
@@ -81,3 +94,6 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+@import '@/assets/components/slogin.scss';
+</style>

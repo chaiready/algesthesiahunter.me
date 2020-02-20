@@ -127,6 +127,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/assets/components/form.scss';
 .edit-container {
   padding: 32px;
   padding-left: 16px;

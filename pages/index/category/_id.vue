@@ -42,42 +42,8 @@ export default {
       category: query.category,
     })
   },
-  mounted() {
-    console.log(this.$route.params.id)
-  },
 }
 </script>
-<style lang="scss" scoped>
-.slogin {
-  margin-bottom: 15px;
-  color: $text-reversal;
-  height: 200px;
-  background-color: $module-hover-bg-darken-10;
-  background-size: cover;
-  background-blend-mode: hue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  .slogin-svg {
-    font-size: 62px;
-    margin-top: 0.7em;
-    animation: scale-svg 5s -0.15s infinite linear;
-  }
-  @keyframes scale-svg {
-    50% {
-      opacity: 0.2;
-      transform: scale(0.9);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  .text {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-}
+<style lang="scss">
+@import '@/assets/components/slogin.scss';
 </style>
