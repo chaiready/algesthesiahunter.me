@@ -35,10 +35,5 @@
     img{
       transition:transform 0.5s ease-out;
     }
-    &:hover{
-      img{
-        transform:rotate(360deg);
-      }
-    }
   }
 }

@@ -4,7 +4,7 @@ function funcBack(store, name, title) {
   if (i18Res) {
     title = `${store.$i18n.t(name)}`.toUpperCase()
   }
-  const str = `${title} | 霜末之冬 | Algesthesiahunter`
+  const str = `${title} | Algesthesiahunter.top`
   store.dispatch('common/updateTitle', str)
 }
 function middleware({ app, route, store }) {

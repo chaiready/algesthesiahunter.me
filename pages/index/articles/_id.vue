@@ -44,7 +44,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.title} | 霜末之冬 | Algesthesiahunter`,
+      title: `${this.title} | Algesthesiahunter.top`,
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

@@ -156,19 +156,19 @@ export const source = {
         en: 'hb',
       },
     },
+    category: {
+      coding: {
+        zh: '避重趋轻，避繁逐简，避虚就实',
+        en: '避重趋轻，避繁逐简，避虚就实',
+      },
+      think: {
+        zh: '智者之虑，必杂于利害：杂于利，而务可信也；杂于害，而患可解也',
+        en: '智者之虑，必杂于利害：杂于利，而务可信也；杂于害，而患可解也',
+      },
+    },
     slogan: {
       zh: '删繁就简三秋树，领异标新二月花',
       en: 'Entities should not be multiplied unnecessarily',
-    },
-    category: {
-      name: {
-        zh: '分门别类',
-        en: 'Categories',
-      },
-      empty: {
-        zh: '未分类',
-        en: 'no cate',
-      },
     },
     search: {
       zh: '众里寻她千百度',
