@@ -7,3 +7,6 @@ import '@/plugins/svg'
 import '@/plugins/pop-confirm'
 import '@/plugins/img-pop'
 Vue.prototype.showMessage = showMessage
+export default function({ store }) {
+  store.dispatch('common/browserInit')
+}
