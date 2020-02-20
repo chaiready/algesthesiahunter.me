@@ -77,7 +77,6 @@ export default {
     addImgPopup(img) {
       if (window.utils) {
         const src = this.getImgUrl(img)
-        console.log(src)
         window.utils.addImgPopup(src)
       }
     },
