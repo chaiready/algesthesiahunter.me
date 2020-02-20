@@ -9,15 +9,11 @@
           </div>
           <div class="it">
             <svg-icon icon-class="like" class="icon like"></svg-icon>
-            <div>
-              指弹、coding、骑行、长跑、音乐、DOTA2、孤独
-            </div>
+            <div>指弹、coding、骑行、长跑、音乐、DOTA2、孤独</div>
           </div>
           <div class="it">
             <svg-icon icon-class="skill" class="icon skill"></svg-icon>
-            <div>
-              Vue、React、Nodejs...
-            </div>
+            <div>Vue、React、Nodejs...</div>
           </div>
           <div class="it">
             <svg-icon icon-class="tag" class="icon"></svg-icon>
@@ -32,42 +28,43 @@
           <div class="it">
             <svg-icon icon-class="contact" class="icon"></svg-icon>
             <div class="contact-icon">
-              <a href="https://github.com/Algesthesiahunter" target="_blink"
-                ><svg-icon icon-class="github" class="icon github"></svg-icon
-              ></a>
-              <a href="mailto:541877028@qq.com"
-                ><svg-icon icon-class="email" class="icon email"></svg-icon
-              ></a>
+              <a href="https://github.com/Algesthesiahunter" target="_blink">
+                <svg-icon icon-class="github" class="icon github"></svg-icon>
+              </a>
+              <a href="mailto:541877028@qq.com">
+                <svg-icon icon-class="email" class="icon email"></svg-icon>
+              </a>
               <a
                 href="https://music.163.com/#/user/home?id=254297130"
                 target="_blink"
-                ><svg-icon icon-class="m.163" class="icon m-163"></svg-icon
-              ></a>
+              >
+                <svg-icon icon-class="m.163" class="icon m-163"></svg-icon>
+              </a>
             </div>
           </div>
           <div class="it">
             <svg-icon icon-class="friend" class="icon friend"></svg-icon>
             <div class="firend-name">
               <a href="http://futuretea.cnblogs.com" target="_blink"
-                >「 futuretea 」
-              </a>
+                >「 futuretea 」</a
+              >
             </div>
           </div>
         </div>
       </div>
       <div class="its">
         <div class="me">
-          <img :src="getImgUrl('me.png')" class="avatar" alt="" />
+          <img :src="getImgUrl('me.png')" class="avatar" alt />
           <div class="name">
             <h2>霜末之冬</h2>
           </div>
           <div>A web front-end developer</div>
           <div class="find">众里寻他</div>
-          <img :src="getImgUrl('weixin.png')" class="wx" alt="" />
+          <img :src="getImgUrl('weixin.png')" class="wx" alt />
         </div>
       </div>
     </div>
-    <div class="block map-container">
+    <div class="block map-container" v-if="mapShow">
       <iframe src="/html/map.html" class="map-iframe"></iframe>
     </div>
   </div>
@@ -80,6 +77,16 @@ export default {
     return {
       title: `${this.$store.state.common.title}`,
     }
+  },
+  data() {
+    return {
+      mapShow: false,
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.mapShow = true
+    }, 300)
   },
 }
 </script>

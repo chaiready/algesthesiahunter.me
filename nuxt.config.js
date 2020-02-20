@@ -11,6 +11,7 @@ export default {
     title: meta.title,
     meta: [
       { charset: 'utf-8' },
+      { 'http-equiv': 'x-dns-prefetch-control', content: 'on' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
@@ -23,7 +24,13 @@ export default {
         content: meta.keywords,
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'dns-prefetch', href: `//algesthesiahunter.top` },
+      { rel: 'dns-prefetch', href: '//api.algesthesiahunter.top' },
+      { rel: 'dns-prefetch', href: '//cdn.algesthesiahunter.top' },
+    ],
+    noscript: [{ innerHTML: 'This website requires JavaScript.' }],
     bodyAttrs: {
       class: 'default',
     },
@@ -82,6 +89,29 @@ export default {
    ** Build configuration
    */
   build: {
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          expansions: {
+            name: 'expansions',
+            test(module) {
+              return /swiper|lozad|marked|highlight/.test(module.context)
+            },
+            chunks: 'initial',
+            priority: 10,
+          },
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+          },
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+        },
+      },
+    },
     /*
      ** You can extend webpack config here
      */
