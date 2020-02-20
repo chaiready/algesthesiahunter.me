@@ -49,6 +49,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .slogin {
+  margin-bottom: 15px;
   color: $text-reversal;
   height: 200px;
   background-color: $module-hover-bg-darken-10;
