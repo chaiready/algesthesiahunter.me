@@ -11,7 +11,7 @@ const state = () => ({
 
 const mutations = {
   UPDATE_HOME(state, home) {
-    state.home = home
+    state.home = home.splice(0, 10)
   },
 }
 
@@ -23,14 +23,14 @@ const actions = {
   },
 
   getArticles({ commit }, params) {
-    return this.$axios.$get('/api/article', { params }).catch(() => {})
+    return this.$axios.$get('/api/article', { params })
   },
 
   getArticlesByDate({ commit }, params) {
     return this.$axios.$get('/api/article/search/time', { params })
   },
   getArticleDetail({ commit }, id) {
-    return this.$axios.$get(`/api/article/${id}`).catch(() => {})
+    return this.$axios.$get(`/api/article/${id}`)
   },
   postArticle({ commit }, article) {
     return this.$axios
