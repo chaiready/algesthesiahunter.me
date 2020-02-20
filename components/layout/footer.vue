@@ -19,10 +19,16 @@
   </footer>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState('common', ['lang']),
+  },
+  methods: {
+    ...mapActions('common', ['browserInit']),
+  },
+  mounted() {
+    this.browserInit()
   },
 }
 </script>

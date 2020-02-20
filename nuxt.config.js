@@ -55,7 +55,7 @@ export default {
   plugins: [
     { src: '@/plugins/http' },
     { src: '@/plugins/server' },
-    { src: '@/plugins/init.client', mode: 'client' },
+    { src: '@/plugins/init.client', ssr: false },
   ],
   /*
    ** Nuxt.js dev-modules
