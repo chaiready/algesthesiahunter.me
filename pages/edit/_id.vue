@@ -112,7 +112,6 @@ export default {
     const id = this.id
     if (id) {
       this.getArticleDetail(id).then((res) => {
-        console.log(res.tags)
         this.form = {
           tags: res.tags.map((v) => v._id),
           title: res.title,
