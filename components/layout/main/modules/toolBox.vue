@@ -1,16 +1,10 @@
 <template>
   <div class="tool-container">
-    <div
-      :class="{ 'lang cu-p us-n': true, 'lang-bg': lang === 'zh' }"
-      @click="switchLang"
-      title="Switch language"
-    ></div>
-    <div
-      :class="{ 'theme cu-p de': true, 'theme-bg': theme === 'dark' }"
-      @click="changeToRed(theme)"
-      title="Switch theme"
-    >
-      <svg-icon icon-class="theme"></svg-icon>
+    <div class="theme cu-p de" @click="changeToRed(theme)" title="Switch theme">
+      <svg-icon :icon-class="themeNext"></svg-icon>
+    </div>
+    <div :class="langClass" @click="switchLang" title="Switch language">
+      <span class="lang-box">{{ langNext }}</span>
     </div>
   </div>
 </template>
@@ -20,6 +14,28 @@ import { mapActions, mapState } from 'vuex'
 export default {
   computed: {
     ...mapState('common', ['theme', 'lang']),
+    langClass() {
+      const str = 'lang cu-p us-n '
+      return str + this.lang
+    },
+    themeNext() {
+      let theme
+      if (this.theme === 'default') {
+        theme = 'dark'
+      } else {
+        theme = 'default'
+      }
+      return theme
+    },
+    langNext() {
+      let lang
+      if (this.lang === 'en') {
+        lang = 'zh'
+      } else {
+        lang = 'en'
+      }
+      return lang
+    },
   },
   methods: {
     ...mapActions('common', ['updateLang', 'updateTheme']),
@@ -57,91 +73,40 @@ export default {
 
 <style scoped lang="scss">
 .tool-container {
-  &:hover {
-    .theme,
-    .lang {
-      animation: none;
-    }
-  }
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
   position: fixed;
-  left: 0;
-  top: 50%;
-  @keyframes tool-left {
-    0% {
-      transform: translateX(-35px);
-    }
-    50% {
-      transform: translateX(-10px);
-    }
-    100% {
-      transform: translateX(-35px);
-    }
-  }
+  right: 1px;
+  bottom: 60px;
   .lang {
-    width: 40px;
-    height: 25px;
-    color: white;
+    width: 36px;
+    height: 36px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
-    animation: tool-left 1s infinite;
-    font-size: 13px;
+    text-transform: capitalize;
+    background-color: $module-bg;
     font-weight: bold;
+    font-size: 12px;
     &:hover {
-      transform: translateX(0px) !important;
-      animation: none;
-      &:before {
-        content: 'LANG';
-        background: linear-gradient(to bottom left, #0206ff, #f3000c);
-      }
+      background-color: $module-hover-bg;
     }
-    &:before {
-      transition: opacity 0.25s;
-      width: 40px;
-      height: 25px;
-      line-height: 25px;
-      text-align: center;
-      content: 'EN';
-      background: #0206ff;
-    }
-  }
-  .lang-bg {
-    &:before {
-      content: 'ZH';
-      background: #f3000c;
-    }
-    &:hover {
-      &:before {
-        background: linear-gradient(to bottom left, #f3000c, rgb(2, 6, 255));
-      }
+    .lang-box {
+      border: 1px solid $text-secondary;
+      padding: 2px;
+      border-radius: 3px;
     }
   }
   .theme {
-    width: 40px;
-    height: 25px;
-    color: $text-reversal;
+    width: 36px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
-    animation: tool-left 1s 0.5s infinite;
-    font-size: 16px;
-    font-weight: bold;
-    color: $primary;
     background-color: $module-bg;
+    font-size: 20px;
     &:hover {
-      transform: translateX(0px) !important;
-      animation: none;
-      &:before {
-        background: linear-gradient(to bottom left, rgb(2, 6, 255), #f3000c);
-      }
-    }
-  }
-  .theme-bg {
-    &:before {
-      background: linear-gradient(#f3000c, #ff3741);
+      background-color: $module-hover-bg;
     }
   }
 }

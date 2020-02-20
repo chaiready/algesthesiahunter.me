@@ -104,6 +104,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   .li {
+    transition: all 0.25s linear;
     position: relative;
     &:hover {
       .operating {
@@ -120,6 +121,7 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: all 0.25s linear;
     &:hover {
       .text {
         background-color: $module-hover-bg-darken-20;

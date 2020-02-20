@@ -125,6 +125,7 @@ export default {
     display: flex;
     overflow: hidden;
     position: relative;
+    transition: all 0.25s linear;
     &:hover {
       .origin {
         opacity: 1 !important;
