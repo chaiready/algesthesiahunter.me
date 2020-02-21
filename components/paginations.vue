@@ -35,7 +35,7 @@ export default {
       }
     },
     NextDisable() {
-      if (this.total <= this.page * 2) {
+      if (this.total <= this.page * 20) {
         return true
       } else {
         return false
