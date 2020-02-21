@@ -86,7 +86,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.mapShow = true
-    }, 300)
+    }, 500)
   },
 }
 </script>

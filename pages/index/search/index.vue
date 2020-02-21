@@ -4,7 +4,10 @@
       <svg-icon :icon-class="name" class="slogin-svg"></svg-icon>
       <div class="text">{{ text }}</div>
     </div>
-    <ArticleList ref="articleList" :article="data"></ArticleList>
+    <transition name="fade" mode="out-in">
+      <NuxtChild :nuxtChildKey="$route.path" :article="data" class="main" />
+    </transition>
+    <Paginations :total="total"></Paginations>
   </div>
 </template>
 
@@ -15,14 +18,15 @@ import { isBrowser } from '@/config/env'
 export default {
   name: 'Search',
   components: {
-    ArticleList: () =>
-      import(/* ArticleList */ '@/components/article-list.vue'),
+    Paginations: () => import(/* Paginations */ '@/components/paginations.vue'),
   },
   data() {
     return {
       data: [],
+      total: 0,
     }
   },
+  watchQuery: true,
   computed: {
     query() {
       return this.$route.query
@@ -67,8 +71,9 @@ export default {
   methods: {
     ...mapActions('article', ['getArticlesByDate', 'getArticles']),
     initData() {
-      if (isBrowser) {
-        this.$refs.articleList.initData()
+      const ref = this.$refs.articleList
+      if (isBrowser && ref) {
+        ref.initData()
       }
     },
     init() {

@@ -4,17 +4,21 @@
       <svg-icon :icon-class="name" class="slogin-svg"></svg-icon>
       <div class="text">{{ text }}</div>
     </div>
-    <ArticleList :article="data"></ArticleList>
+    <transition name="fade" mode="out-in">
+      <NuxtChild :nuxtChildKey="$route.path" :article="data" class="main" />
+    </transition>
+    <Paginations :total="total"></Paginations>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'CategoryType',
   components: {
-    ArticleList: () =>
-      import(/* ArticleList */ '@/components/article-list.vue'),
+    Paginations: () => import(/* Paginations */ '@/components/paginations.vue'),
   },
+  watchQuery: true,
   head(app) {
     return {
       title: `${this.$store.state.common.title}`,
@@ -34,7 +38,11 @@ export default {
   data() {
     return {
       data: [],
+      total: 0,
     }
+  },
+  methods: {
+    ...mapActions('article', ['getArticles']),
   },
   asyncData({ store, query }) {
     return store.dispatch('article/getArticles', {

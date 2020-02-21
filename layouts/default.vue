@@ -9,15 +9,12 @@
   </div>
 </template>
 <script>
-import Header from '@/components/layout/header.vue'
-import Footer from '@/components/layout/footer.vue'
-import Main from '@/components/layout/main/index.vue'
 export default {
   name: 'App',
   components: {
-    Header,
-    Main,
-    Footer,
+    Header: () => import(/* Header */ '@/components/layout/header.vue'),
+    Main: () => import(/* Main */ '@/components/layout/main/index.vue'),
+    Footer: () => import(/* Footer */ '@/components/layout/footer.vue'),
   },
 }
 </script>

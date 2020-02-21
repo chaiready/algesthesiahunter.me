@@ -1,6 +1,7 @@
 <template>
   <div class="category">
-    <transition name="fade" mode="out-in">
+    <NuxtChild v-if="!hasChild" :nuxtChildKey="$route.path" class="main" />
+    <transition name="fade" mode="out-in" v-else>
       <NuxtChild :nuxtChildKey="$route.path" class="main" />
     </transition>
     <Aside></Aside>
@@ -13,6 +14,12 @@ export default {
   name: 'Category',
   components: {
     Aside,
+  },
+  computed: {
+    hasChild() {
+      const path = this.$route.path
+      return /about/.test(path)
+    },
   },
 }
 </script>

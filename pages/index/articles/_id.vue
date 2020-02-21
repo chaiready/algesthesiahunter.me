@@ -26,7 +26,6 @@
 import lozad from 'lozad'
 import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
-import MD5 from 'crypto-js/md5'
 import { isProdMode } from '@/config/env'
 import '@/assets/markdown.theme.scss'
 export default {
@@ -87,7 +86,7 @@ export default {
         repo: 'gitalk.algesthesiahunter',
         owner: 'Algesthesiahunter',
         admin: ['Algesthesiahunter'],
-        id: MD5(this.$route.fullPath).toString(),
+        id: this.$route.params.id,
         distractionFreeMode: false, // Facebook-like distraction free mode
       })
       gitalk.render('gitalk-container')
