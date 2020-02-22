@@ -5,7 +5,7 @@
       {{ $t('text.hot').toUpperCase() }}
     </div>
     <ul class="main">
-      <li v-for="(it, i) in home" :key="i" class="it one-cut">
+      <li v-for="(it, i) in hot" :key="i" class="it one-cut">
         <span
           :class="{
             index: true,
@@ -20,18 +20,18 @@
         </NuxtLink>
       </li>
       <li
-        v-for="(it, i) in 10 - home.length"
-        :key="home.length + i"
+        v-for="(it, i) in 10 - hot.length"
+        :key="hot.length + i"
         class="it one-cut"
       >
         <span
           :class="{
             index: true,
-            fir: i + home.length === 0,
-            sec: i + home.length === 1,
-            thr: i + home.length === 2,
+            fir: i + hot.length === 0,
+            sec: i + hot.length === 1,
+            thr: i + hot.length === 2,
           }"
-          >{{ i + home.length + 1 }}</span
+          >{{ i + hot.length + 1 }}</span
         >
         <span>虚位以待......</span>
       </li>
@@ -46,7 +46,7 @@ export default {
     return {}
   },
   computed: {
-    ...mapState('article', ['home']),
+    ...mapState('article', ['hot']),
     ...mapState('common', ['lang']),
   },
 }

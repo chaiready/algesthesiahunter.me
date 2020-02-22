@@ -31,13 +31,15 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import 'swiper/dist/css/swiper.css'
-import { mapState } from 'vuex'
+
 import lozad from 'lozad'
 export default {
   name: 'Swiper',
   data() {
     return {
+      home: [],
       swiperOption: {
         loop: true,
         height: 200,
@@ -58,12 +60,19 @@ export default {
     }
   },
   computed: {
-    ...mapState('article', ['home']),
     ...mapState('common', ['lang']),
   },
+  methods: {
+    ...mapActions('article', ['getArticles']),
+  },
   mounted() {
-    const observer = lozad()
-    observer.observe()
+    this.getArticles({ page: 1 }).then((res) => {
+      this.home = res.data.splice(0, 10)
+      this.$nextTick(() => {
+        const observer = lozad()
+        observer.observe()
+      })
+    })
   },
 }
 </script>

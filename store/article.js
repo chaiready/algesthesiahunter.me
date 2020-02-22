@@ -5,21 +5,24 @@
 import { showMessage } from '@/utils/show-message'
 
 const state = () => ({
-  home: [],
+  hot: [],
   origin: ['original', 'reprint', 'hybrid'],
 })
 
 const mutations = {
-  UPDATE_HOME(state, home) {
-    state.home = home.splice(0, 10)
+  UPDATE_HOT(state, hot) {
+    state.hot = hot
   },
 }
 
 const actions = {
   getHomeArticles({ commit }, params) {
+    return this.$axios.$get('/api/article', { params })
+  },
+  getHotArticles({ commit }) {
     return this.$axios
-      .$get('/api/article', { params })
-      .then((res) => commit('UPDATE_HOME', res.data))
+      .$get('/api/article/hot')
+      .then((res) => commit('UPDATE_HOT', res))
   },
 
   getArticles({ commit }, params) {
