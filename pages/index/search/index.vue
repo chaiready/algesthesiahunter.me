@@ -47,7 +47,7 @@ export default {
       return 'search'
     },
     text() {
-      return this.$t(`text.category.${this.name}`)
+      return this.$route.query.keyword
     },
   },
   watch: {
