@@ -18,7 +18,7 @@ export default {
   computed: {
     hasChild() {
       const path = this.$route.path
-      return /about/.test(path)
+      return /about/.test(path) || /articles/.test(path)
     },
   },
 }
