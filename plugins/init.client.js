@@ -10,6 +10,4 @@ Vue.prototype.showMessage = showMessage
 export default function({ store }) {
   store.dispatch('common/browserInit')
   store.dispatch('article/getHotArticles')
-  store.dispatch('category/getCategorys')
-  store.dispatch('tag/getTags')
 }
