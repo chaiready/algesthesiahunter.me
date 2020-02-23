@@ -35,8 +35,6 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import 'swiper/dist/css/swiper.css'
-
 import lozad from 'lozad'
 export default {
   name: 'Swiper',
