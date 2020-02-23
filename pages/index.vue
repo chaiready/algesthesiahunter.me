@@ -28,7 +28,6 @@ export default {
   display: flex;
   .main {
     transition: opacity 0.25s cubic-bezier(0.55, 0, 0.1, 1);
-    min-height: 1px;
     position: relative;
     flex: 1;
     width: 642px;
