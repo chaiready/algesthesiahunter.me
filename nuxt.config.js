@@ -54,6 +54,7 @@ export default {
     'swiper/dist/css/swiper.css',
     '@/assets/markdown.theme.scss',
     '@/assets/base.scss',
+    '@/assets/components.scss',
   ],
   styleResources: {
     scss: ['@/assets/variables.scss', '@/assets/theme.scss'],

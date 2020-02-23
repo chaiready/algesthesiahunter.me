@@ -94,7 +94,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/assets/components.scss';
 .articles {
   padding: 12px 24px;
   padding-top: 30px;
