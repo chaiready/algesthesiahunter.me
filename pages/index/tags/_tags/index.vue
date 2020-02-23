@@ -12,10 +12,11 @@
 </template>
 
 <script>
+import Paginations from '@/components/paginations.vue'
 export default {
   name: 'Tags',
   components: {
-    Paginations: () => import(/* Paginations */ '@/components/paginations.vue'),
+    Paginations,
   },
   watchQuery: true,
   head(app) {

@@ -19,6 +19,9 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import hot from './modules/hot.vue'
+import tags from './modules/tags.vue'
+import calendar from './modules/calendar.vue'
 export default {
   name: 'Aside',
   data() {
@@ -28,9 +31,9 @@ export default {
     }
   },
   components: {
-    hot: () => import(/* hot */ './modules/hot.vue'),
-    tags: () => import(/* tags */ './modules/tags.vue'),
-    calendar: () => import(/* calendar */ './modules/calendar.vue'),
+    hot,
+    calendar,
+    tags,
   },
   watch: {
     date(n) {

@@ -56,7 +56,6 @@ export default {
     ...mapActions('article', ['getHotArticles']),
   },
   mounted() {
-    console.log(window.__NUXT__)
     this.getHotArticles().then((res) => (this.hot = res))
   },
 }

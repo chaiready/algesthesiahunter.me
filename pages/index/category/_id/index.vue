@@ -13,10 +13,11 @@
 
 <script>
 import { mapActions } from 'vuex'
+import Paginations from '@/components/paginations.vue'
 export default {
   name: 'CategoryType',
   components: {
-    Paginations: () => import(/* Paginations */ '@/components/paginations.vue'),
+    Paginations,
   },
   watchQuery: true,
   head(app) {

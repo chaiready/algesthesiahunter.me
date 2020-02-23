@@ -15,10 +15,11 @@
 import { mapActions } from 'vuex'
 import dayjs from 'dayjs'
 import { isBrowser } from '@/config/env'
+import Paginations from '@/components/paginations.vue'
 export default {
   name: 'Search',
   components: {
-    Paginations: () => import(/* Paginations */ '@/components/paginations.vue'),
+    Paginations,
   },
   data() {
     return {

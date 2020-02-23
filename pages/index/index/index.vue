@@ -3,14 +3,14 @@
 </template>
 
 <script>
+import ArticleList from '@/components/article-list.vue'
 export default {
   name: 'HomeArticleList',
   props: {
     article: {},
   },
   components: {
-    ArticleList: () =>
-      import(/* ArticleList */ '@/components/article-list.vue'),
+    ArticleList,
   },
 }
 </script>

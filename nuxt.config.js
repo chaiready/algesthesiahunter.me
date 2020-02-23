@@ -91,7 +91,6 @@ export default {
    */
   build: {
     maxChunkSize: 360000,
-    extractCSS: true,
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
     },

@@ -24,14 +24,13 @@
 
 <script>
 import lozad from 'lozad'
-import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk'
 import { isProdMode } from '@/config/env'
-import '@/assets/markdown.theme.scss'
+import markdown from '@/components/markdown.vue'
 export default {
   name: 'Articles',
   components: {
-    markdown: () => import(/* markdown */ '@/components/markdown.vue'),
+    markdown,
   },
   data() {
     return {
@@ -95,6 +94,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/assets/markdown.theme.scss';
+@import 'gitalk/dist/gitalk.css';
 .articles {
   padding: 12px 24px;
   padding-top: 30px;

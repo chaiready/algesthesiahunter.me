@@ -10,14 +10,16 @@
 </template>
 
 <script>
+import Swiper from '@/components/swiper.vue'
+import Announcement from '@/components/announcement.vue'
+import Paginations from '@/components/paginations.vue'
 export default {
   name: 'Home',
   watchQuery: true,
   components: {
-    Swiper: () => import(/* Swiper */ '@/components/swiper.vue'),
-    Announcement: () =>
-      import(/* announcement */ '@/components/announcement.vue'),
-    Paginations: () => import(/* Paginations */ '@/components/paginations.vue'),
+    Swiper,
+    Announcement,
+    Paginations,
   },
   data() {
     return {
