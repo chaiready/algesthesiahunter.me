@@ -69,6 +69,7 @@
 import { mapState, mapActions } from 'vuex'
 import lozad from 'lozad'
 export default {
+  name: 'ArticleList',
   props: {
     article: {
       type: Array,

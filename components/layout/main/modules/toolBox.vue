@@ -12,6 +12,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 export default {
+  name: 'Toolbox',
   computed: {
     ...mapState('common', ['theme', 'lang']),
     langClass() {

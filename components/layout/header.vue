@@ -52,6 +52,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
+  name: 'Header',
   data() {
     return {
       type: false,

@@ -14,6 +14,7 @@ import ClipboardJS from 'clipboard'
 import lozad from 'lozad'
 import marked from '@/plugins/marked'
 export default {
+  name: 'Markdown',
   props: {
     value: {},
   },

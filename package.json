@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/component-cache": "^1.1.5",
+    "@nuxtjs/style-resources": "^1.0.0",
     "bezier-easing": "^2.1.0",
     "clipboard": "^2.0.4",
     "cross-env": "^5.2.0",

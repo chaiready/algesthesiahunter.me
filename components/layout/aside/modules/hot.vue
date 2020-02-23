@@ -43,6 +43,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 export default {
+  name: 'Hot',
   data() {
     return {
       hot: [],
@@ -55,6 +56,7 @@ export default {
     ...mapActions('article', ['getHotArticles']),
   },
   mounted() {
+    console.log(window.__NUXT__)
     this.getHotArticles().then((res) => (this.hot = res))
   },
 }

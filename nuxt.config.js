@@ -49,6 +49,9 @@ export default {
    ** Global CSS
    */
   css: ['normalize.css/normalize.css', '@/assets/base.scss'],
+  styleResources: {
+    scss: ['@/assets/variables.scss', '@/assets/theme.scss'],
+  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -69,6 +72,8 @@ export default {
    */
   modules: [
     ['@nuxtjs/axios', { baseURL: VUE_APP_HTTP_HOST }],
+    '@nuxtjs/style-resources',
+    '@nuxtjs/component-cache',
     [
       'nuxt-i18n',
       {
@@ -112,7 +117,6 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      config.resolve.alias.vue = 'vue/dist/vue.common'
       // 排除 nuxt 原配置的影响
       const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
       svgRule.exclude = [resolve(__dirname, 'assets/svg')]
@@ -125,19 +129,6 @@ export default {
           extract: false,
           symbolId: 'icon-[name]',
         },
-      })
-
-      config.module.rules.forEach((rule) => {
-        if (/scss/.test(rule.test.toString())) {
-          rule.oneOf.forEach((item) => {
-            item.use.push({
-              loader: 'sass-loader',
-              options: {
-                prependData: `@import "@/assets/variables.scss";`,
-              },
-            })
-          })
-        }
       })
     },
   },

@@ -21,6 +21,7 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  name: 'Footer',
   computed: {
     ...mapState('common', ['lang']),
   },

@@ -14,6 +14,7 @@
 <script>
 import { scrollTo } from '@/utils/scroll-to'
 export default {
+  name: 'Scrolltool',
   methods: {
     scroll(type) {
       let num
