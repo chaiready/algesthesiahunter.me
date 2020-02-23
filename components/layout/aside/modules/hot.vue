@@ -4,7 +4,8 @@
       <svg-icon icon-class="hot"></svg-icon>
       {{ $t('text.hot').toUpperCase() }}
     </div>
-    <ul class="main">
+    <loading-box class="loading" v-if="hot.length === 0" />
+    <ul class="main" v-else>
       <li v-for="(it, i) in hot" :key="i" class="it one-cut">
         <span
           :class="{
@@ -56,6 +57,9 @@ export default {
   padding: 0px 12px 12px 12px;
   background-color: $module-bg;
   overflow: hidden;
+  .loading {
+    height: 280px;
+  }
   .title {
     display: flex;
     align-items: center;
