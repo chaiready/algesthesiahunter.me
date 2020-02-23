@@ -9,7 +9,7 @@
       <div>
         <span>分类</span>
         <select v-model="form.category">
-          <option v-for="(it, i) in categorys" :key="i" :value="it._id">
+          <option v-for="it in categorys" :key="it._id" :value="it._id">
             {{ it.name }}
           </option>
         </select>
@@ -120,7 +120,7 @@ export default {
           des: res.des,
           img: res.img,
           content: res.content,
-          category: res.category,
+          category: res.category._id,
           origin: res.origin,
         }
       })
