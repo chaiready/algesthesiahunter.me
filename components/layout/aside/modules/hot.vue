@@ -41,14 +41,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+      hot: [],
+    }
   },
   computed: {
-    ...mapState('article', ['hot']),
     ...mapState('common', ['lang']),
+  },
+  methods: {
+    ...mapActions('article', ['getHotArticles']),
+  },
+  mounted() {
+    this.getHotArticles().then((res) => (this.hot = res))
   },
 }
 </script>

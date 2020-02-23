@@ -63,10 +63,10 @@ export default {
     ...mapState('common', ['lang']),
   },
   methods: {
-    ...mapActions('article', ['getArticles']),
+    ...mapActions('article', ['getHomeArticles']),
   },
   mounted() {
-    this.getArticles({ page: 1 }).then((res) => {
+    this.getHomeArticles({ page: 1 }).then((res) => {
       this.home = res.data.splice(0, 10)
       this.$nextTick(() => {
         const observer = lozad()
