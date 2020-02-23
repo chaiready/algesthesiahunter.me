@@ -32,7 +32,6 @@ export default {
     },
     margin: {
       type: String,
-      default: '5px',
     },
   },
   data() {
@@ -52,7 +51,6 @@ export default {
 .spinner-box {
   position: relative;
   width: 100%;
-  min-height: 50px;
   height: 100%;
 
   @keyframes ball-beat {
@@ -68,12 +66,10 @@ export default {
 
   > .spinner-inner {
     width: 80px;
-    height: 30px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -40px;
-    margin-top: -15px;
+    transform: translate(-50%, -50%);
 
     > .la-ball-beat {
       display: block;
@@ -82,7 +78,6 @@ export default {
       font-size: 0;
       color: #fff;
       width: 80px;
-      height: 30px;
 
       > div {
         position: relative;
@@ -92,7 +87,7 @@ export default {
         border: none;
         width: 15px;
         height: 15px;
-        margin: 5px;
+        margin: 0 5px;
         background-color: $module-hover-bg;
         animation: ball-beat 0.7s -0.15s infinite linear;
 
@@ -129,7 +124,6 @@ export default {
 
         > div {
           width: 30px;
-          height: 30px;
           margin: 12px;
         }
       }

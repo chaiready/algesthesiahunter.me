@@ -1,47 +1,50 @@
 <template>
   <div class="category-container">
-    <ul class="main">
-      <li v-for="(it, i) in tags" :key="i" class="li">
-        <NuxtLink
-          :to="pathLang('/tags/' + it.name + '?tags=' + it._id, lang)"
-          class="it"
-        >
-          <span class="svg-box"
-            ><svg-icon :icon-class="it.name" class="svg"></svg-icon
-          ></span>
-          <span class="text"
-            >{{ $t(`tag.${it.name}`) }} [{{ it.articles }}]
-          </span>
-        </NuxtLink>
-        <operating
-          v-if="mode"
-          :it="it"
-          @edit="modeChange(0, it)"
-          @ConfirmSubmit="ConfirmSubmit"
-          class="operating"
-        >
-        </operating>
-      </li>
-      <li v-if="mode">
-        <a @click="modeChange(1)" href="javascript:void(0);" class="it">
-          <span class="svg-box"
-            ><svg-icon icon-class="tag" class="svg"></svg-icon>
-          </span>
-          <span class="text">妙手生花</span>
-        </a>
-      </li>
-    </ul>
-    <MaskDialog
-      v-if="mode"
-      v-model="show"
-      :title="type ? '添加Tag' : '编辑Tag'"
-      @submit="submit"
-    >
-      <div class="form">
-        <span>名称</span>
-        <input v-focus v-model="name" @keyup.enter="submit" type="text" />
-      </div>
-    </MaskDialog>
+    <loading-box class="loading" v-if="tags.length === 0" />
+    <template v-else>
+      <ul class="main">
+        <li v-for="(it, i) in tags" :key="i" class="li">
+          <NuxtLink
+            :to="pathLang('/tags/' + it.name + '?tags=' + it._id, lang)"
+            class="it"
+          >
+            <span class="svg-box"
+              ><svg-icon :icon-class="it.name" class="svg"></svg-icon
+            ></span>
+            <span class="text"
+              >{{ $t(`tag.${it.name}`) }} [{{ it.articles }}]
+            </span>
+          </NuxtLink>
+          <operating
+            v-if="mode"
+            :it="it"
+            @edit="modeChange(0, it)"
+            @ConfirmSubmit="ConfirmSubmit"
+            class="operating"
+          >
+          </operating>
+        </li>
+        <li v-if="mode">
+          <a @click="modeChange(1)" href="javascript:void(0);" class="it">
+            <span class="svg-box"
+              ><svg-icon icon-class="tag" class="svg"></svg-icon>
+            </span>
+            <span class="text">妙手生花</span>
+          </a>
+        </li>
+      </ul>
+      <MaskDialog
+        v-if="mode"
+        v-model="show"
+        :title="type ? '添加Tag' : '编辑Tag'"
+        @submit="submit"
+      >
+        <div class="form">
+          <span>名称</span>
+          <input v-focus v-model="name" @keyup.enter="submit" type="text" />
+        </div>
+      </MaskDialog>
+    </template>
   </div>
 </template>
 
@@ -54,11 +57,11 @@ export default {
       show: false,
       type: 0,
       current: null,
+      tags: [],
     }
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
-    ...mapState('tag', ['tags']),
   },
   methods: {
     ...mapActions('tag', ['getTags', 'postTag', 'deleteTag', 'putTag']),
@@ -88,8 +91,11 @@ export default {
       this.current = it
     },
     init() {
-      this.getTags()
+      this.getTags().then((res) => (this.tags = res))
     },
+  },
+  mounted() {
+    this.init()
   },
 }
 </script>
@@ -99,6 +105,8 @@ export default {
   padding: 0px 12px 12px 12px;
   background-color: $module-bg;
   overflow: hidden;
+  position: relative;
+  min-height: 126px;
 }
 .main {
   display: flex;

@@ -64,9 +64,7 @@ export default {
   padding: 0px 12px 12px 12px;
   background-color: $module-bg;
   overflow: hidden;
-  .loading {
-    height: 280px;
-  }
+  height: 334px;
   .title {
     display: flex;
     align-items: center;

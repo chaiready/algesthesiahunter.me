@@ -4,9 +4,7 @@
  */
 import { showMessage } from '@/utils/show-message'
 
-const state = () => ({
-  origin: ['original', 'reprint', 'hybrid'],
-})
+const state = () => ({})
 
 const mutations = {}
 

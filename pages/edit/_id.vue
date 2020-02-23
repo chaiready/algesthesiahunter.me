@@ -9,9 +9,9 @@
       <div>
         <span>分类</span>
         <select v-model="form.category">
-          <option v-for="(it, i) in categorys" :key="i" :value="it._id">{{
-            it.name
-          }}</option>
+          <option v-for="(it, i) in categorys" :key="i" :value="it._id">
+            {{ it.name }}
+          </option>
         </select>
       </div>
       <div class="w100">
@@ -31,9 +31,9 @@
       <div class="w100">
         <span>来源</span>
         <select v-model="form.origin">
-          <option v-for="(it, i) in origin" :key="i" :value="it">{{
-            $t(`text.origin.${it}`)
-          }}</option>
+          <option v-for="(it, i) in origin" :key="i" :value="it">
+            {{ $t(`text.origin.${it}`) }}
+          </option>
         </select>
       </div>
       <div class="w100">
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'Edit',
   data() {
@@ -73,18 +73,20 @@ export default {
       form: {
         tags: [],
       },
+      tags: [],
+      categorys: [],
+      origin: ['original', 'reprint', 'hybrid'],
     }
   },
   computed: {
-    ...mapState('tag', ['tags']),
-    ...mapState('category', ['categorys']),
-    ...mapState('article', ['origin']),
     id() {
       return this.$route.query.id
     },
   },
   methods: {
     ...mapActions('article', ['postArticle', 'putArticle', 'getArticleDetail']),
+    ...mapActions('tag', ['getTags']),
+    ...mapActions('category', ['getCategorys']),
     add() {
       this.postArticle(this.form).then(
         () =>
@@ -123,6 +125,8 @@ export default {
         }
       })
     }
+    this.getTags().then((res) => (this.tags = res))
+    this.getCategorys().then((res) => (this.categorys = res))
   },
 }
 </script>

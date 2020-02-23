@@ -10,46 +10,49 @@
         class="svg"
       ></svg-icon>
     </div>
-    <div class="bg"></div>
-    <transition name="module" mode="out-in">
-      <div
-        key="swiper"
-        v-swiper:swiper="swiperOption"
-        @transitionStart="handleSwiperTransitionStart"
-        class="swiper"
-      >
-        <div class="swiper-wrapper">
-          <div
-            :key="index"
-            v-for="(it, index) in announcements"
-            class="swiper-slide slide-item"
-          >
-            <div class="content filter">
-              {{ it.content }}
-              <operating
-                v-if="mode"
-                :it="it"
-                @edit="modeChange(0, it)"
-                @ConfirmSubmit="ConfirmSubmit"
-                class="operating"
-              ></operating>
+    <loading-box class="loading" v-if="announcements.length === 0" />
+    <template v-else>
+      <div class="bg"></div>
+      <transition name="module" mode="out-in">
+        <div
+          key="swiper"
+          v-swiper:swiper="swiperOption"
+          @transitionStart="handleSwiperTransitionStart"
+          class="swiper"
+        >
+          <div class="swiper-wrapper">
+            <div
+              :key="index"
+              v-for="(it, index) in announcements"
+              class="swiper-slide slide-item"
+            >
+              <div class="content filter">
+                {{ it.content }}
+                <operating
+                  v-if="mode"
+                  :it="it"
+                  @edit="modeChange(0, it)"
+                  @ConfirmSubmit="ConfirmSubmit"
+                  class="operating"
+                ></operating>
+              </div>
+              <div class="date">~ {{ it.updatedAt | dateAgo(lang) }}</div>
             </div>
-            <div class="date">~ {{ it.updatedAt | dateAgo(lang) }}</div>
           </div>
         </div>
-      </div>
-    </transition>
-    <MaskDialog
-      v-model="show"
-      v-if="mode"
-      :title="type ? '添加公告' : '编辑公告'"
-      @submit="submit"
-    >
-      <div class="form">
-        <span>内容</span>
-        <input v-focus v-model="content" @keyup.enter="submit" type="text" />
-      </div>
-    </MaskDialog>
+      </transition>
+      <MaskDialog
+        v-model="show"
+        v-if="mode"
+        :title="type ? '添加公告' : '编辑公告'"
+        @submit="submit"
+      >
+        <div class="form">
+          <span>内容</span>
+          <input v-focus v-model="content" @keyup.enter="submit" type="text" />
+        </div>
+      </MaskDialog>
+    </template>
   </div>
 </template>
 
@@ -59,6 +62,7 @@ export default {
   name: 'Announcement',
   data() {
     return {
+      announcements: [],
       content: null,
       show: false,
       type: 0,
@@ -77,7 +81,6 @@ export default {
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
-    ...mapState('announcement', ['announcements']),
   },
   methods: {
     ...mapActions('announcement', [
@@ -118,7 +121,7 @@ export default {
     },
     init() {
       this.content = null
-      this.getAnnouncements()
+      this.getAnnouncements().then((res) => (this.announcements = res))
     },
     handleSwiperTransitionStart() {
       this.rotatedeg = this.rotatedeg + 1

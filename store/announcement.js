@@ -4,21 +4,13 @@
  */
 import { showMessage } from '@/utils/show-message'
 
-const state = () => ({
-  announcements: [],
-})
+const state = () => ({})
 
-const mutations = {
-  UPDATE_ANNOUNCEMENT(state, announcement) {
-    state.announcements = announcement
-  },
-}
+const mutations = {}
 
 const actions = {
   getAnnouncements({ commit }) {
-    return this.$axios.$get('/api/announcement').then((announcement) => {
-      commit('UPDATE_ANNOUNCEMENT', announcement)
-    })
+    return this.$axios.$get('/api/announcement')
   },
   postAnnouncement({ commit }, content) {
     return this.$axios

@@ -78,8 +78,6 @@ export default {
     this.$nextTick(() => this.initData())
   },
   computed: {
-    ...mapState('category', ['categorys']),
-    ...mapState('tag', ['tags']),
     ...mapState('common', ['mode', 'lang']),
   },
   methods: {

@@ -1,32 +1,35 @@
 <template>
   <div class="swiper-container">
-    <transition name="module" mode="out-in">
-      <div key="swiper" v-swiper:swiper="swiperOption" class="swiper">
-        <div class="swiper-wrapper">
-          <div
-            :key="index"
-            v-for="(it, index) in home"
-            class="swiper-slide slide-item"
-          >
-            <div class="content filter">
-              <NuxtLink
-                :to="{
-                  path: pathLang('/articles/' + it._id, lang),
-                }"
-              >
-                <div class="img">
-                  <img :src="getImgUrl(it.img)" />
-                  <span class="title">{{ it.title }}</span>
-                </div>
-              </NuxtLink>
+    <loading-box class="loading" v-if="home.length === 0" />
+    <template v-else>
+      <transition name="module" mode="out-in">
+        <div key="swiper" v-swiper:swiper="swiperOption" class="swiper">
+          <div class="swiper-wrapper">
+            <div
+              :key="index"
+              v-for="(it, index) in home"
+              class="swiper-slide slide-item"
+            >
+              <div class="content filter">
+                <NuxtLink
+                  :to="{
+                    path: pathLang('/articles/' + it._id, lang),
+                  }"
+                >
+                  <div class="img">
+                    <img :src="getImgUrl(it.img)" />
+                    <span class="title">{{ it.title }}</span>
+                  </div>
+                </NuxtLink>
+              </div>
             </div>
           </div>
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+          ></div>
         </div>
-        <div
-          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
-        ></div>
-      </div>
-    </transition>
+      </transition>
+    </template>
   </div>
 </template>
 
@@ -78,6 +81,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .swiper-container {
+  background-color: $module-bg;
   overflow: hidden;
   height: 200px;
   .pag {

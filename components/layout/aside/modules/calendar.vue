@@ -247,7 +247,7 @@ export default {
   }
   > .days-loading {
     width: 100%;
-    height: 14rem;
+    height: 175px;
   }
   > .days {
     min-height: 140px;
