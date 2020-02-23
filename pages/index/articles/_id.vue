@@ -93,9 +93,11 @@ export default {
   },
 }
 </script>
+<style>
+@import 'gitalk/dist/gitalk.css';
+</style>
 <style lang="scss" scoped>
 @import '@/assets/components.scss';
-@import 'gitalk/dist/gitalk.css';
 .articles {
   padding: 12px 24px;
   padding-top: 30px;
