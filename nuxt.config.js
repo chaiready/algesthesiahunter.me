@@ -90,6 +90,11 @@ export default {
    ** Build configuration
    */
   build: {
+    maxChunkSize: 360000,
+    extractCSS: true,
+    postcss: {
+      plugins: { 'postcss-custom-properties': { warnings: false } },
+    },
     optimization: {
       splitChunks: {
         cacheGroups: {
