@@ -93,9 +93,6 @@ export default {
   },
 }
 </script>
-<style>
-@import 'gitalk/dist/gitalk.css';
-</style>
 <style lang="scss" scoped>
 @import '@/assets/components.scss';
 .articles {
