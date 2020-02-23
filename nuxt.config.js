@@ -48,7 +48,13 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['normalize.css/normalize.css', '@/assets/base.scss'],
+  css: [
+    'normalize.css/normalize.css',
+    'gitalk/dist/gitalk.css',
+    'swiper/dist/css/swiper.css',
+    '@/assets/markdown.theme.scss',
+    '@/assets/base.scss',
+  ],
   styleResources: {
     scss: ['@/assets/variables.scss', '@/assets/theme.scss'],
   },
@@ -91,6 +97,7 @@ export default {
    */
   build: {
     maxChunkSize: 360000,
+    extractCSS: true,
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
     },

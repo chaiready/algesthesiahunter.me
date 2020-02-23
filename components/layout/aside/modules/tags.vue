@@ -1,5 +1,5 @@
 <template>
-  <div class="category-container">
+  <div class="tags-container">
     <loading-box class="loading" v-if="tags.length === 0" />
     <template v-else>
       <ul class="main">
@@ -101,7 +101,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.category-container {
+.tags-container {
   width: 268px;
   padding: 0px 12px 12px 12px;
   background-color: $module-bg;

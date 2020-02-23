@@ -1,5 +1,5 @@
 <template>
-  <div class="category">
+  <div class="index-container">
     <NuxtChild v-if="!hasChild" :nuxtChildKey="$route.path" class="main" />
     <transition name="fade" mode="out-in" v-else>
       <NuxtChild :nuxtChildKey="$route.path" class="main" />
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.category {
+.index-container {
   display: flex;
   .main {
     transition: opacity 0.25s cubic-bezier(0.55, 0, 0.1, 1);
