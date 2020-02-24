@@ -8,6 +8,9 @@ export default {
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'en',
+    },
     title: meta.title,
     meta: [
       { charset: 'utf-8' },

@@ -22,7 +22,12 @@
         ></operating>
       </div>
 
-      <a class="it" target="_blank" href="https://coding.algesthesiahunter.top">
+      <a
+        class="it"
+        target="_blank"
+        rel="noopener"
+        href="https://coding.algesthesiahunter.top"
+      >
         <svg-icon icon-class="project"></svg-icon>
         {{ navList.project }}
       </a>

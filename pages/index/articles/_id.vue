@@ -13,6 +13,7 @@
           class="lozad"
           :data-src="getImgUrl(img)"
           @click="addImgPopup(img)"
+          :alt="title"
         />
       </div>
       <markdown :value="content"></markdown>
