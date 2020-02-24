@@ -24,12 +24,7 @@ export default {
         content: meta.keywords,
       },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'dns-prefetch', href: `//algesthesiahunter.top` },
-      { rel: 'dns-prefetch', href: '//api.algesthesiahunter.top' },
-      { rel: 'dns-prefetch', href: '//cdn.algesthesiahunter.top' },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }],
     bodyAttrs: {
       class: 'default',
