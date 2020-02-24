@@ -141,6 +141,24 @@ export const source = {
       en: 'tool',
     },
   },
+  sitemap: {
+    articles: {
+      zh: '文章',
+      en: 'articles',
+    },
+    pages: {
+      zh: '路由',
+      en: 'pages',
+    },
+    tags: {
+      zh: '标签',
+      en: 'tags',
+    },
+    category: {
+      zh: '分类',
+      en: 'category',
+    },
+  },
   text: {
     origin: {
       original: {
