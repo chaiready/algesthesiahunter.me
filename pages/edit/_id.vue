@@ -160,7 +160,6 @@ export default {
       margin-left: 30px;
       resize: none;
 
-      width: 260px;
       &:focus {
         border: 1px solid $primary;
       }

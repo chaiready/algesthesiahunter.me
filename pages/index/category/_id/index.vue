@@ -32,13 +32,17 @@ export default {
       return this.$route.params.id
     },
     text() {
-      return this.$t(`text.category.${this.name}`)
+      return this.slogin[this.name]
     },
   },
   data() {
     return {
       data: [],
       total: 0,
+      slogin: {
+        coding: '避重趋轻，避繁逐简，避虚就实',
+        think: '智者之虑，必杂于利害：杂于利，而务可信也；杂于害，而患可解也',
+      },
     }
   },
   methods: {

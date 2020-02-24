@@ -1,8 +1,4 @@
 export const source = {
-  languages: {
-    zh: 'ZH',
-    en: 'EN',
-  },
   nav: {
     home: {
       zh: '天外天',
@@ -172,16 +168,6 @@ export const source = {
       hybrid: {
         zh: '混撰',
         en: 'hb',
-      },
-    },
-    category: {
-      coding: {
-        zh: '避重趋轻，避繁逐简，避虚就实',
-        en: '避重趋轻，避繁逐简，避虚就实',
-      },
-      think: {
-        zh: '智者之虑，必杂于利害：杂于利，而务可信也；杂于害，而患可解也',
-        en: '智者之虑，必杂于利害：杂于利，而务可信也；杂于害，而患可解也',
       },
     },
     slogan: {
