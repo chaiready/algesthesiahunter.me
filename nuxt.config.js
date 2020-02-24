@@ -43,11 +43,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [
-    'normalize.css/normalize.css',
-    '@/assets/base.scss',
-    '@/assets/markdown.theme.scss',
-  ],
+  css: ['normalize.css', '@/assets/base.scss'],
   styleResources: {
     scss: ['@/assets/variables.scss', '@/assets/theme.scss'],
   },
@@ -91,29 +87,6 @@ export default {
   build: {
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
-    },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          expansions: {
-            name: 'expansions',
-            test(module) {
-              return /swiper|lozad|marked|highlight/.test(module.context)
-            },
-            chunks: 'initial',
-            priority: 10,
-          },
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10,
-          },
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-        },
-      },
     },
     /*
      ** You can extend webpack config here

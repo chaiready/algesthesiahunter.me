@@ -31,14 +31,18 @@
   .gt-comment-body.markdown-body {
     font-size: 14px !important;
   }
-  .gt-comment{
-    img{
-      transition:transform 0.5s ease-out;
+  .gt-comment {
+    img {
+      transition: transform 0.5s ease-out;
     }
   }
-  .gt-comment-like{
-    .gt-svg{
+  .gt-comment-header {
+    .gt-svg {
       height: 17px !important;
+    }
+    .gt-ico {
+      display: flex !important;
+      height: 100% !important;
     }
   }
 }
