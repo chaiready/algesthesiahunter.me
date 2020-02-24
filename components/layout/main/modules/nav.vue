@@ -73,7 +73,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.navList)
+    // console.log(this.navList)
   },
   methods: {
     ...mapActions('category', [
