@@ -1,3 +1,20 @@
+<template>
+  <div class="slogin" :style="sloginStyle">
+    <svg-icon :icon-class="name" class="slogin-svg"></svg-icon>
+    <div class="text">{{ text }}</div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'Slogin',
+  props: {
+    sloginStyle: {},
+    name: {},
+    text: {},
+  },
+}
+</script>
+<style lang="scss" scoped>
 .slogin {
   margin-bottom: 15px;
   color: white;
@@ -32,7 +49,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding:0 15px;
+    padding: 0 15px;
     text-align: center;
   }
 }
+</style>

@@ -16,7 +16,7 @@
         />
       </div>
       <markdown :value="content"></markdown>
-      <div id="gitalk-container"></div>
+      <gitalk></gitalk>
     </template>
     <div v-else class="empty">空空如也</div>
   </div>
@@ -24,13 +24,12 @@
 
 <script>
 import lozad from 'lozad'
-import Gitalk from 'gitalk'
-import { isProdMode } from '@/config/env'
 import markdown from '@/components/markdown.vue'
 export default {
   name: 'Articles',
   components: {
     markdown,
+    gitalk: () => import('@/components/gitalk.vue'),
   },
   data() {
     return {
@@ -62,9 +61,6 @@ export default {
   mounted() {
     const observer = lozad()
     observer.observe()
-    if (isProdMode) {
-      this.initGitalk()
-    }
   },
   asyncData({ store, params }) {
     return store.dispatch('article/getArticleDetail', params.id)
@@ -76,27 +72,9 @@ export default {
         window.utils.addImgPopup(src)
       }
     },
-    initGitalk() {
-      const gitalk = new Gitalk({
-        clientID: '06b5cef9988469ced515',
-        clientSecret: '023eace06a9416b02f69ad2dd81dd7969a660aa5',
-        repo: 'gitalk.algesthesiahunter',
-        owner: 'Algesthesiahunter',
-        admin: ['Algesthesiahunter'],
-        id: this.$route.params.id,
-        distractionFreeMode: false, // Facebook-like distraction free mode
-      })
-      gitalk.render('gitalk-container')
-    },
   },
 }
 </script>
-<style lang="scss">
-@import '@/assets/components.scss';
-</style>
-<style lang="css">
-@import 'gitalk/dist/gitalk.css';
-</style>
 <style lang="scss" scoped>
 .articles {
   padding: 12px 24px;

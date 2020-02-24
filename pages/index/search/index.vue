@@ -1,9 +1,6 @@
 <template>
   <div class="search">
-    <div class="slogin" :style="sloginStyle">
-      <svg-icon :icon-class="name" class="slogin-svg"></svg-icon>
-      <div class="text">{{ text }}</div>
-    </div>
+    <slogin :sloginStyle="sloginStyle" :name="name" :text="text"></slogin>
     <transition name="fade" mode="out-in">
       <NuxtChild :nuxtChildKey="$route.path" :article="data" class="main" />
     </transition>
@@ -16,10 +13,12 @@ import { mapActions } from 'vuex'
 import dayjs from 'dayjs'
 import { isBrowser } from '@/config/env'
 import Paginations from '@/components/paginations.vue'
+import slogin from '@/components/slogin.vue'
 export default {
   name: 'Search',
   components: {
     Paginations,
+    slogin,
   },
   data() {
     return {
@@ -100,6 +99,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-@import '@/assets/components/slogin.scss';
-</style>

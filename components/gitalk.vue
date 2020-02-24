@@ -1,3 +1,37 @@
+<template>
+  <div id="gitalk-container"></div>
+</template>
+
+<script>
+import Gitalk from 'gitalk'
+import { isProdMode } from '@/config/env'
+export default {
+  name: 'Gitalk',
+  mounted() {
+    if (isProdMode) {
+      this.initGitalk()
+    }
+  },
+  methods: {
+    initGitalk() {
+      const gitalk = new Gitalk({
+        clientID: '06b5cef9988469ced515',
+        clientSecret: '023eace06a9416b02f69ad2dd81dd7969a660aa5',
+        repo: 'gitalk.algesthesiahunter',
+        owner: 'Algesthesiahunter',
+        admin: ['Algesthesiahunter'],
+        id: this.$route.params.id,
+        distractionFreeMode: false, // Facebook-like distraction free mode
+      })
+      gitalk.render('gitalk-container')
+    },
+  },
+}
+</script>
+<style lang="css">
+@import 'gitalk/dist/gitalk.css';
+</style>
+<style lang="scss">
 #gitalk-container {
   a {
     color: $primary !important;
@@ -46,3 +80,4 @@
     }
   }
 }
+</style>

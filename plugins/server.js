@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import '@/plugins/filters'
 import '@/components/global'
-import '@/plugins/svg'
 import '@/plugins/directives'
 function pathLang(path, lang) {
   if (lang === 'zh') {

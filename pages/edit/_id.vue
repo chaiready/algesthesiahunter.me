@@ -127,12 +127,61 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/assets/components/form.scss';
 .edit-container {
   padding: 32px;
   padding-left: 16px;
   background-color: $module-bg;
   margin-left: 92px;
+  .form {
+    select {
+      border: 1px solid $text;
+      background-color: $module-bg;
+      display: inline-block;
+      height: 32px;
+      color: $text;
+      border-radius: 2px;
+      padding: 0 15px;
+      margin-left: 30px;
+      width: 260px;
+      -webkit-appearance: none;
+      -webkit-border-radius: 2px;
+      outline: none;
+      &:focus {
+        border: 1px solid $primary;
+      }
+    }
+    textarea {
+      border: 1px solid $text;
+      background-color: $module-bg;
+      display: inline-block;
+      color: $text;
+      border-radius: 2px;
+      padding: 15px;
+      margin-left: 30px;
+      resize: none;
+
+      width: 260px;
+      &:focus {
+        border: 1px solid $primary;
+      }
+    }
+    .checkbox-box {
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        input {
+          cursor: pointer;
+          width: 20px !important;
+        }
+        label {
+          cursor: pointer;
+          height: 32px;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+
   h3 {
     padding-left: 22px;
     margin-bottom: 1em;

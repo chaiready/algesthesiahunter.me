@@ -1,9 +1,10 @@
 <template>
   <div class="tags">
-    <div class="slogin" :style="sloginStyle">
-      <svg-icon icon-class="route.category" class="slogin-svg"></svg-icon>
-      <div class="text" style="text-transform: uppercase">{{ sonName }}</div>
-    </div>
+    <slogin
+      :sloginStyle="sloginStyle"
+      name="route.category"
+      :text="sonName"
+    ></slogin>
     <transition name="fade" mode="out-in">
       <NuxtChild :nuxtChildKey="$route.path" :article="data" class="main" />
     </transition>
@@ -13,10 +14,12 @@
 
 <script>
 import Paginations from '@/components/paginations.vue'
+import slogin from '@/components/slogin.vue'
 export default {
   name: 'Tags',
   components: {
     Paginations,
+    slogin,
   },
   watchQuery: true,
   head(app) {
@@ -46,6 +49,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-@import '@/assets/components/slogin.scss';
-</style>
