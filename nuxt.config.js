@@ -46,10 +46,7 @@ export default {
   css: [
     'normalize.css/normalize.css',
     '@/assets/base.scss',
-    'gitalk/dist/gitalk.css',
-    'swiper/dist/css/swiper.css',
     '@/assets/markdown.theme.scss',
-    '@/assets/components.scss',
   ],
   styleResources: {
     scss: ['@/assets/variables.scss', '@/assets/theme.scss'],

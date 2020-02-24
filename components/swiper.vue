@@ -77,6 +77,9 @@ export default {
   },
 }
 </script>
+<style>
+@import 'swiper/dist/css/swiper.css';
+</style>
 <style lang="scss" scoped>
 .swiper-container {
   background-color: $module-bg;
