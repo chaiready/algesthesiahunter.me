@@ -9,7 +9,7 @@ const renderer = new marked.Renderer()
 const imgRender = (src) => {
   if (isBrowser) {
     if (!/http/.test(src)) {
-      src = `${window.cdn}${src}`
+      src = `${window.cdn}${src}?x-oss-process=image/resize,m_lfit,w_600`
     }
     const imageHtml = `
       <img
