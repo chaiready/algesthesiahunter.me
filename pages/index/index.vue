@@ -15,7 +15,7 @@ import Announcement from '@/components/announcement.vue'
 import Paginations from '@/components/paginations.vue'
 export default {
   name: 'Home',
-  watchQuery: true,
+  // watchQuery: true,
   components: {
     Swiper,
     Announcement,

@@ -18,7 +18,7 @@ export default {
     Paginations,
     slogin,
   },
-  watchQuery: true,
+  // watchQuery: true,
   head(app) {
     return {
       title: `${this.$store.state.common.title}`,

@@ -26,7 +26,7 @@ export default {
       total: 0,
     }
   },
-  watchQuery: true,
+  // watchQuery: true,
   computed: {
     query() {
       return this.$route.query

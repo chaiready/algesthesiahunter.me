@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import '@/plugins/filters'
-import '@/components/global'
 import '@/plugins/directives'
+// 需要在服务端的插件
+import '@/plugins/svg.js'
+import '@/components/global'
+
 function pathLang(path, lang) {
   if (lang === 'zh') {
     return path
