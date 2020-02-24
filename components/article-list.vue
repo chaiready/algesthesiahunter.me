@@ -1,73 +1,75 @@
 <template>
   <div class="article-list">
-    <div v-for="(it, i) in article" :key="i" class="it">
-      <div class="img-body">
-        <NuxtLink
-          :to="{
-            path: pathLang(`/articles/${it._id}`, lang),
-          }"
-        >
-          <img
-            :data-src="
-              getImgUrl(it.img + '?x-oss-process=image/resize,m_lfit,w_180')
-            "
-            alt
-            class="lozad"
-          />
-        </NuxtLink>
-        <div
-          :class="{ origin: true, other: it.origin != 'original' }"
-          v-if="it.origin"
-        >
-          {{ $t(`text.origin.${it.origin}`) }}
-        </div>
-      </div>
-      <div class="it-body">
-        <h5>
-          <NuxtLink
-            :to="{
-              path: pathLang('/articles/' + it._id, lang),
-            }"
-            class="title one-cut"
-          >
-            {{ it.title }}
-          </NuxtLink>
-        </h5>
-        <p class="it-des more-cut">{{ it.des }}</p>
-        <div class="it-meta">
-          <div class="time">
-            <svg-icon icon-class="calendar"></svg-icon>
-            {{ it.createdAt | unixToCommonFilter(lang) }}
-          </div>
-          <div class="category">
-            <NuxtLink
-              :to="{
-                path: pathLang(
-                  '/category/' +
-                    it.category.name +
-                    '?category=' +
-                    it.category._id,
-                  lang
-                ),
-              }"
-            >
-              <svg-icon icon-class="category"></svg-icon>
-              {{ $t(`nav.${it.category.name}`) }}
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-      <operating
-        v-if="mode"
-        :it="it"
-        @edit="modeChange(it)"
-        @ConfirmSubmit="ConfirmSubmit"
-        class="operating"
-      ></operating>
-    </div>
     <div v-if="article && article.length === 0" class="empty">
       空空如也
     </div>
+    <template v-else>
+      <div v-for="(it, i) in article" :key="i" class="it">
+        <div class="img-body">
+          <NuxtLink
+            :to="{
+              path: pathLang(`/articles/${it._id}`, lang),
+            }"
+          >
+            <img
+              :data-src="
+                getImgUrl(it.img + '?x-oss-process=image/resize,m_lfit,w_180')
+              "
+              alt
+              class="lozad"
+            />
+          </NuxtLink>
+          <div
+            :class="{ origin: true, other: it.origin != 'original' }"
+            v-if="it.origin"
+          >
+            {{ $t(`text.origin.${it.origin}`) }}
+          </div>
+        </div>
+        <div class="it-body">
+          <h5>
+            <NuxtLink
+              :to="{
+                path: pathLang('/articles/' + it._id, lang),
+              }"
+              class="title one-cut"
+            >
+              {{ it.title }}
+            </NuxtLink>
+          </h5>
+          <p class="it-des more-cut">{{ it.des }}</p>
+          <div class="it-meta">
+            <div class="time">
+              <svg-icon icon-class="calendar"></svg-icon>
+              {{ it.createdAt | unixToCommonFilter(lang) }}
+            </div>
+            <div class="category">
+              <NuxtLink
+                :to="{
+                  path: pathLang(
+                    '/category/' +
+                      it.category.name +
+                      '?category=' +
+                      it.category._id,
+                    lang
+                  ),
+                }"
+              >
+                <svg-icon icon-class="category"></svg-icon>
+                {{ $t(`nav.${it.category.name}`) }}
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+        <operating
+          v-if="mode"
+          :it="it"
+          @edit="modeChange(it)"
+          @ConfirmSubmit="ConfirmSubmit"
+          class="operating"
+        ></operating>
+      </div>
+    </template>
   </div>
 </template>
 
