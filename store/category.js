@@ -3,13 +3,21 @@
  * @author: <https://github.com/algesthesiahunter>
  */
 import { showMessage } from '@/utils/show-message'
-const state = () => ({})
+const state = () => ({
+  categorys: [],
+})
 
-const mutations = {}
+const mutations = {
+  UPDATE_CATEGORY(state, categorys) {
+    state.categorys = categorys
+  },
+}
 
 const actions = {
   getCategorys({ commit }) {
-    return this.$axios.$get('/api/category')
+    return this.$axios.$get('/api/category').then((categorys) => {
+      commit('UPDATE_CATEGORY', categorys)
+    })
   },
   postCategory({ commit }, name) {
     return this.$axios

@@ -60,13 +60,11 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      const observer = lozad()
-      observer.observe()
-      if (isProdMode) {
-        this.initGitalk()
-      }
-    })
+    const observer = lozad()
+    observer.observe()
+    if (isProdMode) {
+      this.initGitalk()
+    }
   },
   asyncData({ store, params }) {
     return store.dispatch('article/getArticleDetail', params.id)

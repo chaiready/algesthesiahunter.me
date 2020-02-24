@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Edit',
   data() {
@@ -73,20 +73,18 @@ export default {
       form: {
         tags: [],
       },
-      tags: [],
-      categorys: [],
       origin: ['original', 'reprint', 'hybrid'],
     }
   },
   computed: {
+    ...mapState('category', ['categorys']),
+    ...mapState('tag', ['tags']),
     id() {
       return this.$route.query.id
     },
   },
   methods: {
     ...mapActions('article', ['postArticle', 'putArticle', 'getArticleDetail']),
-    ...mapActions('tag', ['getTags']),
-    ...mapActions('category', ['getCategorys']),
     add() {
       this.postArticle(this.form).then(
         () =>
@@ -125,8 +123,6 @@ export default {
         }
       })
     }
-    this.getTags().then((res) => (this.tags = res))
-    this.getCategorys().then((res) => (this.categorys = res))
   },
 }
 </script>

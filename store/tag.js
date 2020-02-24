@@ -4,13 +4,21 @@
  */
 import { showMessage } from '@/utils/show-message'
 
-const state = () => ({})
+const state = () => ({
+  tags: [],
+})
 
-const mutations = {}
+const mutations = {
+  UPDATE_TAGS(state, tags) {
+    state.tags = tags
+  },
+}
 
 const actions = {
   getTags({ commit }) {
-    return this.$axios.$get('/api/tag')
+    return this.$axios.$get('/api/tag').then((tags) => {
+      commit('UPDATE_TAGS', tags)
+    })
   },
   postTag({ commit }, name) {
     return this.$axios

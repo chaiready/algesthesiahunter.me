@@ -58,11 +58,11 @@ export default {
       show: false,
       type: 0,
       current: null,
-      tags: [],
     }
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
+    ...mapState('tag', ['tags']),
   },
   methods: {
     ...mapActions('tag', ['getTags', 'postTag', 'deleteTag', 'putTag']),
@@ -92,11 +92,8 @@ export default {
       this.current = it
     },
     init() {
-      this.getTags().then((res) => (this.tags = res))
+      this.getTags()
     },
-  },
-  mounted() {
-    this.init()
   },
 }
 </script>

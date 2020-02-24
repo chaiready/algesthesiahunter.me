@@ -63,17 +63,16 @@ export default {
       show: false,
       type: 0,
       current: null,
-      categorys: [],
     }
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
+    ...mapState('category', ['categorys']),
     navList() {
       return this.$t('nav')
     },
   },
   mounted() {
-    this.init()
     console.log(this.navList)
   },
   methods: {
@@ -99,7 +98,7 @@ export default {
       this.current = it
     },
     init() {
-      this.getCategorys().then((res) => (this.categorys = res))
+      this.getCategorys()
     },
     submit() {
       if (this.type) {
