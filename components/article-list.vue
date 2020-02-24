@@ -7,7 +7,7 @@
             path: pathLang(`/articles/${it._id}`, lang),
           }"
         >
-          <img :data-src="getImgUrl(it.img)" :alt="it.title" class="lozad" />
+          <img :data-src="getImgUrl(it.img)" alt class="lozad" />
         </NuxtLink>
         <div
           :class="{ origin: true, other: it.origin != 'original' }"

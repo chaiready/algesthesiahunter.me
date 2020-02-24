@@ -54,17 +54,13 @@
       </div>
       <div class="its">
         <div class="me">
-          <img :src="getImgUrl('me.png')" class="avatar" alt="霜末之冬" />
+          <img :src="getImgUrl('me.png')" class="avatar" alt />
           <div class="name">
             <h2>霜末之冬</h2>
           </div>
           <div>A web front-end developer</div>
           <div class="find">众里寻他</div>
-          <img
-            :src="getImgUrl('weixin.png')"
-            class="wx"
-            alt="Algesthesiahunter"
-          />
+          <img :src="getImgUrl('weixin.png')" class="wx" alt />
         </div>
       </div>
     </div>

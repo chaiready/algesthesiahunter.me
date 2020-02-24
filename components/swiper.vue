@@ -17,7 +17,7 @@
                   }"
                 >
                   <div class="img">
-                    <img :src="getImgUrl(it.img)" :alt="it.title" />
+                    <img :src="getImgUrl(it.img)" alt />
                     <span class="title">{{ it.title }}</span>
                   </div>
                 </NuxtLink>
