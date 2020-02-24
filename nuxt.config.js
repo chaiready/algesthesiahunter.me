@@ -50,10 +50,10 @@ export default {
    */
   css: [
     'normalize.css/normalize.css',
+    '@/assets/base.scss',
     'gitalk/dist/gitalk.css',
     'swiper/dist/css/swiper.css',
     '@/assets/markdown.theme.scss',
-    '@/assets/base.scss',
     '@/assets/components.scss',
   ],
   styleResources: {
@@ -97,7 +97,6 @@ export default {
    ** Build configuration
    */
   build: {
-    maxChunkSize: 360000,
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
     },
