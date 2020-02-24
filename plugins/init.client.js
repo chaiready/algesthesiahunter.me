@@ -5,8 +5,9 @@ import '@/plugins/pop-confirm'
 import '@/plugins/img-pop'
 Vue.prototype.showMessage = showMessage
 export default function({ store }) {
-  store.dispatch('common/browserInit')
+  store.dispatch('common/clientInit')
 }
+
 const str = `
  ________  ___       ________  _______   ________  _________  ___  ___  _______   ________  ___  ________
 |\\   __  \\|\\  \\     |\\   ____\\|\\  ___ \\ |\\   ____\\|\\___   ___\\\\  \\|\\  \\|\\  ___ \\ |\\   ____\\|\\  \\|\\   __  \\

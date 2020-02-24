@@ -37,7 +37,7 @@ const mutations = {
   },
 }
 const actions = {
-  browserInit({ commit }) {
+  clientInit({ commit }) {
     const { token, lang, theme } = localStorage
     commit('UPDATE_TOKEN', token)
     commit('UPDATE_LANG', lang)
