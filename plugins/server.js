@@ -18,7 +18,7 @@ Vue.prototype.getImgUrl = (img) => {
   if (/http/.test(img)) {
     return img
   } else {
-    return cdn + img + '?x-oss-process=image/resize,m_lfit,w_600'
+    return cdn + img
   }
 }
 Vue.prototype.pathLang = pathLang

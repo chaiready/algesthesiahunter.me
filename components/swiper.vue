@@ -17,7 +17,14 @@
                   }"
                 >
                   <div class="img">
-                    <img :src="getImgUrl(it.img)" alt />
+                    <img
+                      :src="
+                        getImgUrl(
+                          it.img + '?x-oss-process=image/resize,m_lfit,w_600'
+                        )
+                      "
+                      alt
+                    />
                     <span class="title">{{ it.title }}</span>
                   </div>
                 </NuxtLink>

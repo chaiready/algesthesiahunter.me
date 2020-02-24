@@ -11,7 +11,9 @@
         <h2>{{ title }}</h2>
         <img
           class="lozad"
-          :data-src="getImgUrl(img)"
+          :data-src="
+            getImgUrl(img + '?x-oss-process=image/resize,m_lfit,w_600')
+          "
           @click="addImgPopup(img)"
           alt
         />
