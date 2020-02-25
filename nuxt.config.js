@@ -37,26 +37,31 @@ export default {
     max: 100,
     maxAge: 1000 * 60 * 15,
   },
+  render: {
+    http2: { push: true },
+    resourceHints: false,
+  },
   /*
    ** Customize the progress-bar color
    */
   router: {
+    prefetchLinks: false,
     middleware: ['router-middleware'],
   },
   /*
    ** Global CSS
    */
-  css: ['normalize.css', '@/assets/base.scss'],
+  css: ['normalize.css', './assets/base.scss'],
   styleResources: {
-    scss: ['@/assets/variables.scss', '@/assets/theme.scss'],
+    scss: ['./assets/variables.scss', './assets/theme.scss'],
   },
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '@/plugins/http' },
-    { src: '@/plugins/server' },
-    { src: '@/plugins/init.client', ssr: false },
+    { src: './plugins/http' },
+    { src: './plugins/server' },
+    { src: './plugins/init.client', ssr: false },
   ],
   /*
    ** Nuxt.js dev-modules
@@ -88,6 +93,7 @@ export default {
    ** Build configuration
    */
   build: {
+    analyze: true,
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
     },
