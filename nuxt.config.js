@@ -127,7 +127,7 @@ export default {
         },
       },
     },
-    analyze: true,
+    // analyze: true,
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
     },
