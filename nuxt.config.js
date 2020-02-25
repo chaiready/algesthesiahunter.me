@@ -27,7 +27,19 @@ export default {
         content: meta.keywords,
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'dns-prefetch',
+        href:
+          'https://s2.pstatp.com/cdn/expire-1-M/gitalk/1.5.0/gitalk.min.css',
+      },
+      {
+        rel: 'dns-prefetch',
+        href:
+          'https://s3.pstatp.com/cdn/expire-1-M/normalize/8.0.1/normalize.min.css',
+      },
+    ],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }],
     bodyAttrs: {
       class: 'default',
@@ -50,7 +62,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['normalize.css', './assets/base.scss'],
+  css: ['./assets/base.scss'],
   styleResources: {
     scss: ['./assets/variables.scss', './assets/theme.scss'],
   },
@@ -92,6 +104,29 @@ export default {
    ** Build configuration
    */
   build: {
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          expansions: {
+            name: 'expansions',
+            test(module) {
+              return /swiper|lozad|marked|gitalk|highlight/.test(module.context)
+            },
+            chunks: 'initial',
+            priority: 10,
+          },
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+          },
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+        },
+      },
+    },
     analyze: true,
     postcss: {
       plugins: { 'postcss-custom-properties': { warnings: false } },
