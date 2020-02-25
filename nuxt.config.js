@@ -27,19 +27,7 @@ export default {
         content: meta.keywords,
       },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'dns-prefetch',
-        href:
-          'https://s2.pstatp.com/cdn/expire-1-M/gitalk/1.5.0/gitalk.min.css',
-      },
-      {
-        rel: 'dns-prefetch',
-        href:
-          'https://s3.pstatp.com/cdn/expire-1-M/normalize/8.0.1/normalize.min.css',
-      },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }],
     bodyAttrs: {
       class: 'default',
@@ -62,7 +50,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['./assets/base.scss'],
+  css: ['normalize.css', './assets/base.scss'],
   styleResources: {
     scss: ['./assets/variables.scss', './assets/theme.scss'],
   },

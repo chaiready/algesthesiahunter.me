@@ -28,6 +28,9 @@ export default {
   },
 }
 </script>
+<style lang="css">
+@import 'gitalk/dist/gitalk.css';
+</style>
 <style lang="scss">
 #gitalk-container {
   a {
