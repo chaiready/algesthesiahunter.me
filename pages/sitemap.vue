@@ -94,9 +94,6 @@ export default {
       return this.$t('nav')
     },
   },
-  mounted() {
-    console.log(this.data.length)
-  },
 }
 </script>
 

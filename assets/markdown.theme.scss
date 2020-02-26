@@ -59,12 +59,20 @@
   ul,
   ol {
     > li {
+      code {
+        background-color: $body-bg;
+        padding: 3px 4px;
+        border-radius: 4px;
+        color: $keyword;
+      }
       list-style: square !important;
       line-height: 1.8em;
       padding: 0.5em 0.8em;
-
       &:hover {
         background-color: $module-hover-bg;
+        code {
+          background-color: transparent !important;
+        }
       }
 
       > p {
