@@ -11,8 +11,6 @@
           <span>{{ isEnLang ? 'Y' : '年' }}</span>
           <span>{{ currentMonth }}</span>
           <span>{{ isEnLang ? 'M' : '月' }}</span>
-          <span>{{ currentDay }}</span>
-          <span>{{ isEnLang ? 'D' : '日' }}</span>
         </strong>
       </span>
       <span @click="pickNext(currentYear, currentMonth)" class="item arrow"
