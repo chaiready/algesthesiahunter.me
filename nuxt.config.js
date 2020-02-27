@@ -39,12 +39,13 @@ export default {
   },
   render: {
     http2: { push: true },
+    resourceHints: false,
   },
   /*
    ** Customize the progress-bar color
    */
   router: {
-    prefetchLinks: false,
+    // prefetchLinks: false,
     middleware: ['router-middleware'],
   },
   /*
