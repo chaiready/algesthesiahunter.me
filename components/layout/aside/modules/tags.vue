@@ -8,26 +8,24 @@
             :to="pathLang('/tags/' + it.name + '?tags=' + it._id, lang)"
             class="it"
           >
-            <span class="svg-box"
-              ><svg-icon :icon-class="it.name" class="svg"></svg-icon
-            ></span>
-            <span class="text"
-              >{{ $t(`tag.${it.name}`) }} [{{ it.articles }}]
+            <span class="svg-box">
+              <svg-icon :icon-class="it.name" class="svg"></svg-icon>
             </span>
+            <span class="text"
+              >{{ $t(`tag.${it.name}`) }} [{{ it.articles }}]</span
+            >
           </NuxtLink>
           <operating
-            v-if="mode"
-            :it="it"
+            :visible="mode"
+            :name="it.name"
             @edit="modeChange(0, it)"
-            @ConfirmSubmit="ConfirmSubmit"
-            class="operating"
-          >
-          </operating>
+            @submit="ConfirmSubmit(it._id)"
+          ></operating>
         </li>
         <li v-if="mode">
           <a @click="modeChange(1)" href="javascript:void(0);" class="it">
-            <span class="svg-box"
-              ><svg-icon icon-class="tag" class="svg"></svg-icon>
+            <span class="svg-box">
+              <svg-icon icon-class="tag" class="svg"></svg-icon>
             </span>
             <span class="text">妙手生花</span>
           </a>
@@ -59,6 +57,9 @@ export default {
       type: 0,
       current: null,
     }
+  },
+  components: {
+    operating: () => import('@/components/operating'),
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
@@ -102,7 +103,6 @@ export default {
   width: 268px;
   padding: 0px 12px 12px 12px;
   background-color: $module-bg;
-  overflow: hidden;
   position: relative;
   min-height: 126px;
 }
@@ -111,13 +111,6 @@ export default {
   flex-wrap: wrap;
   .li {
     transition: all 0.25s linear;
-    position: relative;
-    &:hover {
-      .operating {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
   }
   .it {
     margin-top: 12px;

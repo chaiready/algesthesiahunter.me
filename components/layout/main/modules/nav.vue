@@ -5,7 +5,7 @@
         <svg-icon icon-class="home"></svg-icon>
         {{ navList.home }}
       </NuxtLink>
-      <div v-for="(it, i) in categorys" :key="i" class="operating-it">
+      <div v-for="(it, i) in categorys" :key="i">
         <NuxtLink
           :to="pathLang(`/category/${it.name}?category=${it._id}`, lang)"
           class="it"
@@ -14,11 +14,10 @@
           {{ $t(`nav.${it.name}`) }}
         </NuxtLink>
         <operating
-          v-if="mode"
-          :it="it"
+          :visible="mode"
+          :name="it.name"
           @edit="modeChange(0, it)"
-          @ConfirmSubmit="ConfirmSubmit"
-          class="operating"
+          @submit="ConfirmSubmit(it._id)"
         ></operating>
       </div>
 
@@ -69,6 +68,9 @@ export default {
       type: 0,
       current: null,
     }
+  },
+  components: {
+    operating: () => import('@/components/operating'),
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
@@ -131,15 +133,6 @@ export default {
     position: fixed;
     display: flex;
     flex-direction: column;
-    .operating-it {
-      position: relative;
-      &:hover {
-        .operating {
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-    }
     .it {
       border: none;
       display: flex;

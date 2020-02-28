@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import '@/plugins/filters'
-import '@/plugins/directives'
 // 需要在服务端的插件
 import '@/plugins/svg.js'
 import '@/components/global'

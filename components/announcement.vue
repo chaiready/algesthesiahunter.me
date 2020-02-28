@@ -26,15 +26,14 @@
               v-for="(it, index) in announcements"
               class="swiper-slide slide-item"
             >
+              <operating
+                :visible="mode"
+                :name="it.name"
+                @edit="modeChange(0, it)"
+                @submit="ConfirmSubmit(it._id)"
+              ></operating>
               <div class="content filter">
                 {{ it.content }}
-                <operating
-                  v-if="mode"
-                  :it="it"
-                  @edit="modeChange(0, it)"
-                  @ConfirmSubmit="ConfirmSubmit"
-                  class="operating"
-                ></operating>
               </div>
               <div class="date">~ {{ it.updatedAt | dateAgo(lang) }}</div>
             </div>
@@ -72,10 +71,10 @@ export default {
         direction: 'vertical',
         loop: true,
         height: 36,
-        autoplay: {
-          delay: 3500,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 3500,
+        //   disableOnInteraction: false,
+        // },
       },
     }
   },
@@ -127,6 +126,9 @@ export default {
       this.rotatedeg = this.rotatedeg + 1
     },
   },
+  components: {
+    operating: () => import('@/components/operating'),
+  },
   mounted() {
     this.init()
   },
@@ -163,13 +165,6 @@ export default {
     height: 36px;
     display: flex;
     align-items: center;
-    position: relative;
-    &:hover {
-      .operating {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
   }
 
   .bg {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { showMessage } from '@/utils/show-message'
 import '@/plugins/swiper'
-import '@/plugins/pop-confirm'
+import '@/plugins/directives'
 import '@/plugins/img-pop'
 Vue.prototype.showMessage = showMessage
 export default function({ store }) {

@@ -62,11 +62,10 @@
           </div>
         </div>
         <operating
-          v-if="mode"
-          :it="it"
-          @edit="modeChange(it)"
-          @ConfirmSubmit="ConfirmSubmit"
-          class="operating"
+          :visible="mode"
+          :name="it.name"
+          @edit="modeChange(0, it)"
+          @submit="ConfirmSubmit(it._id)"
         ></operating>
       </div>
     </template>
@@ -85,6 +84,9 @@ export default {
   },
   mounted() {
     this.$nextTick(() => this.initData())
+  },
+  components: {
+    operating: () => import('@/components/operating'),
   },
   computed: {
     ...mapState('common', ['mode', 'lang']),
@@ -136,10 +138,6 @@ export default {
     &:hover {
       .origin {
         opacity: 1 !important;
-      }
-      .operating {
-        visibility: visible;
-        opacity: 1;
       }
       background-color: $module-hover-bg;
       img {
