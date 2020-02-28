@@ -76,7 +76,8 @@ export default {
     left: 50%;
     top: 180px;
     transform: translateX(-50%);
-    background: $module-bg;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 2px;
     box-sizing: border-box;
     width: 460px;
@@ -90,14 +91,14 @@ export default {
       font-size: 16px;
       color: $text;
       line-height: 24px;
-      border-bottom: 1px solid $module-bg;
+      border-bottom: 1px solid #f0f0f0;
       .delete {
         font-size: 24px;
         cursor: pointer;
       }
     }
     .footer {
-      border-top: 1px solid $module-bg;
+      border-top: 1px solid #f0f0f0;
       padding: 10px 16px;
       text-align: right;
     }
